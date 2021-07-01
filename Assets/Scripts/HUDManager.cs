@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
-    [SerializeField]
-    Slider healthSlider;
+    [SerializeField] private Slider healthSlider;
 
-    [SerializeField]
-    Text messageText;
-    [SerializeField]
-    GameObject messagePanel;
+    [SerializeField] private Text messageText;
+    [SerializeField] private GameObject messagePanel;
 
-    [SerializeField]
-    Text ammoText;
-    [SerializeField]
-    Image weaponIcon;
-    [SerializeField]
-    Text weaponName;
-    [SerializeField]
-    GameObject weaponPanel;
+    [SerializeField] private Text ammoText;
+    [SerializeField] private Image weaponIcon;
+    [SerializeField] private Text weaponName;
+    [SerializeField] private GameObject weaponPanel;
+
+    //Notifications
+    private Queue notifications = new Queue();
+    private List<Notification> activeNotifications = new List<Notification>();
+    private float notificationInterval = 0.3f;
+    private float notificationLifeTime = 5;
+    private float timeLastNotfied = 0;
 
     private void Start()
     {
@@ -75,4 +75,54 @@ public class HUDManager : MonoBehaviour
         healthSlider.maxValue = maxValue;
         healthSlider.value = value;
     }    
+
+    public void AddNotification(string msg)
+    {
+        //Enque messages
+        notifications.Enqueue(msg);
+
+    }
+
+    private void LateUpdate()
+    {
+        //There are notifications to be shown
+        if (notifications.Count > 0)
+        {
+            //Delay showing notifications
+            if (activeNotifications.Count < 5 && Time.time >= (timeLastNotfied + notificationInterval))
+            {
+                //If there are other notifications on screen, move them down
+                if (activeNotifications.Count > 0)
+                {
+                    foreach (Notification n in activeNotifications)
+                    {
+                        n.MoveDown();
+                    }
+                }
+
+                //Create and initialize the notifications
+                GameObject obj = new GameObject("Notification", typeof(RectTransform));
+                Notification newNotification = obj.AddComponent<Notification>();
+                newNotification.Initialize(notifications.Dequeue().ToString(), transform);
+                activeNotifications.Add(newNotification);
+
+                //Update the time notified for interval tracking
+                timeLastNotfied = Time.time;
+            }
+        }
+
+        //If there are active notifications, check if any have timed out
+        if (activeNotifications.Count > 0)
+        {
+            foreach (Notification n in activeNotifications)
+            {
+                //If the notification has timed out, destroy them
+                if (n.timeShown + notificationLifeTime <= Time.time)
+                {
+                    activeNotifications.Remove(n);
+                    Destroy(n);
+                }
+            }
+        }
+    }
 }

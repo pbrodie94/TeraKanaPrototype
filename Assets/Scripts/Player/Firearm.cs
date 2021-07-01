@@ -93,6 +93,9 @@ public class Firearm : Weapon
         if (audio)
             audio.PlayOneShot(gunShot);
 
+        //Test the notification system
+        //hud.AddNotification("Fired a shot");
+
         return true;
     }
 
