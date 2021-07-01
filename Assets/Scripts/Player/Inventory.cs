@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-
     private WeaponManager wManager;
+
+    private HUDManager hud;
 
     private void Start()
     {
+        hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
         wManager = GetComponent<WeaponManager>();
     }
 
@@ -36,6 +38,8 @@ public class Inventory : MonoBehaviour
 
                 break;
         }
+
+        hud.AddNotification("Picked up " + item.name);
 
         return true;
     }
