@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Firearm : Weapon
 {
+    [Header("Firearm Properties")]
     public float damage = 24;
 
     public int mag = 30;
@@ -22,7 +23,7 @@ public class Firearm : Weapon
 
     public Transform muzzle;
     public ParticleSystem muzzleFlash;
-    public GameObject bulletImpact;
+    //public GameObject bulletImpact;
 
     [Header("Audio")]
     private AudioSource audio;
@@ -71,14 +72,14 @@ public class Firearm : Weapon
                 EnemyStats e = hit.collider.gameObject.GetComponent<EnemyStats>();
                 e.TakeDamage(damage);
 
-                GameObject impact = Instantiate(bulletImpact, hit.transform);
+                /*GameObject impact = Instantiate(bulletImpact, hit.transform);
                 impact.transform.position = hit.point;
 
                 Vector3 dir = hit.point - muzzle.position;
                 Vector3 reflect = Vector3.Reflect(dir, hit.normal);
                 Quaternion rot = Quaternion.LookRotation(reflect, Vector3.up);
 
-                impact.transform.rotation = rot;
+                impact.transform.rotation = rot;*/
             }
         }
 
@@ -94,7 +95,7 @@ public class Firearm : Weapon
             audio.PlayOneShot(gunShot);
 
         //Test the notification system
-        //hud.AddNotification("Fired a shot");
+        hud.AddNotification("(Notification debug) Fired a shot");
 
         return true;
     }

@@ -12,6 +12,7 @@ public enum ItemType
 
 public class InventoryItem : MonoBehaviour
 {
+    [Header("Item Properties")]
     public string Name;
 
     public ItemType itemType;
