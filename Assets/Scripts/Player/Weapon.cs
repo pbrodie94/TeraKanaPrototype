@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : InventoryItem
 {
+    [Header("Weapon Properties")]
     public Sprite hudIcon;
 
     public bool ranged = true;
@@ -14,8 +15,9 @@ public class Weapon : MonoBehaviour
     public Vector3 sprintPosition;
     public Vector3 sprintRotation;
 
-    public float pickupDistance = 10;
-
+    [SerializeField] protected float pickupDistance = 10;
+    [SerializeField] protected Texture2D aimRetical;
+    [SerializeField] protected Vector2 reticalDimensions = Vector2.zero;
     protected bool isHeld = false;
 
     protected InventoryItem itemCreds;
@@ -69,6 +71,8 @@ public class Weapon : MonoBehaviour
                                 hud.ShowMessage(null, false);
 
                                 //Play pickup sound
+
+                                hud.UpdateAimRetical(aimRetical, reticalDimensions);
                             }
                         }
                     }

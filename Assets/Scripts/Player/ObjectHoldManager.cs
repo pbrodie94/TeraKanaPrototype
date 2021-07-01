@@ -24,7 +24,7 @@ public class ObjectHoldManager : MonoBehaviour
     protected PlayerMove playerControl;
     protected PlayerStats stats;
     protected Inventory inventory;
-
+    protected HUDManager hud;
     protected Transform cam;
 
     protected virtual void Start()
@@ -40,6 +40,9 @@ public class ObjectHoldManager : MonoBehaviour
 
         if (!inventory)
             inventory = GetComponent<Inventory>();
+
+        if (!hud)
+            hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
 
         holdPosition = hipPosition;
     }

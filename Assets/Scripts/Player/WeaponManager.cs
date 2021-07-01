@@ -52,6 +52,16 @@ public class WeaponManager : ObjectHoldManager
                     }
                 }
 
+                if (activeWeapon.ranged && Input.GetButtonDown(InputManager.Aim))
+                {
+                    hud.FadeRetical(true);
+                }
+
+                if (activeWeapon.ranged && Input.GetButtonUp(InputManager.Aim))
+                {
+                    hud.FadeRetical(false);
+                }
+
                 if (activeWeapon.ranged && Time.time > (timeDeployed + deployShootDelay))
                 {
 
