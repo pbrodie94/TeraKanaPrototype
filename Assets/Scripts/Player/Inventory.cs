@@ -39,7 +39,7 @@ public class Inventory : MonoBehaviour
                 break;
         }
 
-        hud.AddNotification("Picked up " + item.name);
+        hud.AddNotification("Picked up " + item.Name);
 
         return true;
     }

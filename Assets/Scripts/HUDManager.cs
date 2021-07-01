@@ -15,6 +15,13 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Text weaponName;
     [SerializeField] private GameObject weaponPanel;
 
+    [SerializeField] private RawImage aimRetical;
+    [SerializeField] private Texture2D defaultAimRetical;
+    private RectTransform aimRect;
+    private float fadeSpeed = 10;
+    private Color defaultReticalColor;
+    private Color wantedColor;
+
     //Notifications
     private Queue notifications = new Queue();
     private List<Notification> activeNotifications = new List<Notification>();
@@ -25,6 +32,12 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         ShowMessage(null, false);
+
+        aimRect = aimRetical.gameObject.GetComponent<RectTransform>();
+        defaultReticalColor = aimRetical.color;
+        wantedColor = defaultReticalColor;
+
+        SetDefaultAimRetical();
     }
 
     public void ShowMessage(string msg, bool show)
@@ -58,6 +71,35 @@ public class HUDManager : MonoBehaviour
         weaponName.text = name;
 
         weaponIcon.gameObject.SetActive(true);
+    }
+
+    public void UpdateAimRetical(Texture2D newRetical, Vector2 dimensions)
+    { 
+        if (dimensions == Vector2.zero)
+        {
+            dimensions = new Vector2(20, 20);
+        }
+
+        aimRetical.texture = newRetical;
+        aimRect.sizeDelta = dimensions;
+    }
+
+    public void SetDefaultAimRetical()
+    {
+        aimRetical.texture = defaultAimRetical;
+        aimRect.sizeDelta = new Vector2(20, 20);
+    }
+
+    public void FadeRetical(bool fade)
+    {
+        if (fade)
+        {
+            wantedColor.a = 0;
+        }
+        else
+        {
+            wantedColor.a = defaultReticalColor.a;
+        }
     }
 
     public void UpdateWeaponPanel(int mag, int ammo)
@@ -119,10 +161,25 @@ public class HUDManager : MonoBehaviour
                 //If the notification has timed out, destroy them
                 if (n.timeShown + notificationLifeTime <= Time.time)
                 {
+                   if (!n.expired)
+                    {
+                        n.DestroyMessage();
+                    }
+                }
+
+                if (n.destroy)
+                {
                     activeNotifications.Remove(n);
                     Destroy(n);
                 }
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        Color reticalColor = aimRetical.color;
+        reticalColor.a = Mathf.Lerp(reticalColor.a, wantedColor.a, fadeSpeed * Time.deltaTime);
+        aimRetical.color = reticalColor;
     }
 }
