@@ -1,0 +1,33 @@
+Stabber_Slug
+
+Demo scene is in LB3D/Monster_Stabber_Slug/Scenes
+
+The demo scene is a simple demonstration of the character. Reset it simply by stopping and replaying.
+
+You may find the monster prefabs in the LB3D/Monster_Stabber_Slug/Prefabs folder.
+
+NOTE: This creature should be kept about .08 above ground on the Y axis. Experiment in your game to get his float right.
+
+Prefab Stabber_Slug: The basic prefab you may integrate into your game.
+Prebab Stabber_Slug_Demo: The one included in the demo scene. 
+
+It is suggested that you create an animation controller for this character consistent with your game.
+
+To obtain results such as in the video previews, you must use the Cinemachine and Post-Processing packages available in the package manager. 
+
+Create colliders that are optimal for your game. (I have not attached colliders, because this is a very subjective and specific thing for your own game functionality)
+
+You can see the "Demo" prefab for an example character controller.
+
+Need help?
+
+https://lb3d.co/contact/
+
+or 
+
+lb3d.co@gmail.com
+
+or 
+
+theswitchboard@protonmail.com
+

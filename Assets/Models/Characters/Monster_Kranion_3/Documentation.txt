@@ -1,0 +1,40 @@
+The Kranion, a Sci-fi Spin-off of parasitic face parasites.
+
+-- Initial Notes
+
+Demo scenes are in LB3D/Monster_Kranion_<x>/Scenes
+
+The demo scene is a simple demonstration of the character. Reset it simply by stopping and replaying. 
+There are two other scenes that show a demonstration of the head-grab or face-grab animation. 
+
+You may find the monster prefabs in the LB3D/Monster_Kranion_<x>/Prefabs folder.
+
+You will find two prefabs. One is based on the demo, the other one is without the temp-controller that it ships with.
+
+It is suggested that you create an animation controller for this character consistent with your game. The one provided is sufficient for basic needs, but your game will need it's own implementation.
+
+Create colliders that are optimal for your game. (I have not attached colliders, because this is a very subjective and specific thing for your own game functionality)
+
+-- About the Character
+
+These are about the size of a default game character. You will have to scale them down to be more critter-like if that is your wish, especially for the facegrab / headgrab animations. 
+
+If you wish to animate a jump sequence where the creature lands on some poor bastard's face, you have a START jump animation (for the launch) and a MID-PHASE animation (flying through air) and then upon face / head contact, you can switch to the last animation of facial anchorage. If the critter misses, there is also a JUMP-END phase. Thus you have 3 parts.
+
+Please note there are 3 versions of textures:
+- Low detail (original)
+- High Detail (default)
+- HDRP (optional to be used in High Defintion Render Pipeline)
+
+Need help?
+
+https://lb3d.co/contact/
+
+or 
+
+lb3d.co@gmail.com
+
+or 
+
+theswitchboard@protonmail.com
+

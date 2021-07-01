@@ -1,0 +1,33 @@
+Oculon, the Centipede Monster
+
+Demo scene is in LB3D/Monster_Oculon/Scenes
+
+The demo scene is a simple demonstration of the character. Reset it simply by stopping and replaying.
+
+You may find the monster prefabs in the LB3D/Monster_Oculon/Prefabs folder.
+
+Prefab Oculon: The basic prefab you may integrate into your game.
+Prebab Oculon_Demo: The one included in the demo scene. 
+
+It is suggested that you create an animation controller for this character consistent with your game.
+
+Create colliders that are optimal for your game. (I have not attached colliders, because this is a very subjective and specific thing for your own game functionality)
+
+You can see the "Demo" prefab for an example character controller.
+
+2/23/21 - Updated with new textures.
+
+There are now two materials available: Oculon_Detailed, and Oculon_Original. Simply swap them out on the monster according to your liking. The detailed version is the more recent one. Also, in the textures, you can find HDRP texture maps as well. 
+
+Need help?
+
+https://lb3d.co/contact/
+
+or 
+
+lb3d.co@gmail.com
+
+or 
+
+theswitchboard@protonmail.com
+
