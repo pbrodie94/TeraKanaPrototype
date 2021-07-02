@@ -29,6 +29,8 @@ public class Weapon : InventoryItem
     protected Collider col;
     protected Rigidbody body;
 
+    private bool messageShown = false;
+
     protected virtual void Start()
     {
         itemCreds = GetComponent<InventoryItem>();
@@ -60,8 +62,9 @@ public class Weapon : InventoryItem
 
                         //Display pickup message
 
-                        string msg = "Press 'F' to pick up " + itemCreds.Name;
+                        string msg = "Press 'E' to pick up " + itemCreds.Name;
                         hud.ShowMessage(msg, true);
+                        messageShown = true;
 
                         if (Input.GetButtonDown(InputManager.Action))
                         {
@@ -69,6 +72,7 @@ public class Weapon : InventoryItem
                             if (inventory.PickupItem(itemCreds))
                             {
                                 hud.ShowMessage(null, false);
+                                messageShown = false;
 
                                 //Play pickup sound
 
@@ -79,12 +83,14 @@ public class Weapon : InventoryItem
                     else
                     {
                         hud.ShowMessage(null, false);
+                        messageShown = false;
                     }
                 }
 
-            } else
+            } else if (messageShown)
             {
                 hud.ShowMessage(null, false);
+                messageShown = false;
             }
 
         }

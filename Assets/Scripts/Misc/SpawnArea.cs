@@ -4,12 +4,34 @@ using UnityEngine;
 
 public class SpawnArea : MonoBehaviour
 {
+    [SerializeField] private int _maxEnemies = 10;
+    private int _numEnemies = 0;
+    public int maxEnemies
+    {
+        get
+        {
+            return _maxEnemies;
+        }
+    }
+    public int numEnemies
+    {
+        get
+        {
+            return _numEnemies;
+        }
+    }
+
     public float spawnRadius = 5;
     private Collider[] areas;
 
     private void Start()
     {
         areas = GetComponentsInChildren<Collider>();
+    }
+
+    public void AddedEnemy()
+    {
+        _numEnemies++;
     }
 
     public Vector3 GetRandomPoint()
@@ -99,7 +121,7 @@ public class SpawnArea : MonoBehaviour
         {
             if (c.tag != "Ground" && c.tag != "SpawnArea")
             {
-                //Debug.Log("Placement obstructed by: " + c.gameObject);
+                Debug.Log("Placement obstructed by: " + c.gameObject);
 
                 return false;
             } else

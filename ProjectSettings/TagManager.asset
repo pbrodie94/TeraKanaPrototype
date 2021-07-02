@@ -9,6 +9,9 @@ TagManager:
   - FxTemporaire
   - SpawnArea
   - Ground
+  - SF_Door
+  - ObjectiveSpawn
+  - Extraction
   layers:
   - Default
   - TransparentFX

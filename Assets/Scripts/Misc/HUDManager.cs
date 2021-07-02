@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
+    [Header("Health Bar")]
     [SerializeField] private Slider healthSlider;
 
+    [Header("Message Panel")]
     [SerializeField] private Text messageText;
     [SerializeField] private GameObject messagePanel;
 
+    [Header("Weapon Panel")]
     [SerializeField] private Text ammoText;
     [SerializeField] private Image weaponIcon;
     [SerializeField] private Text weaponName;
     [SerializeField] private GameObject weaponPanel;
 
+    [Header("Aim Reticle")]
     [SerializeField] private RawImage aimRetical;
     [SerializeField] private Texture2D defaultAimRetical;
     private RectTransform aimRect;
@@ -22,7 +26,18 @@ public class HUDManager : MonoBehaviour
     private Color defaultReticalColor;
     private Color wantedColor;
 
-    //Notifications
+    [Header("Progress Panel")]
+    [SerializeField] private Slider progressBar;
+    [SerializeField] private Text progressText;
+    [SerializeField] private GameObject progressPanel;
+    private bool activeProgress = false;
+    private float timeProgressBarCompleted = 0;
+
+    [Header("Objective Panel")]
+    [SerializeField] private Text objectiveText;
+    [SerializeField] private GameObject objectivePanel;
+
+    [Header("Notifications")]
     private Queue notifications = new Queue();
     private List<Notification> activeNotifications = new List<Notification>();
     private float notificationInterval = 0.3f;
@@ -38,6 +53,10 @@ public class HUDManager : MonoBehaviour
         wantedColor = defaultReticalColor;
 
         SetDefaultAimRetical();
+
+        progressBar.value = 0;
+        progressPanel.SetActive(false);
+        //objectivePanel.SetActive(false);
     }
 
     public void ShowMessage(string msg, bool show)
@@ -125,6 +144,43 @@ public class HUDManager : MonoBehaviour
 
     }
 
+    public void UpdateObjective(string objective)
+    {
+        objectiveText.text = objective;
+        objectivePanel.SetActive(true);
+    }
+
+    public void UpdateObjective(string objective, int progress, int goal)
+    {
+        objectiveText.text = objective + progress + " / " + goal;
+        objectivePanel.SetActive(true);
+    }
+
+    public void InitializeProgressBar(string message, float value)
+    {
+        progressText.text = message + Mathf.RoundToInt(value) + "%";
+        progressBar.value = value;
+        activeProgress = true;
+        progressPanel.SetActive(true);
+    }
+
+    public void UpdateProgressBar(string message, float progress)
+    {
+        progressText.text = message + Mathf.RoundToInt(progress) + "%";
+        progressBar.value = progress;
+
+        if (progressBar.value >= 100)
+        {
+            timeProgressBarCompleted = Time.time;
+            activeProgress = false;
+        }
+    }
+
+    public void HideProgressBar()
+    {
+        progressPanel.SetActive(false);
+    }
+
     private void LateUpdate()
     {
         //There are notifications to be shown
@@ -172,6 +228,14 @@ public class HUDManager : MonoBehaviour
                     activeNotifications.Remove(n);
                     Destroy(n);
                 }
+            }
+        }
+
+        if (progressPanel.activeSelf && !activeProgress)
+        {
+            if (Time.time >= timeProgressBarCompleted + 5)
+            {
+                progressPanel.SetActive(false);
             }
         }
     }
