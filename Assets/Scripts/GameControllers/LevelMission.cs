@@ -122,7 +122,19 @@ public class LevelMission : MonoBehaviour
 
             case MissionType.Collection:
 
-                _numObjectives = Random.Range(5, spawnPoints.Count);
+                int minObjects = 5;
+                int maxObjects = 12;
+
+                if (minObjects > spawnPoints.Count)
+                    minObjects = spawnPoints.Count;
+
+                if (maxObjects > spawnPoints.Count)
+                    maxObjects = spawnPoints.Count;
+
+                _numObjectives = Random.Range(minObjects, maxObjects);
+
+                CollectionObjective o = objectiveSpawn[0].gameObject.GetComponent<CollectionObjective>();
+                objectivesList.Enqueue("Collect the " + o.objectName + "(s)");
 
                 break;
 
@@ -195,6 +207,29 @@ public class LevelMission : MonoBehaviour
 
 
         } else
+        {
+            //Otherwise update the current objective
+            hud.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
+        }
+    }
+
+    public void CompletedObjective()
+    {
+        _completedObjectives++;
+
+        if (_completedObjectives >= _numObjectives && !missionCompleted)
+        {
+            missionCompleted = true;
+
+            //Update hud for next mission objective
+            currentObjective = objectivesList.Dequeue().ToString();
+            hud.UpdateObjective(currentObjective);
+
+            //Unlock the extraction point
+            extractionPoint.SetActive(true);
+
+        }
+        else
         {
             //Otherwise update the current objective
             hud.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);

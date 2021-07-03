@@ -33,6 +33,11 @@ public class HUDManager : MonoBehaviour
     private bool activeProgress = false;
     private float timeProgressBarCompleted = 0;
 
+    [Header("Interact Panel")]
+    [SerializeField] private Slider interactBar;
+    [SerializeField] private Text interactText;
+    [SerializeField] private GameObject interactPanel;
+
     [Header("Objective Panel")]
     [SerializeField] private Text objectiveText;
     [SerializeField] private GameObject objectivePanel;
@@ -57,6 +62,8 @@ public class HUDManager : MonoBehaviour
         progressBar.value = 0;
         progressPanel.SetActive(false);
         //objectivePanel.SetActive(false);
+
+        interactPanel.SetActive(false);
     }
 
     public void ShowMessage(string msg, bool show)
@@ -156,10 +163,10 @@ public class HUDManager : MonoBehaviour
         objectivePanel.SetActive(true);
     }
 
-    public void InitializeProgressBar(string message, float value)
+    public void InitializeProgressBar(string message, float progress)
     {
-        progressText.text = message + Mathf.RoundToInt(value) + "%";
-        progressBar.value = value;
+        progressText.text = message + Mathf.RoundToInt(progress) + "%";
+        progressBar.value = progress;
         activeProgress = true;
         progressPanel.SetActive(true);
     }
@@ -179,6 +186,20 @@ public class HUDManager : MonoBehaviour
     public void HideProgressBar()
     {
         progressPanel.SetActive(false);
+    }
+
+    public void UpdateInteractBar(string msg, float progress)
+    {
+        if (!interactPanel.activeSelf)
+            interactPanel.SetActive(true);
+
+        interactText.text = msg + Mathf.RoundToInt(progress) + "%";
+        interactBar.value = progress;
+    }
+
+    public void HideInteractBar()
+    {
+        interactPanel.SetActive(true);
     }
 
     private void LateUpdate()

@@ -8,6 +8,6 @@ public class ExtractionPoint : BioScan
     {
         base.Start();
 
-        scanMessage = "Stand by for extraction: ";
+        scanMessage = "Stand by for Extraction: ";
     }
 }
