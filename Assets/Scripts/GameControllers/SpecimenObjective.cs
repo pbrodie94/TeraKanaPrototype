@@ -19,6 +19,9 @@ public class SpecimenObjective : Objective
         hud.ShowMessage(null, false);
         messageShown = false;
         interactable = false;
+
+        hud.AddNotification("Acquired specimen sample");
+
         missionManager.CompletedObjective(this);
     }
 }

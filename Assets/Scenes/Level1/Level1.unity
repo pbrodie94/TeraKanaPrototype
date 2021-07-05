@@ -4150,7 +4150,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102571825}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c56e01482defb72498464481ec7e47f4, type: 3}
   m_Name: 
@@ -4164,7 +4164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102571825}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36ce315b7008cc246b0e3474a9017cb8, type: 3}
   m_Name: 
@@ -4193,7 +4193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102571825}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c3f2622853565346a00c63f9d22b447, type: 3}
   m_Name: 
@@ -4206,12 +4206,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102571825}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a89a188542fd0104d864ec63ebe6b73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mission: 2
+  mission: 1
   objectiveObjects:
   - {fileID: 2683833177961490020, guid: 97a615ab55ba14c49ab3fbad2a9a5330, type: 3}
   - {fileID: 2947087816965790286, guid: 918a216c92fca2c418dcf66c5e2578fd, type: 3}
@@ -4705,6 +4705,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8780731403047989914, guid: e84beaf4bf14765419d0cd694dc7fb22, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3fc970386c2056d4380403c6550be131, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e84beaf4bf14765419d0cd694dc7fb22, type: 3}
 --- !u!1001 &8991557417498153479

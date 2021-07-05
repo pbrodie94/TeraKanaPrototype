@@ -46,7 +46,7 @@ public class Notification : MonoBehaviour
         wantedColor = Color.white;
     }
 
-    public void Initialize(string msg, Transform canvas)
+    public void Initialize(string msg, Transform canvas, Color baseColor)
     {
         //Set the time that notification is shown
         _timeShown = Time.time;
@@ -67,9 +67,11 @@ public class Notification : MonoBehaviour
         gameObject.transform.SetParent(canvas);
 
         //Set text alpha so that it fades in
-        Color color = Color.white;
+        Color color = baseColor;
         color.a = 0;
         notificationText.color = color;
+
+        wantedColor = baseColor;
 
         //Get the canvas' dimensions
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();

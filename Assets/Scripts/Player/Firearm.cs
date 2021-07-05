@@ -67,9 +67,11 @@ public class Firearm : Weapon
 
         if (Physics.Raycast(muzzle.position, cam.forward, out hit))
         {
-            if (hit.collider.tag == "Enemy")
+
+            //Try to detect if there are enemy parts setup first
+            if (hit.collider.tag == "EnemyTarget")
             {
-                EnemyStats e = hit.collider.gameObject.GetComponent<EnemyStats>();
+                EnemyLimb e = hit.collider.gameObject.GetComponent<EnemyLimb>();
                 e.TakeDamage(damage);
 
                 /*GameObject impact = Instantiate(bulletImpact, hit.transform);
@@ -80,6 +82,12 @@ public class Firearm : Weapon
                 Quaternion rot = Quaternion.LookRotation(reflect, Vector3.up);
 
                 impact.transform.rotation = rot;*/
+
+                //Otherwise deal damage directly to enemy's stats
+            } else if (hit.collider.tag == "Enemy")
+            {
+                EnemyStats e = hit.collider.gameObject.GetComponent<EnemyStats>();
+                e.TakeDamage(damage);
             }
         }
 
@@ -95,7 +103,7 @@ public class Firearm : Weapon
             audio.PlayOneShot(gunShot);
 
         //Test the notification system
-        hud.AddNotification("(Notification debug) Fired a shot");
+        hud.AddNotification("Fired a shot", HUDManager.NotificationType.Warning);
 
         return true;
     }

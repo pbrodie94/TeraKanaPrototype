@@ -26,6 +26,9 @@ public class ComputerObjective : Objective
         hud.InitializeProgressBar(downloadMessage, progress);
         downloading = true;
         interactable = false;
+
+        hud.AddNotification("Downloading computer data.", HUDManager.NotificationType.Warning);
+        hud.AddNotification("ALARM DETECTED!", HUDManager.NotificationType.Alert);
     }
 
     private void FixedUpdate()

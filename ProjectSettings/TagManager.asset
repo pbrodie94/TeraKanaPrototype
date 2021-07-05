@@ -12,6 +12,7 @@ TagManager:
   - SF_Door
   - ObjectiveSpawn
   - Extraction
+  - EnemyTarget
   layers:
   - Default
   - TransparentFX

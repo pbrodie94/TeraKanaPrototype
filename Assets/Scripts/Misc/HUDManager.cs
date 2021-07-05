@@ -144,13 +144,6 @@ public class HUDManager : MonoBehaviour
         healthSlider.value = value;
     }    
 
-    public void AddNotification(string msg)
-    {
-        //Enque messages
-        notifications.Enqueue(msg);
-
-    }
-
     public void UpdateObjective(string objective)
     {
         objectiveText.text = objective;
@@ -202,6 +195,75 @@ public class HUDManager : MonoBehaviour
         interactPanel.SetActive(true);
     }
 
+    public enum NotificationType
+    {
+        Normal,
+        Alert,
+        Warning
+    }
+
+    struct NotificationTemplate
+    {
+        public NotificationType type;
+        public string message;
+        public Color color;
+
+        public NotificationTemplate (string msg, NotificationType notificationType)
+        {
+            message = msg;
+            type = notificationType;
+            color = Color.white;
+
+            SetColor();
+        }
+
+        public NotificationTemplate(string msg, Color col)
+        {
+            message = msg;
+            color = col;
+            type = NotificationType.Normal;
+        }
+
+        void SetColor()
+        {
+            switch (type)
+            {
+                case NotificationType.Normal:
+                    color = Color.white;
+                    break;
+
+                case NotificationType.Warning:
+                    color = Color.yellow;
+                    break;
+
+                case NotificationType.Alert:
+                    color = Color.red;
+                    break;
+            }
+        }
+    }
+
+    public void AddNotification(string msg, NotificationType notificationType)
+    {
+        //Enque messages
+        notifications.Enqueue(new NotificationTemplate(msg, notificationType));
+
+    }
+
+    public void AddNotification(string msg, Color color)
+    {
+        //Enque messages
+        notifications.Enqueue(new NotificationTemplate(msg, color));
+
+    }
+
+    public void AddNotification(string msg)
+    {
+        //Enque messages
+        notifications.Enqueue(new NotificationTemplate(msg, NotificationType.Normal));
+
+    }
+
     private void LateUpdate()
     {
         //There are notifications to be shown
@@ -222,7 +284,13 @@ public class HUDManager : MonoBehaviour
                 //Create and initialize the notifications
                 GameObject obj = new GameObject("Notification", typeof(RectTransform));
                 Notification newNotification = obj.AddComponent<Notification>();
-                newNotification.Initialize(notifications.Dequeue().ToString(), transform);
+
+
+                NotificationTemplate note = (NotificationTemplate)notifications.Dequeue();
+                string msg = note.message;
+                Color color = note.color;
+                
+                newNotification.Initialize(note.message, transform, color);
                 activeNotifications.Add(newNotification);
 
                 //Update the time notified for interval tracking

@@ -28,6 +28,9 @@ public class CollectionObjective : Objective
         hud.ShowMessage(null, false);
         messageShown = false;
         interactable = false;
+
+        hud.AddNotification("Acquired " + objectName);
+
         missionManager.CompletedObjective();
         Destroy(gameObject);
     }

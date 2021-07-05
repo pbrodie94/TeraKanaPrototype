@@ -116,7 +116,7 @@ public class LevelMission : MonoBehaviour
             case MissionType.Computer:
 
                 _numObjectives = 1;
-                objectivesList.Enqueue("Reach the computer terminal, and download the contents.");
+                objectivesList.Enqueue("Reach the computer terminal, and download the contents. ");
 
                 break;
 
@@ -134,7 +134,7 @@ public class LevelMission : MonoBehaviour
                 _numObjectives = Random.Range(minObjects, maxObjects);
 
                 CollectionObjective o = objectiveSpawn[0].gameObject.GetComponent<CollectionObjective>();
-                objectivesList.Enqueue("Collect the " + o.objectName + "(s)");
+                objectivesList.Enqueue("Collect the " + o.objectName + "(s): ");
 
                 break;
 
@@ -183,7 +183,13 @@ public class LevelMission : MonoBehaviour
         currentObjective = objectivesList.Dequeue().ToString();
 
         //Update the hud
-        hud.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
+        if (_numObjectives > 1)
+        {
+            hud.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
+        } else
+        {
+            hud.UpdateObjective(currentObjective);
+        }
 
         //Display in the middle of the screen
     }
