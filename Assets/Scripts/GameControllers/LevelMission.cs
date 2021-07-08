@@ -40,7 +40,7 @@ public class LevelMission : MonoBehaviour
 
     private List<Objective> objectives = new List<Objective>();
     private GameObject extractionPoint;
-    private LevelManager lvlManager;
+    private LevelController lvlManager;
     private HUDManager hud;
 
     private void Start()
@@ -51,7 +51,7 @@ public class LevelMission : MonoBehaviour
         extractionPoint.SetActive(false);
     }
 
-    public void InitializeMission(LevelManager manager, HUDManager hudManager)
+    public void InitializeMission(LevelController manager, HUDManager hudManager)
     {
         lvlManager = manager;
         hud = hudManager;
