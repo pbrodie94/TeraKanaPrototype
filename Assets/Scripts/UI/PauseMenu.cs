@@ -1,16 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleMenu : MenuScript
+public class PauseMenu : MenuScript
 {
-    
-
-    [SerializeField] private GameObject instructionsPanel;
     [SerializeField] private GameObject optionsPanel;
+    private HUDManager hud;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        hud = GetComponentInParent<HUDManager>();
+    }
 
     protected override void Update()
     {
-        if (!instructionsPanel.activeSelf && !optionsPanel.activeSelf)
+        if (!optionsPanel.activeSelf)
         {
             for (int i = 0; i < menuItems.Length; i++)
             {
@@ -18,14 +25,6 @@ public class TitleMenu : MenuScript
             }
 
             menuItems[menuSelection].color = selectedColor;
-        }
-
-        if (instructionsPanel.activeSelf)
-        {
-            if (Input.anyKeyDown)
-            {
-                instructionsPanel.SetActive(false);
-            }
         }
 
         if (optionsPanel.activeSelf)
@@ -39,25 +38,23 @@ public class TitleMenu : MenuScript
 
     public override void SelectItem(int selection)
     {
-        switch (selection)
+        switch(selection)
         {
             case 0:
-                //Load Level
-                SceneManager.LoadScene(LevelManager.Level);
-
+                //Resume: Un-pause
+                hud.UnPauseGame();
                 break;
 
             case 1:
-                //Show Instructions Page
-
-                instructionsPanel.SetActive(true);
-
+                //Options
+                optionsPanel.SetActive(true);
                 break;
 
             case 2:
-                //Options
-
-                optionsPanel.SetActive(true);
+                //Main Menu
+                hud.UnPauseGame();
+                Cursor.lockState = CursorLockMode.None;
+                SceneManager.LoadScene(LevelManager.MainMenu);
 
                 break;
 
@@ -70,14 +67,5 @@ public class TitleMenu : MenuScript
 #endif
                 break;
         }
-    }
-
-    
-
-    public void BackButton()
-    {
-        //Close options menu
-
-        //optionsPanel.SetActive(false);
     }
 }

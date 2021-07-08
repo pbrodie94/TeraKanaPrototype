@@ -18,14 +18,23 @@ public class PlayerMove : MonoBehaviour
 	private CharacterController controller;
 	private Transform cam;
 
+	private HUDManager hud;
+
     void Start()
 	{
         controller = gameObject.GetComponent<CharacterController>();
         cam = GameObject.Find("Main Camera").transform;
+
+		hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
     }
 
 	void Update()
 	{
+		Debug.Log(hud.isPaused);
+
+		if (hud.isPaused)
+			return;
+
 		//Movement
 		//Get input
 		float v = Input.GetAxis(InputManager.Vertical);
