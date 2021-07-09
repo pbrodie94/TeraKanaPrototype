@@ -203,16 +203,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd5fb3fa8a018345bf907188a63225e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  itemType: 0
+  Name: Plasma Rifle
+  itemType: 2
   hudIcon: {fileID: 21300000, guid: 252820bc257be194eba9a8423a58f68b, type: 3}
   ranged: 1
   holdPosition: {x: 0.15, y: -0.23, z: 0.3}
-  aimPosition: {x: 0, y: -0.17, z: 0.2}
+  aimPosition: {x: 0, y: -0.18, z: 0.2}
   holsterPosition: {x: 0.6, y: -1, z: -0.4}
   sprintPosition: {x: 0.15, y: -0.25, z: 0.3}
   sprintRotation: {x: 25, y: -50, z: 0}
   pickupDistance: 4
+  aimRetical: {fileID: 2800000, guid: 27cd6abec3ce0334b9db6698e88939ad, type: 3}
+  reticalDimensions: {x: 50, y: 50}
   damage: 20
   mag: 30
   ammo: 360

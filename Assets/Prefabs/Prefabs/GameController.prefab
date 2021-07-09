@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1045439433114665303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045439433114665298}
+  - component: {fileID: 1045439433114665300}
+  - component: {fileID: 1045439433114665301}
+  - component: {fileID: 1045439433114665299}
+  - component: {fileID: 1045439433114665296}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1045439433114665298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045439433114665303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1045439433114665300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045439433114665303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56e01482defb72498464481ec7e47f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areas: []
+  Monster: {fileID: 8780731402932399666, guid: e84beaf4bf14765419d0cd694dc7fb22, type: 3}
+--- !u!114 &1045439433114665301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045439433114665303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ce315b7008cc246b0e3474a9017cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEngagingEnemies: 3
+  enemyRotateIntervalRange: {x: 5, y: 10}
+  numberAttackers: 0
+--- !u!114 &1045439433114665299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045439433114665303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3f2622853565346a00c63f9d22b447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelEnemyCountRange: {x: 35, y: 70}
+--- !u!114 &1045439433114665296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045439433114665303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89a188542fd0104d864ec63ebe6b73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mission: 1
+  objectiveObjects:
+  - {fileID: 2683833177961490020, guid: 97a615ab55ba14c49ab3fbad2a9a5330, type: 3}
+  - {fileID: 2947087816965790286, guid: 918a216c92fca2c418dcf66c5e2578fd, type: 3}
+  - {fileID: 8717756687221470397, guid: 8c76a46a29be6b64a8281225bee697b6, type: 3}
+  - {fileID: 3289626729108652891, guid: 759c0067ea15e704397d0e45b50e2470, type: 3}

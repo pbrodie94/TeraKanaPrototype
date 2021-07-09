@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
 	private Vector3 moveDirection = Vector3.zero;
 	private CharacterController controller;
 	private Transform cam;
+	private Light flashlight;
 
 	private HUDManager hud;
 
@@ -24,14 +25,14 @@ public class PlayerMove : MonoBehaviour
 	{
         controller = gameObject.GetComponent<CharacterController>();
         cam = GameObject.Find("Main Camera").transform;
-
+		flashlight = GetComponentInChildren<Light>();
 		hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
+
+		flashlight.enabled = false;
     }
 
 	void Update()
 	{
-		Debug.Log(hud.isPaused);
-
 		if (hud.isPaused)
 			return;
 
@@ -51,6 +52,11 @@ public class PlayerMove : MonoBehaviour
         GetDirection(v, h);
         ApplyMovement();
 		
+
+		if (Input.GetButtonDown(InputManager.Flashlight))
+        {
+			flashlight.enabled = !flashlight.enabled;
+        }
     }
 
 	void GetDirection (float v, float h)

@@ -20,4 +20,5 @@ public class InputManager : MonoBehaviour
     public const string Swap = "Swap";
     public const string Sprint = "Sprint";
     public const string Pause = "Pause";
+    public const string Flashlight = "Flashlight";
 }
