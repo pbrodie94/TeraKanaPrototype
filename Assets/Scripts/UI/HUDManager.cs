@@ -49,6 +49,17 @@ public class HUDManager : MonoBehaviour
     private float notificationLifeTime = 5;
     private float timeLastNotfied = 0;
 
+    [Header("Pause Menu")]
+    [SerializeField] private GameObject pauseMenu;
+    bool paused = false;
+    public bool isPaused
+    {
+        get
+        {
+            return paused;
+        }
+    }
+
     private void Start()
     {
         ShowMessage(null, false);
@@ -64,6 +75,9 @@ public class HUDManager : MonoBehaviour
         //objectivePanel.SetActive(false);
 
         interactPanel.SetActive(false);
+
+        pauseMenu.SetActive(false);
+        paused = false;
     }
 
     public void ShowMessage(string msg, bool show)
@@ -259,9 +273,43 @@ public class HUDManager : MonoBehaviour
 
     public void AddNotification(string msg)
     {
-        //Enque messages
+        //Enqueue messages
         notifications.Enqueue(new NotificationTemplate(msg, NotificationType.Normal));
 
+    }
+
+    private void PauseGame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+        paused = true;
+    }
+
+    public void UnPauseGame()
+    {
+        //Unpause
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+        paused = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown(InputManager.Pause))
+        {
+
+            Debug.Log("Pause");
+            if (!paused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                UnPauseGame();
+            }
+        }
     }
 
     private void LateUpdate()

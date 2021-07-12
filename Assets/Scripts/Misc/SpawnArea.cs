@@ -121,7 +121,7 @@ public class SpawnArea : MonoBehaviour
         {
             if (c.tag != "Ground" && c.tag != "SpawnArea")
             {
-                Debug.Log("Placement obstructed by: " + c.gameObject);
+                //Debug.Log("Placement obstructed by: " + c.gameObject);
 
                 return false;
             } else

@@ -16,30 +16,26 @@ public class CamLook : MonoBehaviour
 
     Transform playerTrans;
     PlayerMove player;
+    HUDManager hud;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+        hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
 
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
-        /*if (!GameController.paused)
-        {*/
-            Cursor.lockState = CursorLockMode.Locked;
+        if (hud.isPaused)
+                return;
 
-            targetDirection.x = -Input.GetAxisRaw(InputManager.MouseY) * lookSensitivityX;
-            targetDirection.y = Input.GetAxisRaw(InputManager.MouseX) * lookSensitivityY;
+        targetDirection.x = -Input.GetAxisRaw(InputManager.MouseY) * lookSensitivityX;
+        targetDirection.y = Input.GetAxisRaw(InputManager.MouseX) * lookSensitivityY;
 
-            GetLook();
-        /*} else
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }*/
-
+        GetLook();
     }
 
     void GetLook()
