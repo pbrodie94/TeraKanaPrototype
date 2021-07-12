@@ -129,29 +129,29 @@ MonoBehaviour:
         contrast: 1.2
       channelMixer:
         red: {x: 1, y: 0, z: 0}
-        green: {x: 0, y: 1.2, z: 0}
+        green: {x: 0, y: 1, z: 0}
         blue: {x: 0, y: 0, z: 1.1}
-        currentEditingChannel: 1
+        currentEditingChannel: 2
       colorWheels:
-        mode: 1
+        mode: 0
         log:
           slope: {r: 1, g: 1, b: 1, a: 0}
           power: {r: 1, g: 1, b: 1, a: 0}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
-          lift: {r: 0, g: 0, b: 0, a: 0}
-          gamma: {r: 0, g: 0, b: 0, a: 0}
-          gain: {r: 0, g: 0, b: 0, a: 0}
+          lift: {r: 0.97617966, g: 1, b: 0.99624336, a: 0}
+          gamma: {r: 0.97373027, g: 1, b: 0.98836875, a: -0.027027028}
+          gain: {r: 0.8354797, g: 0.9962604, b: 1, a: 0.02702703}
       curves:
         master:
           curve:
             serializedVersion: 2
             m_Curve:
             - serializedVersion: 3
-              time: 0
+              time: 0.0029850747
               value: 0
-              inSlope: 1
-              outSlope: 1
+              inSlope: 0.53970087
+              outSlope: 0.53970087
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -159,8 +159,8 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 1
               value: 1
-              inSlope: 1
-              outSlope: 1
+              inSlope: 0.68908226
+              outSlope: 0.68908226
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -178,8 +178,8 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: 1
-              outSlope: 1
+              inSlope: 0.80771565
+              outSlope: 0.80771565
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -206,8 +206,8 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: 1
-              outSlope: 1
+              inSlope: 0.9168664
+              outSlope: 0.9168664
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -234,8 +234,8 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: 1
-              outSlope: 1
+              inSlope: 1.0601265
+              outSlope: 1.0601265
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -243,8 +243,8 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 1
               value: 1
-              inSlope: 1
-              outSlope: 1
+              inSlope: 0.53006315
+              outSlope: 0.53006315
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -296,8 +296,8 @@ MonoBehaviour:
           m_ZeroValue: 0.5
           m_Range: 1
         e_CurrentEditingCurve: 0
-        e_CurveY: 1
-        e_CurveR: 0
+        e_CurveY: 0
+        e_CurveR: 1
         e_CurveG: 0
         e_CurveB: 0
   userLut:
