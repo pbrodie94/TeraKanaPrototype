@@ -21,9 +21,10 @@ public class WeaponManager : ObjectHoldManager
 
     void Update()
     {
-        //Debug.Log(holdPosition);
+        if (hud.isPaused)
+            return;
 
-        if (activeWeapon /*&& !GameController.paused*/)
+        if (activeWeapon)
         {
             if (!holstered)
             {

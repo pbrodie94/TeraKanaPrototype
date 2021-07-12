@@ -1,31 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class TitleMenu : MonoBehaviour
+public class TitleMenu : MenuScript
 {
-    private int menuSelection = 0;
-    [SerializeField] private Text[] menuItems;
-    private Color defaultColor = Color.white;
-    private Color selectedColor = Color.cyan;
+    
 
     [SerializeField] private GameObject instructionsPanel;
     [SerializeField] private GameObject optionsPanel;
 
-    private void Start()
-    {
-        menuSelection = 0;
-
-        for (int i = 0; i < menuItems.Length; i++)
-        {
-            menuItems[i].color = defaultColor;
-            menuItems[i].GetComponent<MenuItem>().menuItemIndex = i;
-        }
-
-        menuItems[menuSelection].color = selectedColor;
-    }
-
-    private void Update()
+    protected override void Update()
     {
         if (!instructionsPanel.activeSelf && !optionsPanel.activeSelf)
         {
@@ -54,7 +37,7 @@ public class TitleMenu : MonoBehaviour
         }
     }
 
-    public void SelectItem(int selection)
+    public override void SelectItem(int selection)
     {
         switch (selection)
         {
@@ -89,10 +72,7 @@ public class TitleMenu : MonoBehaviour
         }
     }
 
-    public void UpdateMenuSelection(int selectionIndex)
-    {
-        menuSelection = selectionIndex;
-    }
+    
 
     public void BackButton()
     {

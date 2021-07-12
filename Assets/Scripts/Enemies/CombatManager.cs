@@ -96,8 +96,6 @@ public class CombatManager : MonoBehaviour
 
     public bool AddEnemy(Enemy e)
     {
-        Debug.Log("Adding " + e);
-
         if (enemies.Count > 1)
         {
 
@@ -115,8 +113,6 @@ public class CombatManager : MonoBehaviour
 
             if (enemies.Count < maxEngagingEnemies || numberAttackers < maxEngagingEnemies)
                 en.StartAttack();
-
-            Debug.Log(enemies.Count);
 
             return true;
 
