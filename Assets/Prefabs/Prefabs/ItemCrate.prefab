@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 869494830171894412}
   - component: {fileID: 7355654060589713118}
+  - component: {fileID: 4421703142589500874}
+  - component: {fileID: 3257447833801570981}
   m_Layer: 0
   m_Name: ItemCrate
   m_TagString: Untagged
@@ -48,6 +50,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4421703142589500874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175465251614050553}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2836151, y: 0.6029358, z: 0.6483002}
+  m_Center: {x: 0.64099884, y: 0.30290222, z: -0.32333374}
+--- !u!114 &3257447833801570981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175465251614050553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7292af0e3aaaa9c4cacfd55a7e728ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRange: 3
+  holdInteract: 1
+  progressSpeed: 150
+  item: {fileID: 0}
 --- !u!1001 &4656032232920219593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,7 +135,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 258752680688549458, guid: e2fdcaac11701fe438724a8a8b3a76c5, type: 3}
+    - {fileID: 3290010511597644689, guid: e2fdcaac11701fe438724a8a8b3a76c5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e2fdcaac11701fe438724a8a8b3a76c5, type: 3}
 --- !u!4 &3642171908261115429 stripped
 Transform:

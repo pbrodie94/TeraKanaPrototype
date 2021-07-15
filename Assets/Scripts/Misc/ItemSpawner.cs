@@ -8,6 +8,7 @@ public class ItemSpawner : MonoBehaviour
     private LinkedList<GameObject> availableSpawnPoints = new LinkedList<GameObject>();
 
     [SerializeField] private GameObject[] itemObjects;
+    [SerializeField] private InventoryItem[] items;
 
     private void Start()
     {
@@ -55,6 +56,15 @@ public class ItemSpawner : MonoBehaviour
             //Spawn object at availableSpawnPoints[spIndex]
             Transform spawnPoint = availableSpawnPoints.GetAtIndex(spIndex).transform;
             GameObject go = Instantiate(itemObjects[iIndex], spawnPoint.position, spawnPoint.rotation);
+            
+            if (items.Length > 0)
+            {
+                ItemBox box = go.GetComponent<ItemBox>();
+
+                int itemIndex = Random.Range(0, items.Length);
+                box.item = items[itemIndex];
+
+            }
 
             //Remove the spawnpoint from the available spawn points so it can't be used again
             availableSpawnPoints.RemoveAtIndex(spIndex);

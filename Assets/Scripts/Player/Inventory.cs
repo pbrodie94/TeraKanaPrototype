@@ -38,6 +38,24 @@ public class Inventory : MonoBehaviour
 
                 break;
 
+            case ItemType.Aid:
+
+                //Add to aid inventory
+
+                break;
+
+            case ItemType.Item:
+
+                //Add item to items inventory
+
+                break;
+
+            case ItemType.Armour:
+
+                //Add item to armour inventory
+
+                break;
+
             default:
 
                 break;

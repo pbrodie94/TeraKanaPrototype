@@ -5,9 +5,9 @@ using UnityEngine;
 public class Interactible : MonoBehaviour
 {
     [Header("Interact Preferences")]
-    protected string interactMessage;
     [SerializeField] protected float interactionRange = 4;
     [SerializeField] protected bool holdInteract = false;
+    protected string interactMessage;
 
     protected float holdProgress = 0;
     [SerializeField] protected float progressSpeed = 150;
@@ -40,16 +40,20 @@ public class Interactible : MonoBehaviour
         if (!player || !isInteractible)
             return;
 
+        //Get distance from the player
         float dist = Vector3.Distance(transform.position, player.position);
 
         if (dist <= interactionRange)
         {
+            //Check if the player is looking at the object
             RaycastHit hit;
 
             if (Physics.Raycast(cam.position, cam.forward, out hit))
             {
                 if (hit.collider.gameObject == gameObject)
                 {
+                    Debug.Log("player is looking at us");
+
                     //Does the player need to hold the action button to interact
                     if (holdInteract)
                     {
