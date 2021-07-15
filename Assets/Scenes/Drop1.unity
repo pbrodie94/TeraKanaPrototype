@@ -17894,6 +17894,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1169023388, guid: 7db9d9ae252e87b46acf4b08326cbd17, type: 3}
+      propertyPath: m_Text
+      value: Explore the map, then reach an Extraction Point.
+      objectReference: {fileID: 0}
     - target: {fileID: 2681633155548494501, guid: 7db9d9ae252e87b46acf4b08326cbd17, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
