@@ -1162,6 +1162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4126986716978896}
+  - component: {fileID: 1421812644313639939}
   m_Layer: 0
   m_Name: custom-building_011
   m_TagString: Untagged
@@ -1203,6 +1204,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1421812644313639939
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460696498404470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.023665, y: 12.918056, z: 8.001854}
+  m_Center: {x: 0.021282196, y: 6.3421082, z: -0.010641098}
 --- !u!1 &1461483148436136
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,7 +61,7 @@ public class PlayerMove : MonoBehaviour
 
 	void GetDirection (float v, float h)
 	{
-		moveDirection = new Vector3 (h, 0, v);
+		moveDirection = new Vector3 (h, moveDirection.y, v);
 		moveDirection = transform.TransformDirection(moveDirection);
 
         if (Input.GetButtonDown(InputManager.Jump))
@@ -73,7 +73,7 @@ public class PlayerMove : MonoBehaviour
 
 	void ApplyMovement ()
 	{
-		moveDirection += Physics.gravity;
+		moveDirection += Physics.gravity * Time.deltaTime;
 		controller.Move(moveDirection * speed * Time.deltaTime);
 	}
 

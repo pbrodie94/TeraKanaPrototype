@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class TitleMenu : MenuScript
 {
-    
-
     [SerializeField] private GameObject instructionsPanel;
     [SerializeField] private GameObject optionsPanel;
 

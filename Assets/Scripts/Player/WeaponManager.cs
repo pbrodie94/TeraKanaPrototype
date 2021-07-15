@@ -92,7 +92,9 @@ public class WeaponManager : ObjectHoldManager
             }
 
             activeWeapon.transform.localPosition = Vector3.Lerp(activeWeapon.transform.localPosition, holdPosition, smoothing * Time.deltaTime);
-            activeWeapon.transform.localRotation = Quaternion.Lerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.deltaTime);
+            //activeWeapon.transform.localPosition = Vector3.SmoothDamp(activeWeapon.transform.localPosition, holdPosition, ref positionVelocity, smoothing);
+            activeWeapon.transform.localRotation = Quaternion.Slerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.deltaTime);
+            
         }
     }
 

@@ -46,9 +46,16 @@ public class BioScan : MonoBehaviour
             {
                 progress = 100;
                 _scanComplete = true;
+
+                StartCoroutine(OnScanComplete());
             }
 
             hud.UpdateProgressBar(scanMessage, progress);
         }
+    }
+
+    protected virtual IEnumerator OnScanComplete()
+    {
+        yield return null;
     }
 }

@@ -47,7 +47,6 @@ public class Door : MonoBehaviour
 
             if (Physics.Raycast(cam.position, cam.forward, out hit, interactRange + 1))
             {
-                Debug.Log(hit.collider.gameObject.name);
 
                 if (hit.collider.gameObject == controlBox[0] || hit.collider.gameObject == controlBox[1])
                 {
