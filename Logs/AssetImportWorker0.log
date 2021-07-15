@@ -1,0 +1,1189 @@
+Using pre-set license
+Built from '2020.3/release' branch; Version is '2020.3.2f1 (8fd9074bf66c) revision 9427207'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19042.1083; Version 2009; 64bit' Language: 'en' Physical Memory: 32716 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+F:/Game Development/Unity Projects/TeraKana
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+64782
+Successfully changed project path to: F:/Game Development/Unity Projects/TeraKana
+F:/Game Development/Unity Projects/TeraKana
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 73.42 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.2f1 (8fd9074bf66c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/Game Development/Unity Projects/TeraKana/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon (TM) R9 390 Series (ID=0x67b0)
+    Vendor:   
+    VRAM:     8167 MB
+    Driver:   27.20.21002.112
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56552
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002189 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 74.65 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.606 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000689 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.756 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.95 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2060 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 152.6 MB.
+System memory in use after: 152.6 MB.
+
+Unloading 78 unused Assets to reduce memory usage. Loaded Objects now: 2547.
+Total: 2.396300 ms (FindLiveObjects: 0.268300 ms CreateObjectMapping: 0.144400 ms MarkObjects: 1.726300 ms  DeleteObjects: 0.256100 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/Drop1.unity
+  artifactKey: Guid(fdaf067cb7e050c4fbd1dbc72df1d6d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Drop1.unity using Guid(fdaf067cb7e050c4fbd1dbc72df1d6d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8610efa2818d07cb4c2d8ad531dcb79d') in 0.008706 seconds
+  Import took 0.011914 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 38.557959 seconds.
+  path: Packages/com.unity.collab-proxy/Editor/Assets/Icons/added-file-light.png
+  artifactKey: Guid(397fff6c3885f8343bb65714f0064b5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.collab-proxy/Editor/Assets/Icons/added-file-light.png using Guid(397fff6c3885f8343bb65714f0064b5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df3e096615d47f022ee1dcde41009248') in 0.069459 seconds
+  Import took 0.073164 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Packages/com.unity.probuilder/Content/Icons/Tools/ShapeTool/Arch@2x_Light.png
+  artifactKey: Guid(883681e440ab51b4eb2f55fdc864b1c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.probuilder/Content/Icons/Tools/ShapeTool/Arch@2x_Light.png using Guid(883681e440ab51b4eb2f55fdc864b1c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fabdd130c2f77b068777735e2478e783') in 0.011139 seconds
+  Import took 0.013726 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Packages/com.unity.probuilder/Content/Icons/Tools/ShapeTool/Arch_Light.png
+  artifactKey: Guid(ba8d0d3e2af01a442b80960299ed9d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.probuilder/Content/Icons/Tools/ShapeTool/Arch_Light.png using Guid(ba8d0d3e2af01a442b80960299ed9d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd07e84cc1a1ff3aea1613a475099374f') in 0.010748 seconds
+  Import took 0.013715 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Packages/com.unity.collab-proxy/Editor/Assets/Icons/added-file-light@2x.png
+  artifactKey: Guid(ec2e3aa6d0ab8ce4eac29b56d65d61d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.collab-proxy/Editor/Assets/Icons/added-file-light@2x.png using Guid(ec2e3aa6d0ab8ce4eac29b56d65d61d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2df3acc8a7278dc95c48a0ebc2d03fb4') in 0.014395 seconds
+  Import took 0.017470 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.210409 seconds.
+  path: Packages/com.unity.collab-proxy/Editor/Assets/Icons/back-light.png
+  artifactKey: Guid(e676ab7aa99535447a763c9f88bf9260) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.collab-proxy/Editor/Assets/Icons/back-light.png using Guid(e676ab7aa99535447a763c9f88bf9260) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be237c83292597f410565c224b671dad') in 0.014209 seconds
+  Import took 0.017498 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Materials/BrownLight_snaps001.mat
+  artifactKey: Guid(cc8c695ee9742f94a9b0abb4ca82daec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Materials/BrownLight_snaps001.mat using Guid(cc8c695ee9742f94a9b0abb4ca82daec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a4e5358dd092c2ff91d71f52aa6bca7') in 0.061671 seconds
+  Import took 0.064493 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignBaseLine_Light.psd
+  artifactKey: Guid(18775b51e3bd42299fd30bd036ea982f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignBaseLine_Light.psd using Guid(18775b51e3bd42299fd30bd036ea982f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35c9bcd4eafb8a42a83a918f3a19afcc') in 0.016090 seconds
+  Import took 0.018935 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/Models/Environment/SciFi level 2/Materials/Blue Light.mat
+  artifactKey: Guid(4ee9ebe06eda1ad46ab97934230a59da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi level 2/Materials/Blue Light.mat using Guid(4ee9ebe06eda1ad46ab97934230a59da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '129e1a88febdbd80f8a911d0f9355e60') in 0.016064 seconds
+  Import took 0.018893 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000136 seconds.
+  path: Packages/com.unity.collab-proxy/Editor/Assets/Icons/back-light@2x.png
+  artifactKey: Guid(f5c57327df0fa294c8209aa216435167) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.collab-proxy/Editor/Assets/Icons/back-light@2x.png using Guid(f5c57327df0fa294c8209aa216435167) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a586a8d4ecf7139e48133ba775da2ba') in 0.013144 seconds
+  Import took 0.017054 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignFlush_Light.psd
+  artifactKey: Guid(64b9fad609434c489c32b1cdf2004a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignFlush_Light.psd using Guid(64b9fad609434c489c32b1cdf2004a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '835122a91e3aec3349864c0408e5556e') in 0.011702 seconds
+  Import took 0.015117 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenterGeo_Light.psd
+  artifactKey: Guid(35ff0937876540d3bd4b6a941df62a92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenterGeo_Light.psd using Guid(35ff0937876540d3bd4b6a941df62a92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a615e40036f78792156765b7ce1ff69') in 0.011001 seconds
+  Import took 0.013832 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000197 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenter_Light.psd
+  artifactKey: Guid(6ace62d30f494c948b71d5594afce11d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenter_Light.psd using Guid(6ace62d30f494c948b71d5594afce11d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '981033cf78627f536e180c2ba0001c26') in 0.010496 seconds
+  Import took 0.014027 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000160 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignMidline_Light.psd
+  artifactKey: Guid(bb42b2d967d6427983c901a4ffc8ecd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignMidline_Light.psd using Guid(bb42b2d967d6427983c901a4ffc8ecd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98cb19b1a7e520fd0db3716e8387a3b1') in 0.012419 seconds
+  Import took 0.015755 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignRight_Light.psd
+  artifactKey: Guid(e05ace3bd15740cda0bad60d89092a5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignRight_Light.psd using Guid(e05ace3bd15740cda0bad60d89092a5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31598d37b6a9177280648dc24613fda6') in 0.011293 seconds
+  Import took 0.014691 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignTop_Light.psd
+  artifactKey: Guid(ed041e68439749a69d0efa0e3d896c2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignTop_Light.psd using Guid(ed041e68439749a69d0efa0e3d896c2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f67668ac15370b7d27c885b2ae96fd1e') in 0.011226 seconds
+  Import took 0.014124 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignLeft_Light.psd
+  artifactKey: Guid(12736c98af174f91827a26b66d2b01b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignLeft_Light.psd using Guid(12736c98af174f91827a26b66d2b01b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0626af3f68a874e374081a6897ee804f') in 0.011776 seconds
+  Import took 0.014703 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignBottom_Light.psd
+  artifactKey: Guid(585b70cb75dd43efbfead809c30a1731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignBottom_Light.psd using Guid(585b70cb75dd43efbfead809c30a1731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4be9c801ec73e52e78f6216d4a20ce6') in 0.011949 seconds
+  Import took 0.014903 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Models/Environment/Free LowPoly SciFi Pack/Meshes/Materials/BLUE_LIGHT_mat.mat
+  artifactKey: Guid(a28bc46fe61ec46459b3c7963146ff11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Free LowPoly SciFi Pack/Meshes/Materials/BLUE_LIGHT_mat.mat using Guid(a28bc46fe61ec46459b3c7963146ff11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87d126df55653a38eebfe0cafbe4e232') in 0.102504 seconds
+  Import took 0.105285 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignMiddle_Light.psd
+  artifactKey: Guid(066619c9c9c84f89acb1b48c11a7efe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignMiddle_Light.psd using Guid(066619c9c9c84f89acb1b48c11a7efe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0795243d254ce632102a96defb175ff2') in 0.010880 seconds
+  Import took 0.013752 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCapLine_Light.psd
+  artifactKey: Guid(49679f302ac6408697f6b9314a38985c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCapLine_Light.psd using Guid(49679f302ac6408697f6b9314a38985c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2220e2e64b4e55437d68df7286eb2a0') in 0.011249 seconds
+  Import took 0.014159 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignJustified_Light.psd
+  artifactKey: Guid(fa6bd40a216346b783a4cce741d277a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignJustified_Light.psd using Guid(fa6bd40a216346b783a4cce741d277a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '607e0f24f2f79f5ab6f0151c1037dcea') in 0.012542 seconds
+  Import took 0.015433 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/BrownLight_snaps002.mat
+  artifactKey: Guid(9dd3f5b3049028f4e948921f3bf87f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/BrownLight_snaps002.mat using Guid(9dd3f5b3049028f4e948921f3bf87f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d99f45370741e6a7ff8bc499f3462d6') in 0.016397 seconds
+  Import took 0.019271 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.076993 seconds.
+  path: Packages/com.unity.probuilder/Content/Icons/UVEditor/camera-64x64_Light.png
+  artifactKey: Guid(33945f703736c47498502b3fdb360955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.probuilder/Content/Icons/UVEditor/camera-64x64_Light.png using Guid(33945f703736c47498502b3fdb360955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9686aa847324eddf3b965e38d183b6e') in 0.010805 seconds
+  Import took 0.014151 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Packages/com.unity.probuilder/Content/Icons/Tools/ShapeTool/Capsule@2x_Light.png
+  artifactKey: Guid(f61b79a28586a4e4a8e9ecf76632a32f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.probuilder/Content/Icons/Tools/ShapeTool/Capsule@2x_Light.png using Guid(f61b79a28586a4e4a8e9ecf76632a32f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '108175b5c0b473e588a213ce09f44856') in 0.013121 seconds
+  Import took 0.016325 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000187 seconds.
+  path: Packages/com.unity.probuilder/Content/Icons/Tools/ShapeTool/Capsule_Light.png
+  artifactKey: Guid(8751686afdf688e4d80b989236c74d94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.probuilder/Content/Icons/Tools/ShapeTool/Capsule_Light.png using Guid(8751686afdf688e4d80b989236c74d94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a614b813d34140a05fd2981cbacfb2b3') in 0.010923 seconds
+  Import took 0.014322 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Meshes/Lights/Ceiling Lights Lo.FBX
+  artifactKey: Guid(03f0313d06795894e85c89bfc12f42e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Meshes/Lights/Ceiling Lights Lo.FBX using Guid(03f0313d06795894e85c89bfc12f42e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f80f4f8f4e6ef4087826f22577ba7060') in 0.148111 seconds
+  Import took 0.151446 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Diffuse.png
+  artifactKey: Guid(184a1cc931650344f8f7b56ba8c40b4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Diffuse.png using Guid(184a1cc931650344f8f7b56ba8c40b4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e821075bdc57f77d4964c3ddf3b80f30') in 0.008884 seconds
+  Import took 0.012012 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Metallic.png
+  artifactKey: Guid(3ebbe5996fb79c6469abfaa8f98d552f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Metallic.png using Guid(3ebbe5996fb79c6469abfaa8f98d552f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21bf4cc96e69ab1eb3ec61c27be4904a') in 0.009989 seconds
+  Import took 0.013662 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Prefabs/Lighting/Ceiling Lights/2D/Ceiling Light.prefab
+  artifactKey: Guid(ebb3c85b58baeef44825d9dcc11dc781) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Prefabs/Lighting/Ceiling Lights/2D/Ceiling Light.prefab using Guid(ebb3c85b58baeef44825d9dcc11dc781) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ec2bc88fe5b41fa6cf0355c3bfaab20') in 0.021010 seconds
+  Import took 0.024681 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Ceiling/Ceiling Skylight.fbx
+  artifactKey: Guid(401656ee5d01d524e8c8caf3d47e2be9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Ceiling/Ceiling Skylight.fbx using Guid(401656ee5d01d524e8c8caf3d47e2be9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '536b34024a64db206af162f6a0591890') in 0.256502 seconds
+  Import took 0.259655 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000173 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Normal.png
+  artifactKey: Guid(a7906ad1b1825cf4ea26343429b668cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Normal.png using Guid(a7906ad1b1825cf4ea26343429b668cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b791df2611d2ffcd7b837979d30042eb') in 0.010624 seconds
+  Import took 0.013898 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/CeilingLights_01_snaps001.prefab
+  artifactKey: Guid(83703d1837d1d4d4fa3dfdcb40a2c372) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/CeilingLights_01_snaps001.prefab using Guid(83703d1837d1d4d4fa3dfdcb40a2c372) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78af67cc74bb964b0a743eab5f3a00c2') in 0.024447 seconds
+  Import took 0.027806 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000227 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/Meshes/CeilingLights_01_snaps001.asset
+  artifactKey: Guid(8c8289a7d2c48694088387edf71ac345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/Meshes/CeilingLights_01_snaps001.asset using Guid(8c8289a7d2c48694088387edf71ac345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb431668a439a52ad934b5c65e239c9f') in 0.011244 seconds
+  Import took 0.014454 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/Meshes/CeilingLights_03_snaps001.asset
+  artifactKey: Guid(2af1cabb978dde040b158845ab867f01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/Meshes/CeilingLights_03_snaps001.asset using Guid(2af1cabb978dde040b158845ab867f01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08a6b79423cd6d9e6b7ae25f3396adff') in 0.014462 seconds
+  Import took 0.017210 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/Meshes/CeilingLights_02_snaps001.asset
+  artifactKey: Guid(5160fb9f7050b6a4aab711ee6a35d19f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/Meshes/CeilingLights_02_snaps001.asset using Guid(5160fb9f7050b6a4aab711ee6a35d19f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8322ea94e265337345be4d31ba77ccfb') in 0.014929 seconds
+  Import took 0.017721 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Prefabs/Lighting/Ceiling Lights/2D/Ceiling Light Bright.prefab
+  artifactKey: Guid(ddfc1292959bce64f8c5c758157712f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Prefabs/Lighting/Ceiling Lights/2D/Ceiling Light Bright.prefab using Guid(ddfc1292959bce64f8c5c758157712f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7a0f237f65ecfb6fe0cf75eae9a4aa0') in 0.017662 seconds
+  Import took 0.021077 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000151 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Emissive.png
+  artifactKey: Guid(97861cf9516989c4a98c20743801210f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Emissive.png using Guid(97861cf9516989c4a98c20743801210f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27e6abba0abf27294d9804ecf58746ed') in 0.008681 seconds
+  Import took 0.014481 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/CeilingLights_02_snaps001.prefab
+  artifactKey: Guid(79a341f0ed938f14599ea1ecb9abac2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/CeilingLights_02_snaps001.prefab using Guid(79a341f0ed938f14599ea1ecb9abac2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae841acf34af940a8b2d01fd04e727e4') in 0.008520 seconds
+  Import took 0.011337 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Ceiling/Ceiling Skylight.prefab
+  artifactKey: Guid(407e4e65456601c4ba66e0697b1c325c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Ceiling/Ceiling Skylight.prefab using Guid(407e4e65456601c4ba66e0697b1c325c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26ed45b59c79b33dd94c1a87e50f8eb1') in 0.018196 seconds
+  Import took 0.021714 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.457755 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Prefabs/Lighting/Ceiling Lights
+  artifactKey: Guid(cb13d5c41d29ceb438aaf360d2ca91b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Prefabs/Lighting/Ceiling Lights using Guid(cb13d5c41d29ceb438aaf360d2ca91b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08ddb22f58e1178b9790a0a93457f93e') in 0.005264 seconds
+  Import took 0.008684 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.018590 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/CeilingLights_03_snaps001.prefab
+  artifactKey: Guid(4231048744ce2ba41a406957740cf383) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/Props/CeilingLights_03_snaps001.prefab using Guid(4231048744ce2ba41a406957740cf383) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '344ddf4a5beb1e7181aaf1bd05dbabf6') in 0.015789 seconds
+  Import took 0.018999 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000126 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Tee Lights.fbx
+  artifactKey: Guid(f31206e3aa5c5ba4ca098413529f39f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Tee Lights.fbx using Guid(f31206e3aa5c5ba4ca098413529f39f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '685f683ee21c94b21e1dc23afc38c8ea') in 0.059074 seconds
+  Import took 0.063053 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Models/Environment/SciFi level 2/Materials/Green Light.mat
+  artifactKey: Guid(08ec4b1e80ad09f41a04f1c35584ce63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi level 2/Materials/Green Light.mat using Guid(08ec4b1e80ad09f41a04f1c35584ce63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdac4410bb04977817277f759236e82e') in 0.013355 seconds
+  Import took 0.016175 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor Passthrough Lights.prefab
+  artifactKey: Guid(eb2cfde91ad31bf4bad84b2c70e9816e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor Passthrough Lights.prefab using Guid(eb2cfde91ad31bf4bad84b2c70e9816e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3e8c0e611766325b9f91edf3f7ef0f7') in 0.025729 seconds
+  Import took 0.030171 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000188 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Structure Props/Exit Sign.fbx
+  artifactKey: Guid(3fa91f9597108b24f81cd403a9b8070d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Structure Props/Exit Sign.fbx using Guid(3fa91f9597108b24f81cd403a9b8070d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce64693c3df59c5a39ca0fed87e15582') in 0.062924 seconds
+  Import took 0.065936 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Passthrough Lights.fbx
+  artifactKey: Guid(a595069cbc2793340bd5a19a73b90c5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Passthrough Lights.fbx using Guid(a595069cbc2793340bd5a19a73b90c5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '757a134dca7b3ec09581f7c4bcff996d') in 0.053328 seconds
+  Import took 0.057151 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Corner Lights.fbx
+  artifactKey: Guid(4ce6b0c7f72eca64281331f29fa951bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Corner Lights.fbx using Guid(4ce6b0c7f72eca64281331f29fa951bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d290f8c87e03248167f614fd2c982e1') in 0.059576 seconds
+  Import took 0.063495 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000160 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor 4-Way Lights.fbx
+  artifactKey: Guid(2efb7a29ab58a38448bcedb48030cd47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor 4-Way Lights.fbx using Guid(2efb7a29ab58a38448bcedb48030cd47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '385797b9fc9077fcd6fe40be8bc29749') in 0.060720 seconds
+  Import took 0.064937 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Models/Environment/SciFi level 2/Materials/Light.mat
+  artifactKey: Guid(821301b0e5dc1434d86206a14263e235) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi level 2/Materials/Light.mat using Guid(821301b0e5dc1434d86206a14263e235) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca8c0777fb298d31e23e630f9ebf34a4') in 0.013404 seconds
+  Import took 0.017038 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000201 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Props/Misc Props/Hanging Light.fbx
+  artifactKey: Guid(07fb4dd6bfd07084eb4a81e9086f354b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Props/Misc Props/Hanging Light.fbx using Guid(07fb4dd6bfd07084eb4a81e9086f354b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2821cfd7f3dfffb9c4aa64aaf0153d96') in 0.060304 seconds
+  Import took 0.063395 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/Models/Environment/SciFi level/Materials/Light.mat
+  artifactKey: Guid(1af771417aa570843a78db39523d6585) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi level/Materials/Light.mat using Guid(1af771417aa570843a78db39523d6585) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '355e8479b64810be2bc147b29a13eccd') in 0.014037 seconds
+  Import took 0.016872 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000213 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Props/Misc Props/Hanging Light.prefab
+  artifactKey: Guid(9f50fdb071f54674f8166b46f510ad84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Props/Misc Props/Hanging Light.prefab using Guid(9f50fdb071f54674f8166b46f510ad84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ab2d6e7ace9f4548eb07656bcec3b86') in 0.014147 seconds
+  Import took 0.017081 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor Tee Lights.prefab
+  artifactKey: Guid(ad6aae32dd3eb844fa75e2a156bbe34f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor Tee Lights.prefab using Guid(ad6aae32dd3eb844fa75e2a156bbe34f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bce9dad2db95783f833d0873f01f67b1') in 0.025846 seconds
+  Import took 0.029839 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor Doors Lights.prefab
+  artifactKey: Guid(7f9e5333019d1044480ff97c9b142100) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor Doors Lights.prefab using Guid(7f9e5333019d1044480ff97c9b142100) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ba8b091f066a8a5f8e1cdb914eee4d6') in 0.089679 seconds
+  Import took 0.094647 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor 4-Way Lights.prefab
+  artifactKey: Guid(dcbf59da08760fb4b9531995a6691a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor 4-Way Lights.prefab using Guid(dcbf59da08760fb4b9531995a6691a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dc75c8eb1329eb328e5ed264bbaefbe') in 0.028911 seconds
+  Import took 0.033126 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor Corner Lights.prefab
+  artifactKey: Guid(0d9d85399f9310e458b966faa3d36bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Structures/Corridors/Corridor Corner Lights.prefab using Guid(0d9d85399f9310e458b966faa3d36bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d8fbd4225593de18bb05d116305b160') in 0.027185 seconds
+  Import took 0.032110 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Doors Lights.fbx
+  artifactKey: Guid(04c4d664893776444ac42f486e433938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Doors Lights.fbx using Guid(04c4d664893776444ac42f486e433938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fa08831485ceb3d0378aa7ad389a828') in 0.058265 seconds
+  Import took 0.063259 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Materials/Light Colored Mat.mat
+  artifactKey: Guid(367e87b4150214b41963e70ca94a8f27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Materials/Light Colored Mat.mat using Guid(367e87b4150214b41963e70ca94a8f27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '472aaf4652cea1c413f672c25a38fb4d') in 0.009227 seconds
+  Import took 0.012154 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.877387 seconds.
+  path: Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight
+  artifactKey: Guid(725e685d852ada3489cd8f7d9f441221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight using Guid(725e685d852ada3489cd8f7d9f441221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c9c73b7f3144fd922113e04095ed257') in 0.006137 seconds
+  Import took 0.009534 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.468918 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Meshes/Materials/Lights
+  artifactKey: Guid(e226d01879c70304fbe8d09500c502de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Meshes/Materials/Lights using Guid(e226d01879c70304fbe8d09500c502de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22c27850733f13770118be915a9a3665') in 0.005627 seconds
+  Import took 0.009166 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.104783 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Materials/Light Fixture Mat.mat
+  artifactKey: Guid(bb2d88d2112f74d4b8dfef23a4b5d31d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Materials/Light Fixture Mat.mat using Guid(bb2d88d2112f74d4b8dfef23a4b5d31d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a7781c92cba028e3d34243a053c6542') in 0.013419 seconds
+  Import took 0.016959 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Materials/Light Mat.mat
+  artifactKey: Guid(bc9fc69a1c4243343bff25dd7532a1b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Materials/Light Mat.mat using Guid(bc9fc69a1c4243343bff25dd7532a1b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cc70c445fd42984bf2d4285edb382ba') in 0.008174 seconds
+  Import took 0.010920 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.040810 seconds.
+  path: Assets/Models/Environment/SciFi level/Materials/Light02.mat
+  artifactKey: Guid(6fd64b31c5dea874cb694b6ebca24149) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi level/Materials/Light02.mat using Guid(6fd64b31c5dea874cb694b6ebca24149) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea217eb80679cc3f021e9a0ef64c3700') in 0.012163 seconds
+  Import took 0.015522 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/Models/Environment/Sci-Fi Modular Kit/3D Free Modular Kit/_Prefabs/Light_01.prefab
+  artifactKey: Guid(530f5ce44fdac4197a29f5bec8818d85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Modular Kit/3D Free Modular Kit/_Prefabs/Light_01.prefab using Guid(530f5ce44fdac4197a29f5bec8818d85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16bd5dfe2375c374bd9f9e67366850a6') in 0.089959 seconds
+  Import took 0.093286 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Textures/light_bulb_a.png
+  artifactKey: Guid(07d028a3c7eb59a4096db36b25b60ab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Textures/light_bulb_a.png using Guid(07d028a3c7eb59a4096db36b25b60ab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c302e6bdc5e0ea7071ea2ec0cdea6109') in 0.007299 seconds
+  Import took 0.010526 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Models/Environment/Sci-Fi Modular Kit/3D Free Modular Kit/_Meshes/Light_01.FBX
+  artifactKey: Guid(45d2e8119c39748209c49281be62d9a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Modular Kit/3D Free Modular Kit/_Meshes/Light_01.FBX using Guid(45d2e8119c39748209c49281be62d9a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00328fa6fb942bd82d726405bb2a098c') in 0.024390 seconds
+  Import took 0.027983 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010436 seconds.
+  path: Assets/Models/Environment/Sci-Fi Modular Kit/3D Free Modular Kit/_Meshes/Light_01.FBX
+  artifactKey: Guid(45d2e8119c39748209c49281be62d9a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Modular Kit/3D Free Modular Kit/_Meshes/Light_01.FBX using Guid(45d2e8119c39748209c49281be62d9a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00328fa6fb942bd82d726405bb2a098c') in 0.017535 seconds
+  Import took 0.021476 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.047147 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_celing_1.fbx
+  artifactKey: Guid(f9a81df43f44a034bb591be3029197f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_celing_1.fbx using Guid(f9a81df43f44a034bb591be3029197f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b577b8e602680f2e026fa2563804199') in 0.034398 seconds
+  Import took 0.038099 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_celing_2.fbx
+  artifactKey: Guid(b8645cde48e62db41a99dad390ab5661) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_celing_2.fbx using Guid(b8645cde48e62db41a99dad390ab5661) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '797105768c58db98b82a6f4deff43424') in 0.018222 seconds
+  Import took 0.021715 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_corner_1.prefab
+  artifactKey: Guid(43373d8b4f572cf468859751b9dcbbfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_corner_1.prefab using Guid(43373d8b4f572cf468859751b9dcbbfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86b1f54ccb0330884dd05d9bce4ed9ee') in 0.051153 seconds
+  Import took 0.054378 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_3.fbx
+  artifactKey: Guid(4b423724c4892d6438d29cb37b373290) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_3.fbx using Guid(4b423724c4892d6438d29cb37b373290) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05a6da63e65caf6641b9c617e11a8739') in 0.017471 seconds
+  Import took 0.020814 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_3.prefab
+  artifactKey: Guid(10b4213a276bd0f4d93c345fd1420858) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_3.prefab using Guid(10b4213a276bd0f4d93c345fd1420858) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f83cff0099ad47f06157f69ff64e711') in 0.011397 seconds
+  Import took 0.015279 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000191 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_2_blue.prefab
+  artifactKey: Guid(5412c75372d92be4484fa4a55b5c99e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_2_blue.prefab using Guid(5412c75372d92be4484fa4a55b5c99e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '979ef846c96767230a1b2a0740453c1b') in 0.020936 seconds
+  Import took 0.024966 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Wide.fbx
+  artifactKey: Guid(0c7a4f4b9bbf44841812ab47fae3b382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Wide.fbx using Guid(0c7a4f4b9bbf44841812ab47fae3b382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f743b970ffaeb032fa0a664c5fcb42aa') in 0.056551 seconds
+  Import took 0.061608 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Materials/LightGray_snaps001.mat
+  artifactKey: Guid(112d629f785fcfa458b4d4763b1a0364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/ModernOffice_Interior/Materials/LightGray_snaps001.mat using Guid(112d629f785fcfa458b4d4763b1a0364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e8cf418cb7c9d7a85250dfe525c89d9') in 0.014991 seconds
+  Import took 0.018311 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/Machine Blue Light_snaps002.mat
+  artifactKey: Guid(c91ea5393f73a814888ae7c250232e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/Machine Blue Light_snaps002.mat using Guid(c91ea5393f73a814888ae7c250232e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '323e8e2f45b6b7f231d4606c495d7011') in 0.013365 seconds
+  Import took 0.016703 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Models/Environment/!SCI_FI_Modular_Pack_Free/Materials/Sample_Mod4Lightcone.mat
+  artifactKey: Guid(ef6d68ea93f6a58478de397556093f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/!SCI_FI_Modular_Pack_Free/Materials/Sample_Mod4Lightcone.mat using Guid(ef6d68ea93f6a58478de397556093f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d1637d8a397e32d690ab586e4e97bba') in 0.013212 seconds
+  Import took 0.016202 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000246 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Props/Misc Props/Wall Light.fbx
+  artifactKey: Guid(241687f1a2ac2ac4c8c35789ba1a8468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Props/Misc Props/Wall Light.fbx using Guid(241687f1a2ac2ac4c8c35789ba1a8468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '706ea8e7f62b4b51d7bea136bceb5c99') in 0.027596 seconds
+  Import took 0.031523 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_1_blue.prefab
+  artifactKey: Guid(7bfca64f0cf4ef248b199077f3f98357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_1_blue.prefab using Guid(7bfca64f0cf4ef248b199077f3f98357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8e7b5d66f206cb9c28213064165b9ab') in 0.018523 seconds
+  Import took 0.022356 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000184 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_2.fbx
+  artifactKey: Guid(1d91adeb4e5ba474aa18a7424a210d7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_2.fbx using Guid(1d91adeb4e5ba474aa18a7424a210d7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'add139d291d799ebfeb20fe04952e845') in 0.016464 seconds
+  Import took 0.019353 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_3_blue.fbx
+  artifactKey: Guid(635460dae64fc0a48b0740cfb2e4f6d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_3_blue.fbx using Guid(635460dae64fc0a48b0740cfb2e4f6d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0dcd3f75458ef3358bead05cd3e47285') in 0.017886 seconds
+  Import took 0.020948 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_2_blue.fbx
+  artifactKey: Guid(d3a1262c7f860b5439d4734d0d8786fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_2_blue.fbx using Guid(d3a1262c7f860b5439d4734d0d8786fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1ec013ee3af922ae185e5d06dc3a0b9') in 0.010752 seconds
+  Import took 0.013914 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/Models/Environment/SciFi level 2/Materials/Lights.mat
+  artifactKey: Guid(ee3283fb42c8a254bafba1571e2bd8dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi level 2/Materials/Lights.mat using Guid(ee3283fb42c8a254bafba1571e2bd8dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1f6493ff41da43266c3cdd72e73e4ff') in 0.013222 seconds
+  Import took 0.016374 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_2.prefab
+  artifactKey: Guid(8e32be8f06ec06448ac537b609c2d7f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_2.prefab using Guid(8e32be8f06ec06448ac537b609c2d7f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a01d8107a6f0c4ec22afabd7c8ec0a1d') in 0.010699 seconds
+  Import took 0.014016 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_1_blue.fbx
+  artifactKey: Guid(df2a0aea3cdc2bb49a0c359b09b0abdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_1_blue.fbx using Guid(df2a0aea3cdc2bb49a0c359b09b0abdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2af78a09597d2eb3f36c7add745cffc5') in 0.017189 seconds
+  Import took 0.020719 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000196 seconds.
+  path: Assets/Models/Environment/SciFi Starter Kit/_3D Scifi Kit Starter Kit/_Prefabs/Roof_Light_01.prefab
+  artifactKey: Guid(822045e52ba034b43b8ff78ad680baa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Starter Kit/_3D Scifi Kit Starter Kit/_Prefabs/Roof_Light_01.prefab using Guid(822045e52ba034b43b8ff78ad680baa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03bbd9a63abecc013d15c91e0263777d') in 0.181219 seconds
+  Import took 0.186542 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/LightBlue_snaps002.mat
+  artifactKey: Guid(4b600b0043b600a42a640a24ab4dea01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/LightBlue_snaps002.mat using Guid(4b600b0043b600a42a640a24ab4dea01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b45e09255f540746eb4ce2fe757166e0') in 0.015056 seconds
+  Import took 0.018449 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightBlack.prefab
+  artifactKey: Guid(a4e476a037022df448ead5d0ceea7d06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightBlack.prefab using Guid(a4e476a037022df448ead5d0ceea7d06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46da85050794d78b8410ed5342407bc0') in 0.072136 seconds
+  Import took 0.076050 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_1.prefab
+  artifactKey: Guid(bf47bd9e279487a4ca3d6f7a10492900) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_1.prefab using Guid(bf47bd9e279487a4ca3d6f7a10492900) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c2fb8fd9d78be7e1ecfe827a21eb96e') in 0.013145 seconds
+  Import took 0.017032 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_corner_1_blue.prefab
+  artifactKey: Guid(7b45b788a1417934faed26ad07e2f502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_corner_1_blue.prefab using Guid(7b45b788a1417934faed26ad07e2f502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '048118a3fbafc1845ea38c77abd5257f') in 0.016505 seconds
+  Import took 0.019495 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_3_blue.prefab
+  artifactKey: Guid(8b5797a18349fb546be8acddc71151ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_wall_3_blue.prefab using Guid(8b5797a18349fb546be8acddc71151ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc4679f7d7afc54a3fa34d72c13986bd') in 0.011247 seconds
+  Import took 0.014705 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_corner_1_blue.fbx
+  artifactKey: Guid(4a819203f13c18b4882fc327623cf504) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_corner_1_blue.fbx using Guid(4a819203f13c18b4882fc327623cf504) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6de20c3e30fe536a78de0f1253d264f5') in 0.011827 seconds
+  Import took 0.015400 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Wide Windows.fbx
+  artifactKey: Guid(13921b5f98eda9c47b248ee239841bb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Wide Windows.fbx using Guid(13921b5f98eda9c47b248ee239841bb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3525e941e660671bff24f03ff66a8d1') in 0.084145 seconds
+  Import took 0.089256 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000194 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Funnel.fbx
+  artifactKey: Guid(d01bf6e4f57c13044a7cd90f9da83dcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Funnel.fbx using Guid(d01bf6e4f57c13044a7cd90f9da83dcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b986693ed0d9241aae8a0e3fc24e87a') in 0.058854 seconds
+  Import took 0.063670 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_celing_1.prefab
+  artifactKey: Guid(9c0a6df65fcfba243abb2cf9260b869f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_celing_1.prefab using Guid(9c0a6df65fcfba243abb2cf9260b869f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2c845f5e5383c2bede71cd1ab4d25dd') in 0.013409 seconds
+  Import took 0.016735 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/Machine Orange Light_snaps002.mat
+  artifactKey: Guid(dfe499413b9e65e409dcfaa1013609fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/Machine Orange Light_snaps002.mat using Guid(dfe499413b9e65e409dcfaa1013609fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b83077deb3c5a5ba506d7d915d5fa46b') in 0.014047 seconds
+  Import took 0.017725 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000196 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_celing_2.prefab
+  artifactKey: Guid(e15828603e27c5e42b39860e4f55da70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Prefabs/Lights/light_celing_2.prefab using Guid(e15828603e27c5e42b39860e4f55da70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22d4dda948928578b79f0bd5418f9ecd') in 0.011801 seconds
+  Import took 0.015007 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000206 seconds.
+  path: Assets/Models/Environment/!SCI_FI_Modular_Pack_Free/FBX/Sample_LightCone.FBX
+  artifactKey: Guid(5e2debb626177ee449dc2ea7c3b01aac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/!SCI_FI_Modular_Pack_Free/FBX/Sample_LightCone.FBX using Guid(5e2debb626177ee449dc2ea7c3b01aac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95ec6d250419d784d249e153aaf35b20') in 0.017561 seconds
+  Import took 0.020941 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_corner_1.fbx
+  artifactKey: Guid(5e79f218a365d3846940e357c137eb0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_corner_1.fbx using Guid(5e79f218a365d3846940e357c137eb0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40dba082fc22d15a4abb5cbd6288fb80') in 0.014482 seconds
+  Import took 0.017775 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/Models/Environment/!SCI_FI_Modular_Pack_Free/Textures/Sample_Mod4Lightcone.psd
+  artifactKey: Guid(b9bdcf28ac63fbf45b25e3872e04abea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/!SCI_FI_Modular_Pack_Free/Textures/Sample_Mod4Lightcone.psd using Guid(b9bdcf28ac63fbf45b25e3872e04abea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4f33d119948b6a45275fc95fd1edc82') in 0.012524 seconds
+  Import took 0.015813 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/LightGray_snaps002.mat
+  artifactKey: Guid(ae2efeea9c901af48b6bb19d9981d5d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/LightGray_snaps002.mat using Guid(ae2efeea9c901af48b6bb19d9981d5d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6297d09e3bfd40e945deabddde2edc66') in 0.009335 seconds
+  Import took 0.012405 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Wide Corner.fbx
+  artifactKey: Guid(6824b60acb70ef24fa40f9f9537a81cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Wide Corner.fbx using Guid(6824b60acb70ef24fa40f9f9537a81cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5dbcf7396598d4d9b8ddb12dda722d6') in 0.056286 seconds
+  Import took 0.061811 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/Models/Environment/SciFi Starter Kit/_3D Scifi Kit Starter Kit/_Meshes/Roof_Light_01.FBX
+  artifactKey: Guid(09f6686f757cb4b0a975a2f6f5f1c9ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Starter Kit/_3D Scifi Kit Starter Kit/_Meshes/Roof_Light_01.FBX using Guid(09f6686f757cb4b0a975a2f6f5f1c9ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3699226bd53aead80eae647917da3a9') in 0.036464 seconds
+  Import took 0.041672 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/Machine Green Light_snaps002.mat
+  artifactKey: Guid(3f95858cfa41c214495626e4e810179e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SnapsPacks/_SNAPS_PrototypingAssets/SciFi_Industrial/Materials/Machine Green Light_snaps002.mat using Guid(3f95858cfa41c214495626e4e810179e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b97fc06a47a72f2074899c1b00bd7b4') in 0.013751 seconds
+  Import took 0.016756 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Wide Corner Windows.fbx
+  artifactKey: Guid(86e0494e75e2b6243960cc0cbf7c207f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Meshes/Structures/Corridors/Corridor Wide Corner Windows.fbx using Guid(86e0494e75e2b6243960cc0cbf7c207f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '312143da45f61a0d1b0240e4fa7f0c98') in 0.077028 seconds
+  Import took 0.082109 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_1.fbx
+  artifactKey: Guid(7f4bb4ae1f8094c47abdd09a12d0a39c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Sci-Fi Styled Modular Pack/Models/light_wall_1.fbx using Guid(7f4bb4ae1f8094c47abdd09a12d0a39c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5540ff56f592521519eb3e4ff139fbb') in 0.010776 seconds
+  Import took 0.013720 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.206151 seconds.
+  path: Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightBlue.prefab
+  artifactKey: Guid(3c81b162a1af44348b8994f7040514d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightBlue.prefab using Guid(3c81b162a1af44348b8994f7040514d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3aeac7a43480fb1ad9db2b10e48d6cb8') in 0.072595 seconds
+  Import took 0.076401 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Textures/wall_light_a.png
+  artifactKey: Guid(5c1fd87ceca3aac4faa8f55e23b4e0ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Textures/wall_light_a.png using Guid(5c1fd87ceca3aac4faa8f55e23b4e0ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b6fd86fc0409b2d7c2d032c86b18fb8') in 0.009354 seconds
+  Import took 0.012238 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Textures/wall_light_n.png
+  artifactKey: Guid(e5c035cbc7f7b954597a86f8f942fd6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Textures/wall_light_n.png using Guid(e5c035cbc7f7b954597a86f8f942fd6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25b1626edfede3b418009fe196e0e8da') in 0.011380 seconds
+  Import took 0.014286 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000238 seconds.
+  path: Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightWhite.prefab
+  artifactKey: Guid(1d8e61deede12df46b37e582ad640c5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightWhite.prefab using Guid(1d8e61deede12df46b37e582ad640c5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b015736252c635818693f34743686cfe') in 0.055702 seconds
+  Import took 0.059637 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/Models/Environment/Free LowPoly SciFi Pack/Meshes/Materials/WHITE_LIGHT_mat.mat
+  artifactKey: Guid(fe3d7f74bcb386249b9f331665436fd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/Free LowPoly SciFi Pack/Meshes/Materials/WHITE_LIGHT_mat.mat using Guid(fe3d7f74bcb386249b9f331665436fd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc127be28a368967bff0c77665d1b6d2') in 0.011600 seconds
+  Import took 0.014631 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Art/Textures/wall_light_s.png
+  artifactKey: Guid(c76e064a7fdfb92428d5f9d348823e30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Art/Textures/wall_light_s.png using Guid(c76e064a7fdfb92428d5f9d348823e30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a0c6b29133a85fe6ab9a9d3833a0b68') in 0.022576 seconds
+  Import took 0.025802 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightYellow.prefab
+  artifactKey: Guid(841f0ca7a430c324d92c5583a9df3793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightYellow.prefab using Guid(841f0ca7a430c324d92c5583a9df3793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd89fc6a09b097688bbd9defbf442e839') in 0.058233 seconds
+  Import took 0.061414 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Models/Props/ScifiOfficeLite/Meshes/Materials/Lights/White Light.mat
+  artifactKey: Guid(8ed645f2d98f080459db6026fdd92246) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Props/ScifiOfficeLite/Meshes/Materials/Lights/White Light.mat using Guid(8ed645f2d98f080459db6026fdd92246) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c212bbac26c36d2edc03f8d11edb603') in 0.017979 seconds
+  Import took 0.021554 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Props/Misc Props/Wall Light.prefab
+  artifactKey: Guid(30023cc824132bd4bb6a2cd831be15ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Environment/SciFi Warehouse Kit/Prefabs/Props/Misc Props/Wall Light.prefab using Guid(30023cc824132bd4bb6a2cd831be15ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aaae441767a14ef6706a6d4735a6d942') in 0.013096 seconds
+  Import took 0.016750 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightRad.prefab
+  artifactKey: Guid(2c3055a11cb8f8540a181490a4c34b7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Weapons/Sci Fi Gun Light/_prefabs/GunLight/SciFiGunLightRad.prefab using Guid(2c3055a11cb8f8540a181490a4c34b7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a47b9425b0f01bf0515b416da002f8a9') in 0.022028 seconds
+  Import took 0.025278 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 266.438299 seconds.
+  path: Assets/Post-Processing.asset
+  artifactKey: Guid(65a28f29df0ce44429a71865c8fb7d8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Post-Processing.asset using Guid(65a28f29df0ce44429a71865c8fb7d8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13e68ff5b6a5d268c6e5714c9ac6c74b') in 0.013305 seconds
+  Import took 0.016888 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.007367 seconds.
+  path: Assets/Post-Processing.asset
+  artifactKey: Guid(65a28f29df0ce44429a71865c8fb7d8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Post-Processing.asset using Guid(65a28f29df0ce44429a71865c8fb7d8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13e68ff5b6a5d268c6e5714c9ac6c74b') in 0.002314 seconds
+  Import took 0.004734 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001490 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.94 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:575)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs line 575]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.668 seconds
+Platform modules already initialized, skipping
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Refreshing native plugins compatible for Editor in 1.02 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1942 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 145.4 MB.
+System memory in use after: 145.4 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2600.
+Total: 2.679900 ms (FindLiveObjects: 0.286300 ms CreateObjectMapping: 0.047700 ms MarkObjects: 2.170500 ms  DeleteObjects: 0.174300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 90.913159 seconds.
+  path: Assets/Prefabs/Prototyping/Hanging Light Variant.prefab
+  artifactKey: Guid(66944c4db1f62db4badcfd9f1660338b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Prototyping/Hanging Light Variant.prefab using Guid(66944c4db1f62db4badcfd9f1660338b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bac227e742db278a5cd715a4b11bfba9') in 0.047620 seconds
+  Import took 0.052166 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000884 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.96 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:575)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs line 575]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.676 seconds
+Platform modules already initialized, skipping
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1942 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 145.4 MB.
+System memory in use after: 145.5 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2604.
+Total: 2.379200 ms (FindLiveObjects: 0.278900 ms CreateObjectMapping: 0.063100 ms MarkObjects: 1.879000 ms  DeleteObjects: 0.156900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001584 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.09 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:575)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs line 575]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.664 seconds
+Platform modules already initialized, skipping
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Refreshing native plugins compatible for Editor in 0.93 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1942 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 145.4 MB.
+System memory in use after: 145.5 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2607.
+Total: 2.332400 ms (FindLiveObjects: 0.328100 ms CreateObjectMapping: 0.062200 ms MarkObjects: 1.783200 ms  DeleteObjects: 0.158100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001510 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.97 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:575)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs line 575]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.679 seconds
+Platform modules already initialized, skipping
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Refreshing native plugins compatible for Editor in 1.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1942 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 145.4 MB.
+System memory in use after: 145.5 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2610.
+Total: 2.147800 ms (FindLiveObjects: 0.258900 ms CreateObjectMapping: 0.047900 ms MarkObjects: 1.689900 ms  DeleteObjects: 0.150300 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
