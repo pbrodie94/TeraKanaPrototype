@@ -12,6 +12,9 @@ public class ObjectHoldManager : MonoBehaviour
     protected float maxSwayAmount;
     public float swaySmoothing = 5;
 
+    protected Vector3 positionVelocity = Vector3.zero;
+    //protected Quaternion rotationVelocity = Quaternion.identity;
+
     protected Vector3 holdPosition;
     protected Vector3 hipPosition;
     protected Vector3 holsterPosition;
