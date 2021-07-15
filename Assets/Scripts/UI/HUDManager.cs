@@ -74,6 +74,7 @@ public class HUDManager : MonoBehaviour
         progressPanel.SetActive(false);
         //objectivePanel.SetActive(false);
 
+        interactBar.maxValue = 100;
         interactPanel.SetActive(false);
 
         pauseMenu.SetActive(false);
@@ -200,13 +201,14 @@ public class HUDManager : MonoBehaviour
         if (!interactPanel.activeSelf)
             interactPanel.SetActive(true);
 
-        interactText.text = msg + Mathf.RoundToInt(progress) + "%";
+        interactText.text = msg + " " + Mathf.RoundToInt(progress) + "%";
         interactBar.value = progress;
     }
 
     public void HideInteractBar()
     {
-        interactPanel.SetActive(true);
+        interactPanel.SetActive(false);
+        interactBar.value = 0;
     }
 
     public enum NotificationType

@@ -2274,7 +2274,7 @@ MonoBehaviour:
   progressText: {fileID: 1605001533}
   progressPanel: {fileID: 1724825513}
   interactBar: {fileID: 2707295543945414244}
-  interactText: {fileID: 1605001533}
+  interactText: {fileID: 8897233325187823613}
   interactPanel: {fileID: 3884799683094242289}
   objectiveText: {fileID: 1169023388}
   objectivePanel: {fileID: 1640175768}

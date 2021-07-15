@@ -10,10 +10,17 @@ public enum ItemType
     Armour
 }
 
-public class InventoryItem : MonoBehaviour
+public class InventoryItem : Interactible
 {
     [Header("Item Properties")]
     public string Name;
 
     public ItemType itemType;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        interactMessage += "to pickup " + Name;
+    }
 }

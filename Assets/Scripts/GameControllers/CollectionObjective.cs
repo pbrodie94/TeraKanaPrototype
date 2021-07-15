@@ -7,9 +7,9 @@ public class CollectionObjective : Objective
 
     public string objectName;
 
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
 
         objectiveType = MissionType.Collection;
 
@@ -18,16 +18,17 @@ public class CollectionObjective : Objective
             objectName = "Object";
         }
 
-        message = "Press 'E' to collect " + objectName + ".";
+        interactMessage += "collect " + objectName + ".";
     }
 
-    protected override void Interaction()
+
+    protected override void Interact()
     {
         //Collect specimen
         //Hide message, and destroy script
         hud.ShowMessage(null, false);
         messageShown = false;
-        interactable = false;
+        isInteractible = false;
 
         hud.AddNotification("Acquired " + objectName);
 

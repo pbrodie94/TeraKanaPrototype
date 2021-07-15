@@ -37,6 +37,10 @@ public class Inventory : MonoBehaviour
                 }
 
                 break;
+
+            default:
+
+                break;
         }
 
         hud.AddNotification("Picked up " + item.Name);

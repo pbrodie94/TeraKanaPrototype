@@ -38,8 +38,14 @@ public class Firearm : Weapon
         rof = fireRate / 100;
     }
 
-    void Update()
+    protected override void Update()
     {
+        if (!isHeld)
+        {
+            base.Update();
+            return;
+        }    
+
         if (!canShoot)
         {
             if (Time.time >= (timeLastShot + rof))

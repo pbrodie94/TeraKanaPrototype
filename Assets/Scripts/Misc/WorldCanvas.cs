@@ -8,11 +8,19 @@ public class WorldCanvas : MonoBehaviour
 
     private void Start()
     {
+        LevelController.PlayerSpawned += GetPlayerReference;
+    }
+
+    public void GetPlayerReference()
+    {
         cam = Camera.main.transform;
     }
 
     private void LateUpdate()
     {
+        if (cam == null)
+            return;
+
         Vector3 lookDir = transform.position - cam.position;
         Quaternion dir = Quaternion.LookRotation(lookDir);
         dir.x = 0;

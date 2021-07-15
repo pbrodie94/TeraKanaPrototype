@@ -11,21 +11,23 @@ public class ComputerObjective : Objective
     private bool downloading = false;
     private bool downloadComplete = false;
 
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
 
         objectiveType = MissionType.Computer;
 
-        message = "Press 'E' to begin download.";
+        interactMessage += "to begin download.";
+
+        Debug.Log(interactMessage);
     }
 
-    protected override void Interaction()
+    protected override void Interact()
     {
         //Start Upload progress bar
         hud.InitializeProgressBar(downloadMessage, progress);
         downloading = true;
-        interactable = false;
+        isInteractible = false;
 
         hud.AddNotification("Downloading computer data.", HUDManager.NotificationType.Warning);
         hud.AddNotification("ALARM DETECTED!", HUDManager.NotificationType.Alert);

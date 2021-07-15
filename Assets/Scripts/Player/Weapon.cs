@@ -15,84 +15,46 @@ public class Weapon : InventoryItem
     public Vector3 sprintPosition;
     public Vector3 sprintRotation;
 
-    [SerializeField] protected float pickupDistance = 10;
     [SerializeField] protected Texture2D aimRetical;
     [SerializeField] protected Vector2 reticalDimensions = Vector2.zero;
     protected bool isHeld = false;
 
     protected InventoryItem itemCreds;
-    protected GameObject player;
     protected WeaponManager wManager;
     protected Inventory inventory;
-    protected HUDManager hud;
-    protected Transform cam;
     protected Collider col;
     protected Rigidbody body;
 
-    private bool messageShown = false;
-
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
+
         itemCreds = GetComponent<InventoryItem>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        wManager = player.GetComponent<WeaponManager>();
-        inventory = player.GetComponent<Inventory>();
-        cam = Camera.main.transform;
+        
         col = GetComponent<Collider>();
         body = GetComponent<Rigidbody>();
-        hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
+
+        LevelController.PlayerSpawned += GetPlayerReference;
     }
 
-    private void LateUpdate()
+    public override void GetPlayerReference()
     {
-        if (!isHeld)
+        base.GetPlayerReference();
+
+        wManager = player.GetComponent<WeaponManager>();
+        inventory = player.GetComponent<Inventory>();
+    }
+
+    protected override void Interact()
+    {
+        base.Interact();
+
+        //Pickup weapon
+        if (inventory.PickupItem(itemCreds))
         {
-            float dist = Vector3.Distance(transform.position, player.transform.position); 
+            //Play pickup sound
 
-            if (dist <= pickupDistance)
-            {
-                RaycastHit hit;
-
-                if (Physics.Raycast(cam.position, cam.forward, out hit))
-                {
-
-                    if (hit.collider.gameObject == gameObject)
-                    {
-                        //Player is within range to pickup weapon, and looking at it
-
-                        //Display pickup message
-
-                        string msg = "Press 'E' to pick up " + itemCreds.Name;
-                        hud.ShowMessage(msg, true);
-                        messageShown = true;
-
-                        if (Input.GetButtonDown(InputManager.Action))
-                        {
-                            //Pickup weapon
-                            if (inventory.PickupItem(itemCreds))
-                            {
-                                hud.ShowMessage(null, false);
-                                messageShown = false;
-
-                                //Play pickup sound
-
-                                hud.UpdateAimRetical(aimRetical, reticalDimensions);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        hud.ShowMessage(null, false);
-                        messageShown = false;
-                    }
-                }
-
-            } else if (messageShown)
-            {
-                hud.ShowMessage(null, false);
-                messageShown = false;
-            }
-
+            hud.UpdateAimRetical(aimRetical, reticalDimensions);
         }
     }
 
@@ -110,12 +72,6 @@ public class Weapon : InventoryItem
 
         col.enabled = false;
         body.useGravity = false;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, pickupDistance);
     }
 }
 

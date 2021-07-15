@@ -11,6 +11,15 @@ public class Door : MonoBehaviour
     private bool opened = false;
     protected bool canClose = true;
 
+    [SerializeField] private bool locked = false;
+    public bool isLocked
+    {
+        get
+        {
+            return locked;
+        }
+    }
+
     [SerializeField] protected GameObject[] controlBox;
 
     protected Transform player;
@@ -21,18 +30,28 @@ public class Door : MonoBehaviour
 
     protected virtual void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        cam = Camera.main.transform;
+        
         hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
 
         animation = GetComponentInChildren<Animation>();
 
         message = "Press 'E' to open door.";
         messageShown = false;
+
+        LevelController.PlayerSpawned += GetPlayerReference;
+    }
+
+    public void GetPlayerReference()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        cam = Camera.main.transform;
     }
 
     private void Update()
     {
+        if (!player || !cam)
+            return;
+
         float dist = Vector3.Distance(controlBox[0].transform.position, player.position);
         float dist2 = interactRange + 1;
 

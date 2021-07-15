@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2556014662430266527}
   m_Layer: 0
   m_Name: ExtractionPoint
-  m_TagString: Untagged
+  m_TagString: Extraction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,3 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9780cf3819e784886fa4003c2b46b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scanSpeed: 10
