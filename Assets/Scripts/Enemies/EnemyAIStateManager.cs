@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAIStateManager : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
 
     public enum EnemyState
     {
@@ -29,8 +29,8 @@ public class EnemyAIStateManager : MonoBehaviour
 
     protected void Start()
     {
-        if (!target)
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+        /*if (!target)
+            target = GameObject.FindGameObjectWithTag("Player").transform;*/
 
         if (!enemy)
             enemy = GetComponent<Enemy>();
@@ -40,6 +40,13 @@ public class EnemyAIStateManager : MonoBehaviour
 
         stats = GetComponent<EnemyStats>();
         targetDetection = GetComponent<TargetDetection>();
+
+        LevelController.PlayerSpawned += GetPlayerReference;
+    }
+
+    public void GetPlayerReference()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void LateUpdate()

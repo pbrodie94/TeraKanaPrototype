@@ -92,7 +92,6 @@ public class WeaponManager : ObjectHoldManager
             }
 
             activeWeapon.transform.localPosition = Vector3.Lerp(activeWeapon.transform.localPosition, holdPosition, smoothing * Time.deltaTime);
-            //activeWeapon.transform.localPosition = Vector3.SmoothDamp(activeWeapon.transform.localPosition, holdPosition, ref positionVelocity, smoothing);
             activeWeapon.transform.localRotation = Quaternion.Slerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.deltaTime);
             
         }
@@ -199,7 +198,7 @@ public class WeaponManager : ObjectHoldManager
         {
             //Replace active weapon and send active weapon to inventory
 
-            inventory.AddWeapons(activeWeapon);
+            //inventory.AddWeapons(activeWeapon);
             activeWeapon = newWeapon;
 
             DeployWeapon();

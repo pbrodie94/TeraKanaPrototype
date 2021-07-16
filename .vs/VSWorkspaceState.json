@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Assets",
+    "\\Assets\\Scripts",
+    "\\Assets\\Scripts\\Enemies",
+    "\\Assets\\Scripts\\GameControllers",
+    "\\Assets\\Scripts\\Player",
+    "\\Assets\\Scripts\\Player\\Inventory",
+    "\\Assets\\Scripts\\Tools",
+    "\\Assets\\Scripts\\UI",
+    "\\Assets\\Scripts\\Utility"
+  ],
+  "SelectedNode": "\\Assets\\Scripts\\Utility\\InputManager.cs",
+  "PreviewInSolutionExplorer": false
+}
