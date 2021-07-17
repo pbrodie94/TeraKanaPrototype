@@ -49,6 +49,18 @@ public class HUDManager : MonoBehaviour
     private float notificationLifeTime = 5;
     private float timeLastNotfied = 0;
 
+    [Header("Inventory Menus")]
+    [SerializeField] public GameObject equipmentMenu;
+    [SerializeField] public GameObject interactMenu;
+    private bool activeMenu = false;
+    public bool isMenu
+    {
+        get
+        {
+            return activeMenu;
+        }
+    }
+
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenu;
     bool paused = false;
@@ -79,6 +91,10 @@ public class HUDManager : MonoBehaviour
 
         pauseMenu.SetActive(false);
         paused = false;
+
+        equipmentMenu.SetActive(false);
+        interactMenu.SetActive(false);
+        activeMenu = false;
     }
 
     public void ShowMessage(string msg, bool show)
@@ -297,12 +313,28 @@ public class HUDManager : MonoBehaviour
         paused = false;
     }
 
+    private void OpenMenu()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        equipmentMenu.SetActive(true);
+        interactMenu.SetActive(true);
+        activeMenu = true;
+    }
+
+    private void CloseMenu()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
+        equipmentMenu.SetActive(false);
+        interactMenu.SetActive(false);
+        activeMenu = false;
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown(InputManager.Pause))
         {
-
-            Debug.Log("Pause");
             if (!paused)
             {
                 PauseGame();
@@ -310,6 +342,17 @@ public class HUDManager : MonoBehaviour
             else
             {
                 UnPauseGame();
+            }
+        }
+
+        if (Input.GetButtonDown(InputManager.Menu))
+        {
+            if (!activeMenu)
+            {
+                OpenMenu();
+            } else
+            {
+                CloseMenu();
             }
         }
     }

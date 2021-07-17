@@ -65,7 +65,7 @@ public class Weapon : InventoryItem
             isHeld = true;
 
             if (hudIcon)
-                hud.UpdateWeaponPanel(hudIcon, itemCreds.Name);
+                hud.UpdateWeaponPanel(hudIcon, itemCreds.itemName);
 
             hud.UpdateWeaponPanel(true);
         }

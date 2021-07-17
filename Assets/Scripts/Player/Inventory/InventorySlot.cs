@@ -6,6 +6,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     [SerializeField] private Image slotItemImage;
     [SerializeField] private Image selectionEffect;
+    private InventoryItem item;
 
     private int _itemIndex = 0;
     public int itemIndex
@@ -31,11 +32,16 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         selectionEffect = transform.Find("SelectionEffect").GetComponent<Image>();
     }
 
-    public void SetSlot(InventoryMenu inventoryMenu, Image itemImage, int index)
+    public void InitializeSlot(InventoryMenu inventoryMenu)
     {
         menu = inventoryMenu;
+    }
+
+    public void SetSlot(InventoryItem item, int index)
+    {
         _itemIndex = index;
-        slotItemImage = itemImage;
+        this.item = item;
+        slotItemImage.sprite = item.sprite;
         slotItemImage.enabled = true;
     }
 
@@ -58,6 +64,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         slotItemImage.enabled = false;
     }
 
+    public bool SlotFilled()
+    {
+        return slotItemImage.enabled;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!slotItemImage.enabled)
@@ -66,6 +77,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Color hoverColor = slotItemImage.color;
         hoverColor.a = 0.7f;
         slotItemImage.color = hoverColor;
+
+        menu.ItemHover(item);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -74,6 +87,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             return;
 
         slotItemImage.color = Color.white;
+
+        menu.ItemHover();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -86,6 +101,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             menu.SecondaryItemSelect(this);
+        }
+
+        if (eventData.button == PointerEventData.InputButton.Middle)
+        {
+            menu.ThirdItemSelect(this);
         }
     }
 }

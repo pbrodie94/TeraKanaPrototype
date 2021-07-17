@@ -12,7 +12,7 @@ public class ItemBox : Interactible
         base.Start();
 
         if (item)
-            interactMessage += "to pickup " + item.Name;
+            interactMessage += "to pickup " + item.itemName;
     }
 
     protected override void Interact()

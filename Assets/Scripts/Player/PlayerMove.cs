@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
 
 	void Update()
 	{
-		if (hud.isPaused)
+		if (hud.isPaused || hud.isMenu)
 			return;
 
 		//Movement

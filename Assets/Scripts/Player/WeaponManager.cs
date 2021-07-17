@@ -21,7 +21,7 @@ public class WeaponManager : ObjectHoldManager
 
     void Update()
     {
-        if (hud.isPaused)
+        if (hud.isPaused || hud.isMenu)
             return;
 
         if (activeWeapon)

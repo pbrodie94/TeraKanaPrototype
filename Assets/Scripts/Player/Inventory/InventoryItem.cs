@@ -13,9 +13,9 @@ public enum ItemType
 public class InventoryItem : Interactible
 {
     [Header("Item Properties")]
-    public string Name;
+    public string itemName;
     public string description;
-    public Sprite menuIcon;
+    public Sprite sprite;
 
     public ItemType itemType;
 
@@ -23,6 +23,6 @@ public class InventoryItem : Interactible
     {
         base.Start();
 
-        interactMessage += "to pickup " + Name;
+        interactMessage += "to pickup " + itemName;
     }
 }

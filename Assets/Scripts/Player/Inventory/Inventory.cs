@@ -8,6 +8,9 @@ public class Inventory : MonoBehaviour
     private List<InventoryItem> aidItems = new List<InventoryItem>();
     private List<InventoryItem> items = new List<InventoryItem>();
 
+    private EquipmentMenu equipmentMenu;
+    private InteractMenu interactMenu;
+
     private WeaponManager wManager;
 
     private HUDManager hud;
@@ -16,6 +19,9 @@ public class Inventory : MonoBehaviour
     {
         hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
         wManager = GetComponent<WeaponManager>();
+
+        equipmentMenu = hud.equipmentMenu.gameObject.GetComponentInChildren<EquipmentMenu>();
+        interactMenu = hud.interactMenu.gameObject.GetComponentInChildren<InteractMenu>();
     }
 
     public bool PickupItem(InventoryItem item)
@@ -40,6 +46,8 @@ public class Inventory : MonoBehaviour
                     AddWeapons(w);
                 }
 
+                equipmentMenu.AddInventoryItem(item, 0);
+
                 break;
 
             case ItemType.Aid:
@@ -47,6 +55,7 @@ public class Inventory : MonoBehaviour
                 //Add to aid inventory
 
                 AddAidItems(item);
+                equipmentMenu.AddInventoryItem(item, aidItems.Count - 1);
 
                 break;
 
@@ -69,7 +78,7 @@ public class Inventory : MonoBehaviour
                 break;
         }
 
-        hud.AddNotification("Picked up " + item.Name);
+        hud.AddNotification("Picked up " + item.itemName);
 
         return true;
     }

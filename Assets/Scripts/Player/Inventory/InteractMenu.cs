@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractMenu : MonoBehaviour
+public class InteractMenu : InventoryMenu
 {
-    // Start is called before the first frame update
-    void Start()
+
+    protected override void Start()
     {
-        
+        base.Start();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void PrimaryItemSelect(InventorySlot slot)
     {
-        
+
+    }
+
+    public override void SecondaryItemSelect(InventorySlot slot)
+    {
+
+    }
+
+    public override void ThirdItemSelect(InventorySlot slot)
+    {
+
     }
 }

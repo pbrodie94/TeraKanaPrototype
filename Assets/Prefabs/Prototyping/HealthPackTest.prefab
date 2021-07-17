@@ -46,5 +46,7 @@ MonoBehaviour:
   interactionRange: 4
   holdInteract: 0
   progressSpeed: 150
-  Name: Health Pack
+  itemName: Health Pack
+  description: Increases some health
+  sprite: {fileID: 21300000, guid: 4b4ea4a760cdf914e9c2b043cbda0e7f, type: 3}
   itemType: 1
