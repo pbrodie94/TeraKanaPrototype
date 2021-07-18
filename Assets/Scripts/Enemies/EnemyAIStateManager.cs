@@ -47,6 +47,8 @@ public class EnemyAIStateManager : MonoBehaviour
     public void GetPlayerReference()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        LevelController.PlayerSpawned -= GetPlayerReference;
     }
 
     private void LateUpdate()

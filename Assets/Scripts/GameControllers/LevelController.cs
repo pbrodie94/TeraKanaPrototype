@@ -68,11 +68,11 @@ public class LevelController : MonoBehaviour
 
         //Spawn Enemies
         Debug.Log("Spawning enemies");
-        /*if (levelEnemyCountRange != Vector2.zero)
+        if (levelEnemyCountRange != Vector2.zero)
         {
             enemySpawner.SetEnemySpawnBounds(Mathf.RoundToInt(levelEnemyCountRange.x), Mathf.RoundToInt(levelEnemyCountRange.y));
             enemySpawner.SpawnEnemies();
-        }*/
+        }
 
         yield return null;
 

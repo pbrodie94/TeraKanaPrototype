@@ -34,11 +34,8 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     protected Animator anim;
 
-    private void Start()
+    protected virtual void Start()
     {
-        if (!target)
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-
         aiState = GetComponent<EnemyAIStateManager>();
         stats = GetComponent<EnemyStats>();
         anim = transform.GetComponentInChildren<Animator>();
@@ -48,6 +45,15 @@ public class Enemy : MonoBehaviour
 
         if (attackDist > 0)
             agent.stoppingDistance = attackDist;
+
+        LevelController.PlayerSpawned += GetPlayerReference;
+    }
+
+    public void GetPlayerReference()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        LevelController.PlayerSpawned -= GetPlayerReference;
     }
 
     protected void LateUpdate()
@@ -235,14 +241,24 @@ public class Enemy : MonoBehaviour
     {
         agent.enabled = false;
         Collider col = GetComponent<Collider>();
+        Collider[] cols = GetComponentsInChildren<Collider>();
 
         aiState.Die();
 
-        col.enabled = false;
+        if (col)
+            col.enabled = false;
+
+        if (cols.Length > 0)
+        {
+            foreach (Collider c in cols)
+            {
+                c.enabled = false;
+            }
+        }
 
         this.enabled = false;
 
-        Destroy(gameObject, 60);
+        Destroy(gameObject, 30);
     }
 
     private void OnDrawGizmosSelected()

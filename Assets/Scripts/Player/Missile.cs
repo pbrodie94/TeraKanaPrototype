@@ -78,53 +78,40 @@ public class Missile : MonoBehaviour
         
         for (int i = 0; i < cols.Length; i++)
         {
-            Stats s;
-            float dist;
+            Stats s = null;
+            float dist = 0;
 
             if (cols[i].tag == "Enemy")
             {
                 s = cols[i].gameObject.GetComponent<Stats>();
                 dist = Vector3.Distance(transform.position, cols[i].transform.position);
 
-                //if victim is within 30% of epicenter, deal max damage
-                if (dist <= damageRadius * 0.3f)
-                {
-                    //deal max damage
-                    s.TakeDamage(payload);
-                }
-                else
-                {
-                    //Linear falloff of damage to the outside of the blast radius
-                    float damagePercentage = dist / damageRadius;
-                    float dam = payload - (payload * damagePercentage);
-
-                    s.TakeDamage(dam);
-                }
-
-            }
-
-            if (cols[i].tag == "Player")
+            } else if (cols[i].tag == "Player")
             {
                 s = cols[i].gameObject.GetComponent<Stats>();
                 dist = Vector3.Distance(transform.position, cols[i].transform.position);
 
-                //if victim is within 30% of epicenter, deal max damage
-                if (dist <= damageRadius * 0.3f)
-                {
-                    //deal max damage
-                    s.TakeDamage(payload);
-                }
-                else
-                {
-                    //Linear falloff of damage to the outside of the blast radius
-                    float damagePercentage = dist / damageRadius;
-                    float dam = payload - (payload * damagePercentage);
-
-                    s.TakeDamage(dam);
-                }
             }
 
-           
+            if (s != null)
+                s.TakeDamage(GetDamage(dist));
+        }
+    }
+
+    private float GetDamage(float dist)
+    {
+        //if victim is within 30% of epicenter, deal max damage
+        if (dist <= damageRadius * 0.3f)
+        {
+            //deal max damage
+            return payload;
+        } else
+        {
+
+            //Linear falloff of damage to the outside of the blast radius
+            float damagePercentage = dist / damageRadius;
+            float dam = payload - (payload * damagePercentage);
+            return dam;
         }
     }
 }

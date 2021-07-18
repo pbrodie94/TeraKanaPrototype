@@ -35,6 +35,8 @@ public class AmmoPack : InventoryItem
         if (!weaponManager)
             weaponManager = GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponManager>();
 
+        useFailure = "No weapon equipped.";
+
         return weaponManager.AddAmmo(amount);
     }
 }

@@ -101,8 +101,8 @@ public class TargetDetection : MonoBehaviour
         Gizmos.DrawRay(detectionSensor.position, rayDir1 * detectionRadius);
         Gizmos.DrawRay(detectionSensor.position, rayDir2 * detectionRadius);
 
-        Vector3 dir = GameObject.FindGameObjectWithTag("Player").transform.position - detectionSensor.position;
+        /*Vector3 dir = GameObject.FindGameObjectWithTag("Player").transform.position - detectionSensor.position;
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(detectionSensor.position, dir);
+        Gizmos.DrawRay(detectionSensor.position, dir);*/
     }
 }

@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
                     AddWeapons(w);
                 }
 
-                equipmentMenu.AddInventoryItem(item);
+                //equipmentMenu.AddInventoryItem(item);
 
                 break;
 
@@ -238,6 +238,7 @@ public class Inventory : MonoBehaviour
     private void AddItems(InventoryItem item)
     {
         items.Add(item);
+        interactMenu.AddInventoryItem(item);
     }
 
     private bool RemoveWeapons(InventoryItem item)

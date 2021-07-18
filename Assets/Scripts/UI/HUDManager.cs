@@ -327,7 +327,7 @@ public class HUDManager : MonoBehaviour
     private void OpenMenu()
     {
         Cursor.lockState = CursorLockMode.None;
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
         equipmentMenu.SetActive(true);
         interactMenu.SetActive(true);
         equipRect.anchoredPosition = equipMenuDisplayLocation - new Vector3(150, 0, 0);
@@ -339,9 +339,11 @@ public class HUDManager : MonoBehaviour
     private void CloseMenu()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        //Time.timeScale = 1;
+        Time.timeScale = 1;
         equipmentMenu.SetActive(false);
         interactMenu.SetActive(false);
+        equipmentMenu.GetComponent<InventoryMenu>().ItemHover();
+        interactMenu.GetComponent<InventoryMenu>().ItemHover();
         pauseDim.SetActive(false);
         activeMenu = false;
     }
@@ -384,7 +386,7 @@ public class HUDManager : MonoBehaviour
         if (notifications.Count > 0)
         {
             //Delay showing notifications
-            if (activeNotifications.Count < 5 && Time.time >= (timeLastNotfied + notificationInterval))
+            if (activeNotifications.Count < 5 && Time.unscaledTime >= (timeLastNotfied + notificationInterval))
             {
                 //If there are other notifications on screen, move them down
                 if (activeNotifications.Count > 0)
@@ -408,7 +410,7 @@ public class HUDManager : MonoBehaviour
                 activeNotifications.Add(newNotification);
 
                 //Update the time notified for interval tracking
-                timeLastNotfied = Time.time;
+                timeLastNotfied = Time.unscaledTime;
             }
         }
 
@@ -420,7 +422,7 @@ public class HUDManager : MonoBehaviour
             foreach (Notification n in activeNotifications)
             {
                 //If the notification has timed out, destroy them
-                if (n.timeShown + notificationLifeTime <= Time.time)
+                if (n.timeShown + notificationLifeTime <= Time.unscaledTime)
                 {
                    if (!n.expired)
                     {

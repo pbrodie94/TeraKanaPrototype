@@ -19,7 +19,10 @@ public class Stats : MonoBehaviour
 
     protected virtual void Start()
     {
-        if (startingHealth <= 0)
+        if (maxHealth <= 0)
+            maxHealth = 100;
+
+        if (startingHealth <= 0 || startingHealth > maxHealth)
             health = maxHealth;
         else
             health = startingHealth;
@@ -34,6 +37,7 @@ public class Stats : MonoBehaviour
 
         if (health <= 0)
         {
+            health = 0;
             dead = true;
         }
     }
