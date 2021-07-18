@@ -293,7 +293,7 @@ public class LinkedList<T>
 
         if (index > 0)
         {
-            for (int i = 0; i < _size; i++)
+            for (int i = 0; i < index; i++)
             {
                 node = node.next;
             }

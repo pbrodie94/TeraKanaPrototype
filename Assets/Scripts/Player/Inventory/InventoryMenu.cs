@@ -17,8 +17,12 @@ public class InventoryMenu : MonoBehaviour
     protected Vector3 defaultPosition;
     [SerializeField] protected Vector3 detailDisplayPosition = new Vector3(400, 0, 0);
 
+    private string error = "Inventory full.";
+
     protected Inventory inventory;
     protected DetailsWindow detailsWindow;
+
+    protected HUDManager hud;
 
     protected int inventoryCapacity = 0;
 
@@ -41,6 +45,8 @@ public class InventoryMenu : MonoBehaviour
         {
             slot.InitializeSlot(this);
         }
+
+        hud = GetComponentInParent<HUDManager>();
 
         LevelController.PlayerSpawned += GetInventoryReference;
     }
@@ -66,18 +72,74 @@ public class InventoryMenu : MonoBehaviour
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
 
-    public virtual void AddInventoryItem(InventoryItem item, int index)
+    public virtual bool AddInventoryItem(InventoryItem item)
     {
-        if (!inventorySlots[inventoryCapacity].SlotFilled())
+        if (IsFull())
+            return false;
+
+        for (int i = 0; i < inventorySlots.Count; i++)
         {
-            inventorySlots[inventoryCapacity].SetSlot(item, index);
-            inventoryCapacity++;
+            if (!inventorySlots[i].SlotFilled())
+            {
+                inventorySlots[i].SetSlot(item);
+                ++inventoryCapacity;
+
+                return true;
+            }
+        }
+
+        return true;
+    }
+
+    protected virtual void RemoveInventoryItem(InventorySlot slot)
+    {
+        //Remove the item
+        slot.ClearSlot();
+        --inventoryCapacity;
+
+        //Rearrange items in the slots
+        int index = inventorySlots.IndexOf(slot);
+
+        for (int i = index + 1; i < inventorySlots.Count; i++)
+        {
+            if (!inventorySlots[i].SlotFilled())
+                break;
+
+            AddInventoryItem(inventorySlots[i].item);
+            inventorySlots[i].ClearSlot();
         }
     }
 
-    public virtual void PrimaryItemSelect(InventorySlot slot)
+    public void PrimaryItemSelect(InventorySlot slot)
     {
+        if (!inventory)
+        {
+            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        }
 
+        if (inventory.RemoveItem(slot.item))
+        {
+
+            //use the item
+            if (slot.item.Use())
+            {
+                //Remove item
+                hud.AddNotification("Used " + slot.item.itemName);
+                RemoveInventoryItem(slot);
+
+                ItemHover();
+
+            } else
+            {
+                //Display reson why it could not be used
+                hud.AddNotification(slot.item.GetUseFailure(), HUDManager.NotificationType.Warning);
+                slot.ClearSlot();
+                inventory.AddItem(slot.item);
+            }
+        } else
+        {
+            hud.AddNotification("Could not use item", HUDManager.NotificationType.Warning);
+        }
     }
 
     public virtual void SecondaryItemSelect(InventorySlot slot)
@@ -118,5 +180,15 @@ public class InventoryMenu : MonoBehaviour
         {
             detailsRect.localPosition = Vector3.Lerp(detailsRect.localPosition, detailDisplayPosition, slideSpeed * Time.fixedDeltaTime);
         }
+    }
+
+    public bool IsFull()
+    {
+        return inventoryCapacity >= inventorySlots.Count;
+    }
+
+    public string GetError()
+    {
+        return error;
     }
 }

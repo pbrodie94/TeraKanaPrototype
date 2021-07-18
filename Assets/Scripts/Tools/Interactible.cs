@@ -45,8 +45,6 @@ public class Interactible : MonoBehaviour
 
         if (dist <= interactionRange)
         {
-            Debug.Log("Player close enough");
-
             //Check if the player is looking at the object
             RaycastHit hit;
 
@@ -54,8 +52,6 @@ public class Interactible : MonoBehaviour
             {
                 if (hit.collider.gameObject == gameObject)
                 {
-                    Debug.Log("player is looking at us");
-
                     //Does the player need to hold the action button to interact
                     if (holdInteract)
                     {

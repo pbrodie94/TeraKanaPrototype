@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-    public float health;
+    protected float health;
+    public float startingHealth = 100;
+    public float maxHealth;
 
     public float attack;
     public float defence;
@@ -13,6 +15,14 @@ public class Stats : MonoBehaviour
     public bool died
     {
         get { return dead; }
+    }
+
+    protected virtual void Start()
+    {
+        if (startingHealth <= 0)
+            health = maxHealth;
+        else
+            health = startingHealth;
     }
 
     public virtual void TakeDamage(float damage)

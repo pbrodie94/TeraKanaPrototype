@@ -11,18 +11,5 @@ public class InteractMenu : InventoryMenu
 
     }
 
-    public override void PrimaryItemSelect(InventorySlot slot)
-    {
 
-    }
-
-    public override void SecondaryItemSelect(InventorySlot slot)
-    {
-
-    }
-
-    public override void ThirdItemSelect(InventorySlot slot)
-    {
-
-    }
 }

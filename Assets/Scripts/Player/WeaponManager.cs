@@ -231,14 +231,22 @@ public class WeaponManager : ObjectHoldManager
         }
     }
 
+    public bool AddAmmo(int amount)
+    {
+        if (!HasWeapon())
+            return false;
+
+        return activeWeapon.AddAmmo(amount);
+    }
+
     public bool HasWeapon()
     {
-        if (!activeWeapon || !secondaryWeapon)
-        {
-            return false;
-        } else
+        if (activeWeapon != null || secondaryWeapon != null)
         {
             return true;
+        } else
+        {
+            return false;
         }
     }
 

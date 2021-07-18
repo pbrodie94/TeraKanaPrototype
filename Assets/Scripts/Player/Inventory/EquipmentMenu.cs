@@ -10,19 +10,4 @@ public class EquipmentMenu : InventoryMenu
         base.Start();
 
     }
-
-    public override void PrimaryItemSelect(InventorySlot slot)
-    {
-
-    }
-
-    public override void SecondaryItemSelect(InventorySlot slot)
-    {
-
-    }
-
-    public override void ThirdItemSelect(InventorySlot slot)
-    {
-
-    }
 }

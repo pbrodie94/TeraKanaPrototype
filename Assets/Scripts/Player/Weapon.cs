@@ -58,6 +58,15 @@ public class Weapon : InventoryItem
         }
     }
 
+    public override bool Use()
+    {
+        Debug.Log("Weapon add ammo");
+
+        Equip(true);
+
+        return true;
+    }
+
     public virtual void Equip(bool active)
     {
         if (active)
@@ -73,7 +82,12 @@ public class Weapon : InventoryItem
         col.enabled = false;
         body.useGravity = false;
     }
+    public virtual bool AddAmmo(int amount)
+    {
+        return false;
+    }
 }
+
 
 public enum WeaponType
 {

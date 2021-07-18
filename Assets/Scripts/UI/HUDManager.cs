@@ -50,8 +50,13 @@ public class HUDManager : MonoBehaviour
     private float timeLastNotfied = 0;
 
     [Header("Inventory Menus")]
-    [SerializeField] public GameObject equipmentMenu;
-    [SerializeField] public GameObject interactMenu;
+    public GameObject equipmentMenu;
+    public GameObject interactMenu;
+    [SerializeField] private float menuSmoothing = 10;
+    private RectTransform equipRect;
+    private RectTransform interectRect;
+    private Vector3 equipMenuDisplayLocation = Vector3.zero;
+    private Vector3 interactMenuDisplayLocation = new Vector3(-50, 0, 0);
     private bool activeMenu = false;
     public bool isMenu
     {
@@ -63,6 +68,7 @@ public class HUDManager : MonoBehaviour
 
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject pauseDim;
     bool paused = false;
     public bool isPaused
     {
@@ -91,6 +97,9 @@ public class HUDManager : MonoBehaviour
 
         pauseMenu.SetActive(false);
         paused = false;
+
+        equipRect = equipmentMenu.GetComponent<RectTransform>();
+        interectRect = interactMenu.GetComponent<RectTransform>();
 
         equipmentMenu.SetActive(false);
         interactMenu.SetActive(false);
@@ -301,6 +310,7 @@ public class HUDManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
+        pauseDim.SetActive(true);
         paused = true;
     }
 
@@ -310,24 +320,29 @@ public class HUDManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        pauseDim.SetActive(false);
         paused = false;
     }
 
     private void OpenMenu()
     {
         Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         equipmentMenu.SetActive(true);
         interactMenu.SetActive(true);
+        equipRect.anchoredPosition = equipMenuDisplayLocation - new Vector3(150, 0, 0);
+        interectRect.anchoredPosition = interactMenuDisplayLocation + new Vector3(150, 0, 0);
+        pauseDim.SetActive(true);
         activeMenu = true;
     }
 
     private void CloseMenu()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         equipmentMenu.SetActive(false);
         interactMenu.SetActive(false);
+        pauseDim.SetActive(false);
         activeMenu = false;
     }
 
@@ -354,6 +369,12 @@ public class HUDManager : MonoBehaviour
             {
                 CloseMenu();
             }
+        }
+
+        if (activeMenu)
+        {
+            equipRect.anchoredPosition = Vector3.Lerp(equipRect.anchoredPosition, equipMenuDisplayLocation, menuSmoothing * Time.fixedDeltaTime);
+            interectRect.anchoredPosition = Vector3.Lerp(interectRect.anchoredPosition, interactMenuDisplayLocation, menuSmoothing * Time.fixedDeltaTime);
         }
     }
 
@@ -394,6 +415,8 @@ public class HUDManager : MonoBehaviour
         //If there are active notifications, check if any have timed out
         if (activeNotifications.Count > 0)
         {
+            List<Notification> expiredNotifications = new List<Notification>();
+
             foreach (Notification n in activeNotifications)
             {
                 //If the notification has timed out, destroy them
@@ -407,6 +430,15 @@ public class HUDManager : MonoBehaviour
 
                 if (n.destroy)
                 {
+                    expiredNotifications.Add(n);
+                }
+            }
+
+            if (expiredNotifications.Count > 0)
+            {
+                for (int i = expiredNotifications.Count; i > 0; --i)
+                {
+                    Notification n = expiredNotifications[i - 1];
                     activeNotifications.Remove(n);
                     Destroy(n);
                 }

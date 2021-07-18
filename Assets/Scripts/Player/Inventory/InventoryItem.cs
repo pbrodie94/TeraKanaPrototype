@@ -16,6 +16,7 @@ public class InventoryItem : Interactible
     public string itemName;
     public string description;
     public Sprite sprite;
+    protected string useFailure;
 
     public ItemType itemType;
 
@@ -24,5 +25,17 @@ public class InventoryItem : Interactible
         base.Start();
 
         interactMessage += "to pickup " + itemName;
+
+        useFailure = "Could not use " + itemName;
+    }
+
+    public virtual bool Use()
+    {
+        return false;
+    }
+
+    public string GetUseFailure()
+    {
+        return useFailure;
     }
 }

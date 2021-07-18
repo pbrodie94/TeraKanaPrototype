@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
                     AddWeapons(w);
                 }
 
-                equipmentMenu.AddInventoryItem(item, 0);
+                equipmentMenu.AddInventoryItem(item);
 
                 break;
 
@@ -55,7 +55,6 @@ public class Inventory : MonoBehaviour
                 //Add to aid inventory
 
                 AddAidItems(item);
-                equipmentMenu.AddInventoryItem(item, aidItems.Count - 1);
 
                 break;
 
@@ -83,6 +82,144 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
+    public bool AddItem(InventoryItem item)
+    {
+        //Take in the Inventory Item class and check the item type to sort where it goes
+        switch (item.itemType)
+        {
+            case ItemType.Weapon:
+
+                Weapon w = item.gameObject.GetComponent<Weapon>();
+
+                if (!wManager.HasWeapon())
+                {
+                    //Have an empty weapon slot, equip it to either primary or secondary
+
+                    wManager.EquipWeapon(w, false);
+
+                }
+                else
+                {
+                    //Weapon slots full, add to inventory
+
+                    AddWeapons(w);
+                }
+
+                equipmentMenu.AddInventoryItem(item);
+
+                break;
+
+            case ItemType.Aid:
+
+                //Add to aid inventory
+
+                AddAidItems(item);
+
+                break;
+
+            case ItemType.Item:
+
+                //Add item to items inventory
+
+                AddItems(item);
+
+                break;
+
+            case ItemType.Armour:
+
+                //Add item to armour inventory
+
+                break;
+
+            default:
+
+                break;
+        }
+
+        return true;
+    }
+
+    public bool ContainsItem(InventoryItem item)
+    {
+        //Take in the Inventory Item class and check the item type to sort where it goes
+        switch (item.itemType)
+        {
+            case ItemType.Weapon:
+
+                return weapons.Contains(item);
+
+                break;
+
+            case ItemType.Aid:
+
+                //Add to aid inventory
+
+                return aidItems.Contains(item);
+
+                break;
+
+            case ItemType.Item:
+
+                //Add item to items inventory
+
+                return items.Contains(item);
+
+                break;
+
+            case ItemType.Armour:
+
+            //Add item to armour inventory
+
+            default:
+
+                break;
+
+        }
+
+        return false;
+    }
+
+    public bool RemoveItem(InventoryItem item)
+    {
+        //Take in the Inventory Item class and check the item type to sort where it goes
+        switch (item.itemType)
+        {
+            case ItemType.Weapon:
+
+                return RemoveWeapons(item);
+
+                break;
+
+            case ItemType.Aid:
+
+                //Add to aid inventory
+
+                return RemoveAidItems(item);
+
+                break;
+
+            case ItemType.Item:
+
+                //Add item to items inventory
+
+                return RemoveItems(item);
+
+                break;
+
+            case ItemType.Armour:
+
+                //Add item to armour inventory
+
+                break;
+
+            default:
+
+                break;
+        }
+
+        return false;
+    }
+
     private void AddWeapons(InventoryItem weapon)
     {
         weapons.Add(weapon);
@@ -91,10 +228,48 @@ public class Inventory : MonoBehaviour
     private void AddAidItems(InventoryItem aid)
     {
         aidItems.Add(aid);
+
+        if (!equipmentMenu.AddInventoryItem(aid))
+        {
+            hud.AddNotification(equipmentMenu.GetError(), HUDManager.NotificationType.Warning);
+        }
     }
 
     private void AddItems(InventoryItem item)
     {
         items.Add(item);
+    }
+
+    private bool RemoveWeapons(InventoryItem item)
+    {
+        if (weapons.Contains(item))
+        {
+            weapons.Remove(item);
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool RemoveAidItems(InventoryItem item)
+    {
+        if (aidItems.Contains(item))
+        {
+            aidItems.Remove(item);
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool RemoveItems(InventoryItem item)
+    {
+        if (items.Contains(item))
+        {
+            items.Remove(item);
+            return true;
+        }
+
+        return false;
     }
 }

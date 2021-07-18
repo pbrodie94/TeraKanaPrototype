@@ -2,12 +2,12 @@
 
 public class PlayerStats : Stats
 {
-    public float maxHealth = 100;
-
     HUDManager hud;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
 
         hud.UpdateHealth(health, maxHealth);
@@ -18,5 +18,20 @@ public class PlayerStats : Stats
         base.TakeDamage(damage);
 
         hud.UpdateHealth(health);
+    }
+
+    public bool AddHealth(float amount)
+    {
+        if (health >= maxHealth)
+            return false;
+
+        health += amount;
+
+        if (health > maxHealth)
+            health = maxHealth;
+
+        hud.UpdateHealth(health);
+
+        return true;
     }
 }

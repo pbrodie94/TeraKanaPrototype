@@ -162,4 +162,11 @@ public class Firearm : Weapon
             hud.UpdateWeaponPanel(mag, ammo);
         }
     }
+
+    public override bool AddAmmo(int amount)
+    {
+        ammo += amount;
+        hud.UpdateWeaponPanel(mag, ammo);
+        return true;
+    }
 }

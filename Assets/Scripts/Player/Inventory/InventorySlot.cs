@@ -6,21 +6,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     [SerializeField] private Image slotItemImage;
     [SerializeField] private Image selectionEffect;
-    private InventoryItem item;
+    public InventoryItem item;
 
-    private int _itemIndex = 0;
-    public int itemIndex
-    {
-        get
-        {
-            return _itemIndex;
-        }
-    }
     private bool selected = false;
 
     private InventoryMenu menu;
 
-    private void Start()
+    private void Awake()
     {
         slotItemImage.enabled = false;
         selectionEffect.enabled = false;
@@ -37,9 +29,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         menu = inventoryMenu;
     }
 
-    public void SetSlot(InventoryItem item, int index)
+    public void SetSlot(InventoryItem item)
     {
-        _itemIndex = index;
         this.item = item;
         slotItemImage.sprite = item.sprite;
         slotItemImage.enabled = true;
@@ -59,7 +50,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void ClearSlot()
     {
-        _itemIndex = 0;
         selected = false;
         slotItemImage.enabled = false;
     }
