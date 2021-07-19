@@ -21,7 +21,7 @@ public class WeaponManager : ObjectHoldManager
 
     void Update()
     {
-        if (hud.isPaused)
+        if (hud.isPaused || hud.isMenu)
             return;
 
         if (activeWeapon)
@@ -92,7 +92,6 @@ public class WeaponManager : ObjectHoldManager
             }
 
             activeWeapon.transform.localPosition = Vector3.Lerp(activeWeapon.transform.localPosition, holdPosition, smoothing * Time.deltaTime);
-            //activeWeapon.transform.localPosition = Vector3.SmoothDamp(activeWeapon.transform.localPosition, holdPosition, ref positionVelocity, smoothing);
             activeWeapon.transform.localRotation = Quaternion.Slerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.deltaTime);
             
         }
@@ -199,7 +198,7 @@ public class WeaponManager : ObjectHoldManager
         {
             //Replace active weapon and send active weapon to inventory
 
-            inventory.AddWeapons(activeWeapon);
+            //inventory.AddWeapons(activeWeapon);
             activeWeapon = newWeapon;
 
             DeployWeapon();
@@ -232,14 +231,22 @@ public class WeaponManager : ObjectHoldManager
         }
     }
 
+    public bool AddAmmo(int amount)
+    {
+        if (!HasWeapon())
+            return false;
+
+        return activeWeapon.AddAmmo(amount);
+    }
+
     public bool HasWeapon()
     {
-        if (!activeWeapon || !secondaryWeapon)
-        {
-            return false;
-        } else
+        if (activeWeapon != null || secondaryWeapon != null)
         {
             return true;
+        } else
+        {
+            return false;
         }
     }
 

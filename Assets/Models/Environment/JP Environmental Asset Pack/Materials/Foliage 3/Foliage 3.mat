@@ -56,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AO: 2.4
-    - _BaseLight: 0.35
+    - _AO: 0
+    - _BaseLight: 0
     - _BrightnessFactor: 1
     - _BumpScale: 1.4
-    - _Cutoff: 0.594
+    - _Cutoff: 0.25
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -69,7 +69,7 @@ Material:
     - _Intensity: 1
     - _Metallic: 0
     - _Mode: 1
-    - _Occlusion: 7.5
+    - _Occlusion: 8.8
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0

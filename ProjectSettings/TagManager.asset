@@ -13,6 +13,9 @@ TagManager:
   - ObjectiveSpawn
   - Extraction
   - EnemyTarget
+  - ItemSpawn
+  - PlayerSpawn
+  - Door
   layers:
   - Default
   - TransparentFX

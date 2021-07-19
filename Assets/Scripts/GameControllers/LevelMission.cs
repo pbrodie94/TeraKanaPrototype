@@ -7,7 +7,7 @@ public enum MissionType
     Specimen, 
     Computer,
     Collection,
-    Artifact
+    Random
 }
 
 public class LevelMission : MonoBehaviour
@@ -48,7 +48,8 @@ public class LevelMission : MonoBehaviour
         if (!extractionPoint)
             extractionPoint = GameObject.FindGameObjectWithTag("Extraction");
 
-        extractionPoint.SetActive(false);
+        if (extractionPoint)
+            extractionPoint.SetActive(false);
     }
 
     public void InitializeMission(LevelController manager, HUDManager hudManager)
@@ -58,7 +59,10 @@ public class LevelMission : MonoBehaviour
         missionCompleted = false;
 
         //Select random mission type
-        //mission = (MissionType)Random.Range(0, System.Enum.GetValues(typeof(MissionType)).Length - 1);
+        if (mission == MissionType.Random)
+        {
+            mission = (MissionType)Random.Range(0, System.Enum.GetValues(typeof(MissionType)).Length - 1);
+        }
 
         //Place the objectives in the level
         //Get list of objective locations that correspond with the objective type
@@ -135,13 +139,6 @@ public class LevelMission : MonoBehaviour
 
                 CollectionObjective o = objectiveSpawn[0].gameObject.GetComponent<CollectionObjective>();
                 objectivesList.Enqueue("Collect the " + o.objectName + "(s): ");
-
-                break;
-
-            case MissionType.Artifact:
-
-                _numObjectives = Random.Range(1, spawnPoints.Count);
-                objectivesList.Enqueue("Collect the artifact(s): ");
 
                 break;
         }

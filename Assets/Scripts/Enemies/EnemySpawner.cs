@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public List<SpawnArea> areas = new List<SpawnArea>();
+    public LinkedList<SpawnArea> areas = new LinkedList<SpawnArea>();
 
     public GameObject Monster;
 
@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
                 if (sa != null)
                 {
-                    areas.Add(sa);
+                    areas.AddBack(sa);
                 }
             }
         }
@@ -38,23 +38,23 @@ public class EnemySpawner : MonoBehaviour
         {
             int areaIndex = 0;
 
-            if (areas.Count > 1)
+            if (areas.size > 1)
             {
                 bool validArea = false;
 
                 do
                 {
-                    areaIndex = Random.Range(0, areas.Count - 1);
+                    areaIndex = Random.Range(0, areas.size - 1);
 
-                    if (areas.Count <= 0)
+                    if (areas.size <= 0)
                     {
                         areaIndex = -1;
                         return;
                     }
 
-                    if (areas[areaIndex].numEnemies >= areas[areaIndex].maxEnemies)
+                    if (areas.GetAtIndex(areaIndex).numEnemies >= areas.GetAtIndex(areaIndex).maxEnemies)
                     {
-                        areas.RemoveAt(areaIndex);
+                        areas.RemoveAtIndex(areaIndex);
 
                         continue;
                     }
@@ -68,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
             if (areaIndex < 0)
                 return;
 
-            Vector3 point = areas[areaIndex].GetRandomPoint();
+            Vector3 point = areas.GetAtIndex(areaIndex).GetRandomPoint();
 
             if (point == Vector3.zero)
             {
@@ -82,7 +82,7 @@ public class EnemySpawner : MonoBehaviour
 
             Instantiate(Monster, point, rotation);
 
-            areas[areaIndex].AddedEnemy();
+            areas.GetAtIndex(areaIndex).AddedEnemy();
         }
     }
 

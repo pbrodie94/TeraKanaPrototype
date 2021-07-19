@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionCheckDist: 2
   payload: 500
-  damageRadius: 30
+  damageRadius: 50
   distBuffer: 1
   speed: 3000
   target: {fileID: 0}
