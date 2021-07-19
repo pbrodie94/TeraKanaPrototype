@@ -29,7 +29,7 @@ public class CamLook : MonoBehaviour
 
     private void Update()
     {
-        if (hud.isPaused)
+        if (hud.isPaused || hud.isMenu)
                 return;
 
         targetDirection.x = -Input.GetAxisRaw(InputManager.MouseY) * lookSensitivityX;

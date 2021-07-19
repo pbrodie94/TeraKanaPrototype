@@ -13,8 +13,10 @@ public class EnemyStats : Stats
 
     EnemyAIStateManager aiState;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         if (!anim)
             anim = GetComponentInChildren<Animator>();
 

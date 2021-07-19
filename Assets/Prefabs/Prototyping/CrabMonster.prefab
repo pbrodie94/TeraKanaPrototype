@@ -369,7 +369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a5d5cddbcc71540aa995f2699c00ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  startingHealth: 100
+  maxHealth: 100
   attack: 10
   defence: 0
   damageAnimRatio: 35
@@ -386,7 +387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698bd3030e1f9b24cb948e42209a9e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   state: 1
   defaultState: 1
   alertTimeout: 5
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   walkSpeed: 4
-  runSpeed: 8
+  runSpeed: 6
   acceleration: 8
   alertRadius: 30
   attackTurn: 0
@@ -456,7 +456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8780731403047989912
 Transform:
   m_ObjectHideFlags: 0

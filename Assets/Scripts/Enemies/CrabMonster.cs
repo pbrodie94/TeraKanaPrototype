@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CrabMonster : Enemy
 {
-
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     protected override IEnumerator Melee()
     {

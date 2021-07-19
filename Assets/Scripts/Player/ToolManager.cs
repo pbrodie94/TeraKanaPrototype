@@ -19,7 +19,7 @@ public class ToolManager : ObjectHoldManager
 
     private void Update()
     {
-        if (Input.GetButtonDown(InputManager.Interact))
+        if (Input.GetButtonDown(InputManager.Tool))
         {
             if (activeTool)
             {

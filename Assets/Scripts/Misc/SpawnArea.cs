@@ -45,7 +45,7 @@ public class SpawnArea : MonoBehaviour
         {
             //more than one area, get a random area to get point in
 
-            a = Random.Range(0, areas.Length);
+            a = Random.Range(0, areas.Length - 1);
         }
 
         Vector3 point;
@@ -76,7 +76,7 @@ public class SpawnArea : MonoBehaviour
 
             point = Vector3.zero;
 
-            //Debug.Log("Placment failed");
+            Debug.Log("Placment failed");
         }
 
         point.y = GroundLevel(point);
@@ -98,7 +98,7 @@ public class SpawnArea : MonoBehaviour
                 groundVisible = true;
             } else
             {
-                //Debug.Log("Ground not visible");
+                Debug.Log("Ground not visible");
             }
         }
 

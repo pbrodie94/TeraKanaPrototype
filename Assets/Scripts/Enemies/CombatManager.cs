@@ -124,8 +124,6 @@ public class CombatManager : MonoBehaviour
 
             enemies.Add(en);
 
-            Debug.Log(enemies.Count);
-
             return true;
         }
         

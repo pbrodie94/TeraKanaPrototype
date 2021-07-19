@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1045439433114665301}
   - component: {fileID: 1045439433114665299}
   - component: {fileID: 1045439433114665296}
+  - component: {fileID: 293260592661189681}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -76,6 +77,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelEnemyCountRange: {x: 35, y: 70}
+  levelItemCount: {x: 0, y: 0}
+  player: {fileID: 988812511237328701, guid: 770cc0faa26e66f4d98457ac3fa3d165, type: 3}
+  spawnPoint: {fileID: 0}
 --- !u!114 &1045439433114665296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,3 +98,16 @@ MonoBehaviour:
   - {fileID: 2947087816965790286, guid: 918a216c92fca2c418dcf66c5e2578fd, type: 3}
   - {fileID: 8717756687221470397, guid: 8c76a46a29be6b64a8281225bee697b6, type: 3}
   - {fileID: 3289626729108652891, guid: 759c0067ea15e704397d0e45b50e2470, type: 3}
+--- !u!114 &293260592661189681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045439433114665303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321561814c1eb1b48b0ad1c80fce8b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemObjects: []

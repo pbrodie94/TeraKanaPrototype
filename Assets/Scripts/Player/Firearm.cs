@@ -23,7 +23,7 @@ public class Firearm : Weapon
 
     public Transform muzzle;
     public ParticleSystem muzzleFlash;
-    //public GameObject bulletImpact;
+    public GameObject bulletImpact;
 
     [Header("Audio")]
     private AudioSource audio;
@@ -38,8 +38,14 @@ public class Firearm : Weapon
         rof = fireRate / 100;
     }
 
-    void Update()
+    protected override void Update()
     {
+        if (!isHeld)
+        {
+            base.Update();
+            return;
+        }    
+
         if (!canShoot)
         {
             if (Time.time >= (timeLastShot + rof))
@@ -74,20 +80,15 @@ public class Firearm : Weapon
                 EnemyLimb e = hit.collider.gameObject.GetComponent<EnemyLimb>();
                 e.TakeDamage(damage);
 
-                /*GameObject impact = Instantiate(bulletImpact, hit.transform);
-                impact.transform.position = hit.point;
-
-                Vector3 dir = hit.point - muzzle.position;
-                Vector3 reflect = Vector3.Reflect(dir, hit.normal);
-                Quaternion rot = Quaternion.LookRotation(reflect, Vector3.up);
-
-                impact.transform.rotation = rot;*/
+                BulletImpact(hit);
 
                 //Otherwise deal damage directly to enemy's stats
             } else if (hit.collider.tag == "Enemy")
             {
                 EnemyStats e = hit.collider.gameObject.GetComponent<EnemyStats>();
                 e.TakeDamage(damage);
+
+                BulletImpact(hit);
             }
         }
 
@@ -97,13 +98,17 @@ public class Firearm : Weapon
         hud.UpdateWeaponPanel(mag, ammo);
 
         if (muzzleFlash)
-            muzzleFlash.Play();
+        {
+            GameObject flash = Instantiate(muzzleFlash.gameObject, muzzle.position, muzzle.rotation, muzzle);
+            flash.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            Destroy(flash, rof);
+        }
 
         if (audio)
             audio.PlayOneShot(gunShot);
 
         //Test the notification system
-        hud.AddNotification("Fired a shot", HUDManager.NotificationType.Warning);
+        //hud.AddNotification("Fired a shot", HUDManager.NotificationType.Warning);
 
         return true;
     }
@@ -155,5 +160,26 @@ public class Firearm : Weapon
         {
             hud.UpdateWeaponPanel(mag, ammo);
         }
+    }
+
+    public override bool AddAmmo(int amount)
+    {
+        ammo += amount;
+        hud.UpdateWeaponPanel(mag, ammo);
+        return true;
+    }
+
+    protected void BulletImpact(RaycastHit hit)
+    {
+        GameObject impact = Instantiate(bulletImpact);
+        impact.transform.position = hit.point;
+
+        Vector3 dir = hit.point - muzzle.position;
+        Vector3 reflect = Vector3.Reflect(dir, hit.normal);
+        Quaternion rot = Quaternion.LookRotation(reflect, Vector3.up);
+
+        impact.transform.rotation = rot;
+
+        Destroy(impact, 0.5f);
     }
 }

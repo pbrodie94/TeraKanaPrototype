@@ -87,7 +87,7 @@ public class LaserTargetingGun : Tool
     {
         //Set position above target
         Vector3 pos = target.position;
-        pos.y += 1000;
+        pos.y += 5000;
 
         Vector3 wantedLook = pos - target.position;
         Quaternion rot = Quaternion.LookRotation(wantedLook);

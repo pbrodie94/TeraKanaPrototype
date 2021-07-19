@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
 
 	void Update()
 	{
-		if (hud.isPaused)
+		if (hud.isPaused || hud.isMenu)
 			return;
 
 		//Movement
@@ -64,7 +64,7 @@ public class PlayerMove : MonoBehaviour
 		moveDirection = new Vector3 (h, moveDirection.y, v);
 		moveDirection = transform.TransformDirection(moveDirection);
 
-        if (Input.GetButtonDown(InputManager.Jump))
+        if (Input.GetButtonDown(InputManager.Jump) && controller.isGrounded)
 		{
 			moveDirection.y = jumpHeight;
 		}
