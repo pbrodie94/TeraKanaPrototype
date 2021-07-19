@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ItemBox : Interactible
 {
     [Header("Item Crate Properties")]
     public InventoryItem item;
+
+    private LaserTargetingGun gun;
 
     protected override void Start()
     {
@@ -19,7 +22,16 @@ public class ItemBox : Interactible
     {
         base.Interact();
 
-        Inventory inv = player.gameObject.GetComponent<Inventory>();
-        inv.PickupItem(item);
+        try
+        {
+            Inventory inv = player.gameObject.GetComponent<Inventory>();
+            inv.PickupItem(item);
+
+            gun.equipped = true;
+
+        } catch(NullReferenceException e)
+        {
+            Debug.LogWarning("OH NO! " + e);
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Weapon : InventoryItem
 {
@@ -24,6 +25,8 @@ public class Weapon : InventoryItem
     protected Inventory inventory;
     protected Collider col;
     protected Rigidbody body;
+
+    private LaserTargetingGun gun;
 
     protected override void Start()
     {
@@ -49,12 +52,26 @@ public class Weapon : InventoryItem
     {
         base.Interact();
 
-        //Pickup weapon
-        if (inventory.PickupItem(itemCreds))
+        try
         {
-            //Play pickup sound
 
-            hud.UpdateAimRetical(aimRetical, reticalDimensions);
+            //Pickup weapon
+            if (inventory.PickupItem(itemCreds))
+            {
+                //Play pickup sound
+
+                hud.UpdateAimRetical(aimRetical, reticalDimensions);
+            }
+
+            char[] c = new char[9]{ 'E', 'x', 'c', 'e', 'p', 't', 'i', 'o', 'n' };
+
+            int index = 10;
+
+            Debug.Log(c[index]);
+
+        } catch (IndexOutOfRangeException e)
+        {
+            Debug.LogWarning("Oh darn, how silly of me: " + e);
         }
     }
 
