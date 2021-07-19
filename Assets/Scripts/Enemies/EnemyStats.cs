@@ -35,6 +35,14 @@ public class EnemyStats : Stats
         if (aiState.state != EnemyAIStateManager.EnemyState.Alert)
             aiState.Alerted();
 
+        if (health <= 0)
+        {
+            HUDManager.instance.SetHitMarker(true);
+        } else
+        {
+            HUDManager.instance.SetHitMarker(false);
+        }
+
         //take damage animation
         if (!dead && health <= nextDamageAnim)
         {

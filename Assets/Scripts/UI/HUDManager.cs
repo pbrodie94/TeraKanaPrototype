@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
+    public static HUDManager instance;
+
     [Header("Health Bar")]
     [SerializeField] private Slider healthSlider;
 
@@ -25,6 +27,11 @@ public class HUDManager : MonoBehaviour
     private float fadeSpeed = 10;
     private Color defaultReticalColor;
     private Color wantedColor;
+
+    [Header("Hit Marker")]
+    [SerializeField] private Image hitMarkerImage;
+    [SerializeField] private Sprite hitMarker;
+    [SerializeField] private Sprite killMarker;
 
     [Header("Progress Panel")]
     [SerializeField] private Slider progressBar;
@@ -78,6 +85,11 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         ShowMessage(null, false);
@@ -104,6 +116,13 @@ public class HUDManager : MonoBehaviour
         equipmentMenu.SetActive(false);
         interactMenu.SetActive(false);
         activeMenu = false;
+
+        if (hitMarker)
+        {
+            Color c = hitMarkerImage.color;
+            c.a = 0;
+            hitMarkerImage.color = c;
+        }
     }
 
     public void ShowMessage(string msg, bool show)
@@ -166,6 +185,12 @@ public class HUDManager : MonoBehaviour
         {
             wantedColor.a = defaultReticalColor.a;
         }
+    }
+
+    public void SetHitMarker(bool kill)
+    {
+        hitMarkerImage.sprite = kill ? killMarker : hitMarker;
+        hitMarkerImage.color = Color.white;
     }
 
     public void UpdateWeaponPanel(int mag, int ammo)
@@ -461,5 +486,10 @@ public class HUDManager : MonoBehaviour
         Color reticalColor = aimRetical.color;
         reticalColor.a = Mathf.Lerp(reticalColor.a, wantedColor.a, fadeSpeed * Time.deltaTime);
         aimRetical.color = reticalColor;
+
+        Color markerColor = hitMarkerImage.color;
+        markerColor.a = Mathf.Lerp(markerColor.a, 0, fadeSpeed * Time.fixedDeltaTime);
+        hitMarkerImage.color = markerColor;
+
     }
 }

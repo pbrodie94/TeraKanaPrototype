@@ -36,7 +36,7 @@ public class ToolManager : ObjectHoldManager
             {
                 HoldTool();
 
-                if (playerControl.sprinting)
+                if (playerController.IsSprinting())
                 {
                     holdPosition = sprintPosition;
                     wantedRotation = sprintRotation;

@@ -19,7 +19,7 @@ public class WeaponManager : ObjectHoldManager
     public delegate void ShotFired(Transform pos);
     public static event ShotFired OnShotFired;
 
-    void Update()
+    void FixedUpdate()
     {
         if (hud.isPaused || hud.isMenu)
             return;
@@ -32,7 +32,7 @@ public class WeaponManager : ObjectHoldManager
 
                 if (activeWeapon.ranged && Input.GetButton(InputManager.Aim))
                 {
-                    playerControl.sprinting = false;
+                    playerController.SetSprinting(false);
 
                     holdPosition = aimPosition;
                     wantedRotation = Quaternion.identity;
@@ -40,7 +40,7 @@ public class WeaponManager : ObjectHoldManager
                 }
                 else
                 {
-                    if (playerControl.sprinting)
+                    if (playerController.IsSprinting())
                     {
                         holdPosition = sprintPosition;
                         wantedRotation = sprintRotation;
@@ -70,7 +70,7 @@ public class WeaponManager : ObjectHoldManager
 
                     if (Input.GetButtonDown(InputManager.Reload))
                     {
-                        playerControl.sprinting = false;
+                        playerController.SetSprinting(false);
 
                         //Relaod weapon
                         fa.Reload();
@@ -78,7 +78,7 @@ public class WeaponManager : ObjectHoldManager
 
                     if (fa.auto == true ? Input.GetButton(InputManager.Shoot) : Input.GetButtonDown(InputManager.Shoot))
                     {
-                        playerControl.sprinting = false;
+                        playerController.SetSprinting(false);
 
                         if (fa.Shoot())
                         {
@@ -91,8 +91,8 @@ public class WeaponManager : ObjectHoldManager
                 }                
             }
 
-            activeWeapon.transform.localPosition = Vector3.Lerp(activeWeapon.transform.localPosition, holdPosition, smoothing * Time.deltaTime);
-            activeWeapon.transform.localRotation = Quaternion.Slerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.deltaTime);
+            activeWeapon.transform.localPosition = Vector3.Lerp(activeWeapon.transform.localPosition, holdPosition, smoothing * Time.fixedDeltaTime);
+            activeWeapon.transform.localRotation = Quaternion.Slerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.fixedDeltaTime);
             
         }
     }

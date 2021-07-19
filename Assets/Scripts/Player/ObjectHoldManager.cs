@@ -19,9 +19,10 @@ public class ObjectHoldManager : MonoBehaviour
     protected Quaternion sprintRotation;
     protected Quaternion wantedRotation = Quaternion.identity;
 
-    protected GameObject player;
+    //protected GameObject player;
 
-    protected PlayerMove playerControl;
+    //protected PlayerMove playerControl;
+    protected FPSController playerController;
     protected PlayerStats stats;
     protected Inventory inventory;
     protected HUDManager hud;
@@ -30,13 +31,13 @@ public class ObjectHoldManager : MonoBehaviour
     protected virtual void Start()
     {
         if (!cam)
-            cam = GameObject.Find("Main Camera").transform;
+            cam = Camera.main.transform;
 
-        if (!player)
-            player = GameObject.FindGameObjectWithTag("Player");
+        /*if (!player)
+            player = GameObject.FindGameObjectWithTag("Player");*/
 
-        if (!playerControl)
-            playerControl = GetComponent<PlayerMove>();
+        if (!playerController)
+            playerController = GetComponent<FPSController>();
 
         if (!inventory)
             inventory = GetComponent<Inventory>();
