@@ -56,11 +56,13 @@ public class WeaponManager : ObjectHoldManager
                 if (activeWeapon.ranged && Input.GetButtonDown(InputManager.Aim))
                 {
                     hud.FadeRetical(true);
+                    playerController.SetAiming(true);
                 }
 
                 if (activeWeapon.ranged && Input.GetButtonUp(InputManager.Aim))
                 {
                     hud.FadeRetical(false);
+                    playerController.SetAiming(false);
                 }
 
                 if (activeWeapon.ranged && Time.time > (timeDeployed + deployShootDelay))
@@ -143,7 +145,7 @@ public class WeaponManager : ObjectHoldManager
                 child.gameObject.layer = 8;
             }
 
-            activeWeapon.transform.SetParent(cam);
+            activeWeapon.transform.SetParent(weaponParent);
 
             hipPosition = activeWeapon.holdPosition;
             aimPosition = activeWeapon.aimPosition;
@@ -160,7 +162,7 @@ public class WeaponManager : ObjectHoldManager
             }
 
             //Deploying animations
-            activeWeapon.transform.localPosition = hipPosition;
+            activeWeapon.transform.localPosition = holdPosition;
 
             holstered = false;
             holdPosition = hipPosition;

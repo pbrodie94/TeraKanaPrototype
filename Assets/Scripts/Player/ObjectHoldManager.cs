@@ -27,14 +27,16 @@ public class ObjectHoldManager : MonoBehaviour
     protected Inventory inventory;
     protected HUDManager hud;
     protected Transform cam;
+    [SerializeField] protected Transform weaponParent;
+
+    //[SerializeField] protected Transform fpsArms;
+    //[SerializeField] protected Animator weaponAnim;
+    //[SerializeField] private RuntimeAnimatorController defaultController;
 
     protected virtual void Start()
     {
         if (!cam)
             cam = Camera.main.transform;
-
-        /*if (!player)
-            player = GameObject.FindGameObjectWithTag("Player");*/
 
         if (!playerController)
             playerController = GetComponent<FPSController>();

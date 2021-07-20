@@ -17,10 +17,16 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundMask;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioClip[] footStepsDirt;
+
     [Range(0, 1)] [SerializeField] private float movementSmoothing = 0.5f;
     private Vector3 movementVelocity = Vector3.zero;
 
     /*[Range(0, 1)]*/ [SerializeField] private float crouchSmoothing = 0.2f;
+
+    private bool aiming = false;
 
     private CapsuleCollider capsuleCollider;
     private float standingSize = 0;
@@ -34,11 +40,17 @@ public class FPSController : MonoBehaviour
     private float vertical = 0;
     private float horizontal = 0;
 
+    private Light flashlight;
+
     private Rigidbody rb;
+    private Animator anim;
 
     private void Awake()
     {
+        audio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        flashlight = GetComponentInChildren<Light>();
         speed = walkSpeed;
 
         capsuleCollider = GetComponent<CapsuleCollider>();
@@ -72,6 +84,17 @@ public class FPSController : MonoBehaviour
         {
             Crouch();
         }
+
+        if (Input.GetButtonDown(InputManager.Flashlight))
+        {
+            flashlight.enabled = !flashlight.enabled;
+        }
+
+        anim.SetFloat("Speed", rb.velocity.magnitude);
+        anim.SetBool("Sprinting", sprinting);
+        anim.SetBool("Aiming", aiming);
+        anim.SetBool("Crouched", crouching);
+        anim.SetBool("Grounded", IsGrounded());
     }
 
     private void FixedUpdate()
@@ -81,7 +104,6 @@ public class FPSController : MonoBehaviour
 
         Move();
 
-        //capsuleCollider.height = Mathf.SmoothDamp(capsuleCollider.height, wantedSize, ref sizeVelocity, crouchSmoothing);
         capsuleCollider.height = Mathf.Lerp(capsuleCollider.height, wantedSize, crouchSmoothing * Time.deltaTime);
     }
 
@@ -186,6 +208,19 @@ public class FPSController : MonoBehaviour
         if (sprint != sprinting)
         {
             Sprint();
+        }
+    }
+
+    public void SetAiming(bool aim)
+    {
+        aiming = aim;
+    }
+
+    public void Footstep()
+    {
+        if (audio && footStepsDirt.Length > 0)
+        {
+            audio.PlayOneShot(footStepsDirt[Random.Range(0, footStepsDirt.Length)]);
         }
     }
 }
