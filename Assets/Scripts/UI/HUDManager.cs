@@ -85,6 +85,9 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private AudioClip hitMarkerSFX;
+    private AudioSource audioSource;
+
     private void Awake()
     {
         instance = this;
@@ -123,6 +126,8 @@ public class HUDManager : MonoBehaviour
             c.a = 0;
             hitMarkerImage.color = c;
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ShowMessage(string msg, bool show)
@@ -191,6 +196,8 @@ public class HUDManager : MonoBehaviour
     {
         hitMarkerImage.sprite = kill ? killMarker : hitMarker;
         hitMarkerImage.color = Color.white;
+
+        audioSource.PlayOneShot(hitMarkerSFX);
     }
 
     public void UpdateWeaponPanel(int mag, int ammo)
