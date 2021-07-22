@@ -50,3 +50,4 @@ MonoBehaviour:
   description: Heals some health
   sprite: {fileID: 21300000, guid: b4e1cdeaca3afc54ea5b776b29e1f99c, type: 3}
   itemType: 1
+  itemUseSound: {fileID: 8300000, guid: d23edb6dff47cf8408982a297aff59d7, type: 3}

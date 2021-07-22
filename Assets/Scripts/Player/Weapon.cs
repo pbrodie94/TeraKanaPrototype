@@ -53,6 +53,8 @@ public class Weapon : InventoryItem
         if (inventory.PickupItem(itemCreds))
         {
             //Play pickup sound
+            if (audio && interactSound)
+                audio.PlayOneShot(interactSound);
 
             hud.UpdateAimRetical(aimRetical, reticalDimensions);
         }

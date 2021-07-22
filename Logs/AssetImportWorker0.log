@@ -15,11 +15,11 @@ F:/Game Development/Unity Projects/TeraKana
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-55161
+60373
 Successfully changed project path to: F:/Game Development/Unity Projects/TeraKana
 F:/Game Development/Unity Projects/TeraKana
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 91.91 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 72.35 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.2f1 (8fd9074bf66c)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/Resources/UnitySubsystems
@@ -43,86 +43,55 @@ Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002295 seconds.
+Registered in 0.002168 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 79.95 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 73.72 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.709 seconds
+- Completed reload, in  1.584 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.000686 seconds.
+Registered in 0.001304 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.95 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.94 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.795 seconds
+- Completed reload, in  0.746 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.94 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.96 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2075 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 158.1 MB.
-System memory in use after: 158.1 MB.
+System memory in use after: 158.2 MB.
 
 Unloading 78 unused Assets to reduce memory usage. Loaded Objects now: 2562.
-Total: 2.364100 ms (FindLiveObjects: 0.252600 ms CreateObjectMapping: 0.055100 ms MarkObjects: 1.678600 ms  DeleteObjects: 0.377000 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Audio/SFX/GunShots
-  artifactKey: Guid(c7301833249ff97459bf0e5a7a5cef4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/SFX/GunShots using Guid(c7301833249ff97459bf0e5a7a5cef4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dfd14f84e1fe0a7ce7cbf58ae625902') in 0.011028 seconds
-  Import took 0.015859 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000670 seconds.
-  path: Assets/Audio/SFX/GunShots
-  artifactKey: Guid(c7301833249ff97459bf0e5a7a5cef4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/SFX/GunShots using Guid(c7301833249ff97459bf0e5a7a5cef4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dfd14f84e1fe0a7ce7cbf58ae625902') in 0.001321 seconds
-  Import took 0.004791 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 23.147412 seconds.
-  path: Assets/Audio/SFX/FPS_HitMarker_01.mp3
-  artifactKey: Guid(a2411722c091b0d4cb4639fd0a8e3be1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/SFX/FPS_HitMarker_01.mp3 using Guid(a2411722c091b0d4cb4639fd0a8e3be1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5037127a909c20ab3052e4d35dd0e4b6') in 0.136863 seconds
-  Import took 0.141122 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.293007 seconds.
-  path: Assets/Audio/SFX/FPS_HitMarker_01.mp3
-  artifactKey: Guid(a2411722c091b0d4cb4639fd0a8e3be1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/SFX/FPS_HitMarker_01.mp3 using Guid(a2411722c091b0d4cb4639fd0a8e3be1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a590879885aa3a1068082138e9f3c68') in 0.005620 seconds
-  Import took 0.009151 seconds .
+Total: 2.421100 ms (FindLiveObjects: 0.290500 ms CreateObjectMapping: 0.054300 ms MarkObjects: 1.708800 ms  DeleteObjects: 0.366700 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.000905 seconds.
+Registered in 0.001276 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.99 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.98 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -137,52 +106,43 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.715 seconds
+- Completed reload, in  0.667 seconds
 Platform modules already initialized, skipping
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 1.60 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.97 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1957 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 150.1 MB.
-System memory in use after: 150.1 MB.
+System memory in use before: 147.5 MB.
+System memory in use after: 147.6 MB.
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2574.
-Total: 2.990200 ms (FindLiveObjects: 0.271200 ms CreateObjectMapping: 0.047000 ms MarkObjects: 2.398200 ms  DeleteObjects: 0.272900 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 260.301865 seconds.
-  path: Assets/Prefabs/Prefabs/FPSPlayer.prefab
-  artifactKey: Guid(36f945409b85fdd44aefb5859ae2e20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Prefabs/FPSPlayer.prefab using Guid(36f945409b85fdd44aefb5859ae2e20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50fc7f5fa973549eb0d4d5fe5841b46b') in 0.083222 seconds
-  Import took 0.088245 seconds .
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2565.
+Total: 2.285600 ms (FindLiveObjects: 0.233600 ms CreateObjectMapping: 0.050700 ms MarkObjects: 1.736800 ms  DeleteObjects: 0.263400 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.008099 seconds.
-  path: Assets/Prefabs/Prefabs/FPSPlayer.prefab
-  artifactKey: Guid(36f945409b85fdd44aefb5859ae2e20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Prefabs/FPSPlayer.prefab using Guid(36f945409b85fdd44aefb5859ae2e20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50fc7f5fa973549eb0d4d5fe5841b46b') in 0.018868 seconds
-  Import took 0.023489 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.626320 seconds.
   path: Assets/Prefabs/Prototyping/PlasmaRifle.prefab
   artifactKey: Guid(e6c369c3f502b5340aadc3ea1e7dc4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Prototyping/PlasmaRifle.prefab using Guid(e6c369c3f502b5340aadc3ea1e7dc4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e22c91aa8b2037b6b3c4433b1345e739') in 0.056564 seconds
-  Import took 0.062420 seconds .
+Start importing Assets/Prefabs/Prototyping/PlasmaRifle.prefab using Guid(e6c369c3f502b5340aadc3ea1e7dc4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26cc06fffa559636e64e1d6b24c4e829') in 0.119251 seconds
+  Import took 0.123610 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 29.637228 seconds.
+  path: Assets/Audio/SFX/PickupFirearm.mp3
+  artifactKey: Guid(5517f977effbeb24db6ddf1b65aa5e36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/SFX/PickupFirearm.mp3 using Guid(5517f977effbeb24db6ddf1b65aa5e36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5f4ca99434e7cae5e7cb43828908f7b') in 0.017042 seconds
+  Import took 0.020402 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001046 seconds.
+Registered in 0.000789 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.97 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.96 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -197,44 +157,36 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.710 seconds
+- Completed reload, in  0.662 seconds
 Platform modules already initialized, skipping
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 0.97 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1957 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 150.3 MB.
-System memory in use after: 150.4 MB.
+System memory in use after: 150.3 MB.
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2581.
-Total: 2.420100 ms (FindLiveObjects: 0.195000 ms CreateObjectMapping: 0.043900 ms MarkObjects: 1.919800 ms  DeleteObjects: 0.260300 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 128.261483 seconds.
-  path: Assets/Audio/Gunshots/ScarHeavy_1.mp3
-  artifactKey: Guid(27ab67df2f14336468be993b218148d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Gunshots/ScarHeavy_1.mp3 using Guid(27ab67df2f14336468be993b218148d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e324ca7e01f56eceaf71cbdb53bbad5d') in 0.031421 seconds
-  Import took 0.035841 seconds .
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2578.
+Total: 2.236000 ms (FindLiveObjects: 0.207000 ms CreateObjectMapping: 0.050800 ms MarkObjects: 1.716500 ms  DeleteObjects: 0.260700 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.002092 seconds.
-  path: Assets/Audio/Gunshots/ScarHeavy_1.mp3
-  artifactKey: Guid(27ab67df2f14336468be993b218148d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Gunshots/ScarHeavy_1.mp3 using Guid(27ab67df2f14336468be993b218148d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e324ca7e01f56eceaf71cbdb53bbad5d') in 0.006792 seconds
-  Import took 0.010314 seconds .
+  Time since last request: 149.429314 seconds.
+  path: Assets/Audio/SFX/PickupFirearm.mp3
+  artifactKey: Guid(5517f977effbeb24db6ddf1b65aa5e36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/SFX/PickupFirearm.mp3 using Guid(5517f977effbeb24db6ddf1b65aa5e36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd5f150587cad2f0d6ed2be32ff81079') in 0.031731 seconds
+  Import took 0.035746 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001600 seconds.
+Registered in 0.001156 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.26 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.16 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -249,36 +201,36 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.776 seconds
+- Completed reload, in  0.679 seconds
 Platform modules already initialized, skipping
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 1.63 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.95 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1957 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 150.4 MB.
-System memory in use after: 150.4 MB.
+System memory in use before: 150.3 MB.
+System memory in use after: 150.3 MB.
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2585.
-Total: 2.780100 ms (FindLiveObjects: 0.222500 ms CreateObjectMapping: 0.045100 ms MarkObjects: 2.242100 ms  DeleteObjects: 0.269500 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2582.
+Total: 2.293600 ms (FindLiveObjects: 0.189100 ms CreateObjectMapping: 0.054500 ms MarkObjects: 1.765600 ms  DeleteObjects: 0.283600 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 133.373758 seconds.
-  path: Assets/Audio/Gunshots/ScarHeavy_1.mp3
-  artifactKey: Guid(27ab67df2f14336468be993b218148d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Gunshots/ScarHeavy_1.mp3 using Guid(27ab67df2f14336468be993b218148d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c348af929b166ee7218df03b9c1d1262') in 0.034436 seconds
-  Import took 0.039722 seconds .
+  Time since last request: 725.734698 seconds.
+  path: Assets/Prefabs/Prototyping/PlasmaRifle.prefab
+  artifactKey: Guid(e6c369c3f502b5340aadc3ea1e7dc4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Prototyping/PlasmaRifle.prefab using Guid(e6c369c3f502b5340aadc3ea1e7dc4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83d1723211b962315f72d68246ddbdf7') in 0.057064 seconds
+  Import took 0.061554 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001428 seconds.
+Registered in 0.001173 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.12 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -293,36 +245,44 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.700 seconds
+- Completed reload, in  0.680 seconds
 Platform modules already initialized, skipping
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
 Refreshing native plugins compatible for Editor in 0.96 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1957 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 150.4 MB.
+System memory in use before: 150.3 MB.
 System memory in use after: 150.4 MB.
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2589.
-Total: 2.831900 ms (FindLiveObjects: 0.211000 ms CreateObjectMapping: 0.045500 ms MarkObjects: 2.283900 ms  DeleteObjects: 0.290400 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2586.
+Total: 2.173900 ms (FindLiveObjects: 0.208500 ms CreateObjectMapping: 0.046600 ms MarkObjects: 1.651200 ms  DeleteObjects: 0.266700 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 550.522442 seconds.
-  path: Assets/Audio/SFX/FPS_HitMarker_02.mp3
-  artifactKey: Guid(7ec4cbd0b6d331a4cb192cf2802f88ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/SFX/FPS_HitMarker_02.mp3 using Guid(7ec4cbd0b6d331a4cb192cf2802f88ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5971495ab5ef3cc7e101891b3e2e9160') in 0.032493 seconds
-  Import took 0.037318 seconds .
+  Time since last request: 645.982359 seconds.
+  path: Assets/Prefabs/Prototyping/PlasmaRifle.prefab
+  artifactKey: Guid(e6c369c3f502b5340aadc3ea1e7dc4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Prototyping/PlasmaRifle.prefab using Guid(e6c369c3f502b5340aadc3ea1e7dc4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d367135ef269369e79a475e233d6584') in 0.060104 seconds
+  Import took 0.064695 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.921103 seconds.
+  path: Assets/Prefabs/Prototyping/PlasmaRifle.prefab
+  artifactKey: Guid(e6c369c3f502b5340aadc3ea1e7dc4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Prototyping/PlasmaRifle.prefab using Guid(e6c369c3f502b5340aadc3ea1e7dc4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '310f8a3c0c9452fc2ca2481566bc63fe') in 0.022448 seconds
+  Import took 0.026850 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001122 seconds.
+Registered in 0.001445 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.99 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.21 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -337,17 +297,61 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.683 seconds
+- Completed reload, in  0.725 seconds
 Platform modules already initialized, skipping
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 0.97 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1957 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 150.3 MB.
-System memory in use after: 150.4 MB.
+System memory in use before: 150.2 MB.
+System memory in use after: 150.3 MB.
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2593.
-Total: 2.606300 ms (FindLiveObjects: 0.245600 ms CreateObjectMapping: 0.059000 ms MarkObjects: 2.032400 ms  DeleteObjects: 0.268500 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2590.
+Total: 2.262900 ms (FindLiveObjects: 0.221700 ms CreateObjectMapping: 0.046600 ms MarkObjects: 1.716300 ms  DeleteObjects: 0.277500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 277.952129 seconds.
+  path: Assets/Audio/SFX/Sci-Fi_MenuOpen_01.mp3
+  artifactKey: Guid(ef517eab81f62284a82495693b7c5fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/SFX/Sci-Fi_MenuOpen_01.mp3 using Guid(ef517eab81f62284a82495693b7c5fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bc67004e152b33420ab3b18f93988fe') in 0.031078 seconds
+  Import took 0.035593 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001481 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.96 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:575)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs line 575]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.657 seconds
+Platform modules already initialized, skipping
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1957 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 150.2 MB.
+System memory in use after: 150.3 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2594.
+Total: 2.303300 ms (FindLiveObjects: 0.191300 ms CreateObjectMapping: 0.043800 ms MarkObjects: 1.798100 ms  DeleteObjects: 0.269400 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

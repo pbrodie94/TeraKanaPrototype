@@ -21,5 +21,7 @@ public class ItemBox : Interactible
 
         Inventory inv = player.gameObject.GetComponent<Inventory>();
         inv.PickupItem(item);
+
+        audio.PlayOneShot(interactSound);
     }
 }

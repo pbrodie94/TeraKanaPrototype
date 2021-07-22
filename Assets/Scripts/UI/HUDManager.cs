@@ -60,6 +60,8 @@ public class HUDManager : MonoBehaviour
     public GameObject equipmentMenu;
     public GameObject interactMenu;
     [SerializeField] private float menuSmoothing = 10;
+    [SerializeField] private AudioClip menuOpen;
+    [SerializeField] private AudioClip menuClose;
     private RectTransform equipRect;
     private RectTransform interectRect;
     private Vector3 equipMenuDisplayLocation = Vector3.zero;
@@ -366,6 +368,8 @@ public class HUDManager : MonoBehaviour
         interectRect.anchoredPosition = interactMenuDisplayLocation + new Vector3(150, 0, 0);
         pauseDim.SetActive(true);
         activeMenu = true;
+
+        audioSource.PlayOneShot(menuOpen);
     }
 
     private void CloseMenu()
@@ -378,6 +382,8 @@ public class HUDManager : MonoBehaviour
         interactMenu.GetComponent<InventoryMenu>().ItemHover();
         pauseDim.SetActive(false);
         activeMenu = false;
+
+        audioSource.PlayOneShot(menuClose);
     }
 
     private void Update()

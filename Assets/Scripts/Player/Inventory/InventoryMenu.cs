@@ -19,6 +19,8 @@ public class InventoryMenu : MonoBehaviour
 
     private string error = "Inventory full.";
 
+    protected AudioSource audio;
+
     protected Inventory inventory;
     protected DetailsWindow detailsWindow;
 
@@ -47,6 +49,7 @@ public class InventoryMenu : MonoBehaviour
         }
 
         hud = GetComponentInParent<HUDManager>();
+        audio = hud.gameObject.GetComponent<AudioSource>();
 
         LevelController.PlayerSpawned += GetInventoryReference;
     }
@@ -125,7 +128,12 @@ public class InventoryMenu : MonoBehaviour
             {
                 //Remove item
                 hud.AddNotification("Used " + slot.item.itemName);
+                if (slot.item.itemUseSound)
+                    audio.PlayOneShot(slot.item.itemUseSound);
+
+
                 RemoveInventoryItem(slot);
+
 
                 ItemHover();
 

@@ -19,7 +19,7 @@ public class WeaponManager : ObjectHoldManager
     public delegate void ShotFired(Transform pos);
     public static event ShotFired OnShotFired;
 
-    void FixedUpdate()
+    void Update()
     {
         if (hud.isPaused || hud.isMenu)
             return;
@@ -92,10 +92,19 @@ public class WeaponManager : ObjectHoldManager
                     }
                 }                
             }
+            
+        }
+    }
 
+    void FixedUpdate()
+    {
+        if (hud.isPaused || hud.isMenu)
+            return;
+
+        if (activeWeapon)
+        {
             activeWeapon.transform.localPosition = Vector3.Lerp(activeWeapon.transform.localPosition, holdPosition, smoothing * Time.fixedDeltaTime);
             activeWeapon.transform.localRotation = Quaternion.Slerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.fixedDeltaTime);
-            
         }
     }
 

@@ -18,6 +18,9 @@ public class Interactible : MonoBehaviour
     protected Transform player;
     protected Transform cam;
 
+    protected AudioSource audio;
+    [SerializeField] protected AudioClip interactSound;
+
     protected HUDManager hud;
 
     protected virtual void Start()
@@ -27,6 +30,8 @@ public class Interactible : MonoBehaviour
         LevelController.PlayerSpawned += GetPlayerReference;
 
         interactMessage = holdInteract ? "Hold 'E' to " : "Press 'E' to ";
+
+        audio = GetComponent<AudioSource>();
     }
 
     public virtual void GetPlayerReference()

@@ -19,6 +19,8 @@ public class InventoryItem : Interactible
     protected string useFailure;
 
     public ItemType itemType;
+    
+    public AudioClip itemUseSound;
 
     protected override void Start()
     {

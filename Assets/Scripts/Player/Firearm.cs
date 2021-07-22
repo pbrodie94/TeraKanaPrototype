@@ -11,9 +11,9 @@ public class Firearm : Weapon
     public int ammo = 360;
     public int magSize = 30;
 
-    [Tooltip("Rate of fire in bullets per second")]
+    [Tooltip("Rate of fire in bullets per minute")]
     public float fireRate = 12;
-    protected float rof;
+    protected float rof = 0;
     public bool auto = false;
     public float recoil = 0.1f;
     public float recRot = 5;
@@ -35,7 +35,7 @@ public class Firearm : Weapon
 
         audio = GetComponent<AudioSource>();
 
-        rof = fireRate / 100;
+        rof = Mathf.Round(1 / (fireRate / 60) * 100) / 100;
     }
 
     protected override void Update()
@@ -105,10 +105,9 @@ public class Firearm : Weapon
         }
 
         if (audio)
+        {
             audio.PlayOneShot(gunShot);
-
-        //Test the notification system
-        //hud.AddNotification("Fired a shot", HUDManager.NotificationType.Warning);
+        }
 
         return true;
     }
