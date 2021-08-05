@@ -7,12 +7,19 @@ public class HUDManager : MonoBehaviour
 {
     public static HUDManager instance;
 
+    [SerializeField] private GameObject screenDim;
+    private RawImage screenDimImage;
+    private Color defaultDimColor;
+
+
     [Header("Health Bar")]
     [SerializeField] private Slider healthSlider;
+
 
     [Header("Message Panel")]
     [SerializeField] private Text messageText;
     [SerializeField] private GameObject messagePanel;
+
 
     [Header("Weapon Panel")]
     [SerializeField] private Text ammoText;
@@ -20,18 +27,21 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Text weaponName;
     [SerializeField] private GameObject weaponPanel;
 
+
     [Header("Aim Reticle")]
-    [SerializeField] private RawImage aimRetical;
-    [SerializeField] private Texture2D defaultAimRetical;
+    [SerializeField] private RawImage aimReticle;
+    [SerializeField] private Texture2D defaultAimReticle;
     private RectTransform aimRect;
     private float fadeSpeed = 10;
-    private Color defaultReticalColor;
+    private Color defaultReticleColor;
     private Color wantedColor;
+
 
     [Header("Hit Marker")]
     [SerializeField] private Image hitMarkerImage;
     [SerializeField] private Sprite hitMarker;
     [SerializeField] private Sprite killMarker;
+
 
     [Header("Progress Panel")]
     [SerializeField] private Slider progressBar;
@@ -40,21 +50,25 @@ public class HUDManager : MonoBehaviour
     private bool activeProgress = false;
     private float timeProgressBarCompleted = 0;
 
+
     [Header("Interact Panel")]
     [SerializeField] private Slider interactBar;
     [SerializeField] private Text interactText;
     [SerializeField] private GameObject interactPanel;
 
+
     [Header("Objective Panel")]
     [SerializeField] private Text objectiveText;
     [SerializeField] private GameObject objectivePanel;
+
 
     [Header("Notifications")]
     private Queue notifications = new Queue();
     private List<Notification> activeNotifications = new List<Notification>();
     private float notificationInterval = 0.3f;
     private float notificationLifeTime = 5;
-    private float timeLastNotfied = 0;
+    private float timeLastNotified = 0;
+
 
     [Header("Inventory Menus")]
     public GameObject equipmentMenu;
@@ -67,25 +81,15 @@ public class HUDManager : MonoBehaviour
     private Vector3 equipMenuDisplayLocation = Vector3.zero;
     private Vector3 interactMenuDisplayLocation = new Vector3(-50, 0, 0);
     private bool activeMenu = false;
-    public bool isMenu
-    {
-        get
-        {
-            return activeMenu;
-        }
-    }
+
 
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject pauseDim;
-    bool paused = false;
-    public bool isPaused
-    {
-        get
-        {
-            return paused;
-        }
-    }
+
+
+    [Header("GameOver Screen")]
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private Text gameOverText;
 
     [SerializeField] private AudioClip hitMarkerSFX;
     private AudioSource audioSource;
@@ -99,21 +103,20 @@ public class HUDManager : MonoBehaviour
     {
         ShowMessage(null, false);
 
-        aimRect = aimRetical.gameObject.GetComponent<RectTransform>();
-        defaultReticalColor = aimRetical.color;
-        wantedColor = defaultReticalColor;
+        aimRect = aimReticle.gameObject.GetComponent<RectTransform>();
+        defaultReticleColor = aimReticle.color;
+        wantedColor = defaultReticleColor;
 
-        SetDefaultAimRetical();
+        SetDefaultAimReticle();
 
         progressBar.value = 0;
         progressPanel.SetActive(false);
-        //objectivePanel.SetActive(false);
 
         interactBar.maxValue = 100;
         interactPanel.SetActive(false);
 
         pauseMenu.SetActive(false);
-        paused = false;
+        GameManager.instance.PauseGame(false);
 
         equipRect = equipmentMenu.GetComponent<RectTransform>();
         interectRect = interactMenu.GetComponent<RectTransform>();
@@ -128,6 +131,12 @@ public class HUDManager : MonoBehaviour
             c.a = 0;
             hitMarkerImage.color = c;
         }
+
+        screenDimImage = screenDim.GetComponent<RawImage>();
+        defaultDimColor = screenDimImage.color;
+        screenDim.SetActive(false);
+
+        gameOverScreen.SetActive(false);
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -165,20 +174,20 @@ public class HUDManager : MonoBehaviour
         weaponIcon.gameObject.SetActive(true);
     }
 
-    public void UpdateAimRetical(Texture2D newRetical, Vector2 dimensions)
+    public void UpdateAimReticle(Texture2D newReticle, Vector2 dimensions)
     { 
         if (dimensions == Vector2.zero)
         {
             dimensions = new Vector2(20, 20);
         }
 
-        aimRetical.texture = newRetical;
+        aimReticle.texture = newReticle;
         aimRect.sizeDelta = dimensions;
     }
 
-    public void SetDefaultAimRetical()
+    public void SetDefaultAimReticle()
     {
-        aimRetical.texture = defaultAimRetical;
+        aimReticle.texture = defaultAimReticle;
         aimRect.sizeDelta = new Vector2(20, 20);
     }
 
@@ -190,7 +199,7 @@ public class HUDManager : MonoBehaviour
         }
         else
         {
-            wantedColor.a = defaultReticalColor.a;
+            wantedColor.a = defaultReticleColor.a;
         }
     }
 
@@ -320,14 +329,14 @@ public class HUDManager : MonoBehaviour
 
     public void AddNotification(string msg, NotificationType notificationType)
     {
-        //Enque messages
+        //Enqueue messages
         notifications.Enqueue(new NotificationTemplate(msg, notificationType));
 
     }
 
     public void AddNotification(string msg, Color color)
     {
-        //Enque messages
+        //Enqueue messages
         notifications.Enqueue(new NotificationTemplate(msg, color));
 
     }
@@ -342,32 +351,30 @@ public class HUDManager : MonoBehaviour
     private void PauseGame()
     {
         Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
         pauseMenu.SetActive(true);
-        pauseDim.SetActive(true);
-        paused = true;
+        screenDim.SetActive(true);
+        GameManager.instance.PauseGame(true);
     }
 
     public void UnPauseGame()
     {
-        //Unpause
+        //Un pause
         Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1;
         pauseMenu.SetActive(false);
-        pauseDim.SetActive(false);
-        paused = false;
+        screenDim.SetActive(false);
+        GameManager.instance.PauseGame(false);
     }
 
     private void OpenMenu()
     {
         Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
         equipmentMenu.SetActive(true);
         interactMenu.SetActive(true);
         equipRect.anchoredPosition = equipMenuDisplayLocation - new Vector3(150, 0, 0);
         interectRect.anchoredPosition = interactMenuDisplayLocation + new Vector3(150, 0, 0);
-        pauseDim.SetActive(true);
+        screenDim.SetActive(true);
         activeMenu = true;
+        GameManager.instance.PauseGame(true);
 
         audioSource.PlayOneShot(menuOpen);
     }
@@ -375,22 +382,55 @@ public class HUDManager : MonoBehaviour
     private void CloseMenu()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1;
         equipmentMenu.SetActive(false);
         interactMenu.SetActive(false);
         equipmentMenu.GetComponent<InventoryMenu>().ItemHover();
         interactMenu.GetComponent<InventoryMenu>().ItemHover();
-        pauseDim.SetActive(false);
+        screenDim.SetActive(false);
         activeMenu = false;
+        GameManager.instance.PauseGame(false);
 
         audioSource.PlayOneShot(menuClose);
+    }
+
+    public void GameOver(bool dropComplete)
+    {
+        //Pause the game and free the cursor
+        GameManager.instance.PauseGame(true);
+        Cursor.lockState = CursorLockMode.Confined;
+
+        //Blackout the screen
+        Color blackout = defaultDimColor;
+        blackout.a = 1;
+        screenDimImage.color = blackout;
+        screenDim.SetActive(true);
+
+        //Silence all other sounds - GameManager or Level manager handles?
+
+        if (dropComplete)
+        {
+            gameOverText.text = "DROP COMPLETED!";
+            gameOverText.color = Color.white;
+            //Play completed music
+
+        } else {
+
+            gameOverText.text = "DROP FAILED!";
+            gameOverText.color = Color.red;
+            //Play failed music
+        }
+
+        //Display drop stats
+
+        //Show gameover screen
+        gameOverScreen.SetActive(true);
     }
 
     private void Update()
     {
         if (Input.GetButtonDown(InputManager.Pause))
         {
-            if (!paused)
+            if (!GameManager.instance.IsPaused())
             {
                 PauseGame();
             }
@@ -424,7 +464,7 @@ public class HUDManager : MonoBehaviour
         if (notifications.Count > 0)
         {
             //Delay showing notifications
-            if (activeNotifications.Count < 5 && Time.unscaledTime >= (timeLastNotfied + notificationInterval))
+            if (activeNotifications.Count < 5 && Time.unscaledTime >= (timeLastNotified + notificationInterval))
             {
                 //If there are other notifications on screen, move them down
                 if (activeNotifications.Count > 0)
@@ -448,7 +488,7 @@ public class HUDManager : MonoBehaviour
                 activeNotifications.Add(newNotification);
 
                 //Update the time notified for interval tracking
-                timeLastNotfied = Time.unscaledTime;
+                timeLastNotified = Time.unscaledTime;
             }
         }
 
@@ -462,7 +502,7 @@ public class HUDManager : MonoBehaviour
                 //If the notification has timed out, destroy them
                 if (n.timeShown + notificationLifeTime <= Time.unscaledTime)
                 {
-                   if (!n.expired)
+                    if (!n.expired)
                     {
                         n.DestroyMessage();
                     }
@@ -496,9 +536,9 @@ public class HUDManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Color reticalColor = aimRetical.color;
-        reticalColor.a = Mathf.Lerp(reticalColor.a, wantedColor.a, fadeSpeed * Time.deltaTime);
-        aimRetical.color = reticalColor;
+        Color reticleColor = aimReticle.color;
+        reticleColor.a = Mathf.Lerp(reticleColor.a, wantedColor.a, fadeSpeed * Time.deltaTime);
+        aimReticle.color = reticleColor;
 
         Color markerColor = hitMarkerImage.color;
         markerColor.a = Mathf.Lerp(markerColor.a, 0, fadeSpeed * Time.fixedDeltaTime);

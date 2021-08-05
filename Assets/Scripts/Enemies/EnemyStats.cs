@@ -52,17 +52,18 @@ public class EnemyStats : Stats
             anim.SetInteger("DamageIndex", takeDamageAnim);
             anim.SetTrigger("TakeDamage");
         } 
-        
-        if (dead) 
-        {
-            dead = true;
 
-            anim.SetTrigger("Die");
+    }
 
-            Enemy e = GetComponent<Enemy>();
-            e.Die();
+    protected override void Die()
+    {
+        base.Die();
 
-        }
+        dead = true;
 
+        anim.SetTrigger("Die");
+
+        Enemy e = GetComponent<Enemy>();
+        e.Die();
     }
 }

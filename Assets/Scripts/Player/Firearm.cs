@@ -26,14 +26,14 @@ public class Firearm : Weapon
     public GameObject bulletImpact;
 
     [Header("Audio")]
-    private AudioSource audio;
+    private AudioSource gunAudio;
     public AudioClip gunShot;
 
     protected override void Start()
     {
         base.Start();
 
-        audio = GetComponent<AudioSource>();
+        gunAudio = GetComponent<AudioSource>();
 
         rof = Mathf.Round(1 / (fireRate / 60) * 100) / 100;
     }
@@ -104,9 +104,9 @@ public class Firearm : Weapon
             Destroy(flash, rof);
         }
 
-        if (audio)
+        if (gunAudio)
         {
-            audio.PlayOneShot(gunShot);
+            gunAudio.PlayOneShot(gunShot);
         }
 
         return true;
@@ -114,7 +114,7 @@ public class Firearm : Weapon
 
     public bool Reload()
     {
-        if (ammo <= 0)
+        if (ammo <= 0 || mag == magSize)
             return false;
 
         int ammoNeeded = magSize - mag;

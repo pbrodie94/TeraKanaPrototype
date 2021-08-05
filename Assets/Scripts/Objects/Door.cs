@@ -26,14 +26,14 @@ public class Door : MonoBehaviour
     protected Transform cam;
 
     protected HUDManager hud;
-    protected Animation animation;
+    protected Animation doorAnimation;
 
     protected virtual void Start()
     {
         
         hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
 
-        animation = GetComponentInChildren<Animation>();
+        doorAnimation = GetComponentInChildren<Animation>();
 
         message = "Press 'E' to open door.";
         messageShown = false;
@@ -103,13 +103,13 @@ public class Door : MonoBehaviour
         //Open door
         if (!opened)
         {
-            animation.Play("open");
+            doorAnimation.Play("open");
             message = "Press 'E' to close door";
             opened = true;
 
         } else if (opened && canClose)
         {
-            animation.Play("close");
+            doorAnimation.Play("close");
             message = "Press 'E' to open door.";
             opened = false;
         }

@@ -18,7 +18,7 @@ public class FPSController : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
 
     [Header("Audio")]
-    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioSource playerAudio;
     [SerializeField] private AudioClip[] footStepsDirt;
 
     [Range(0, 1)] [SerializeField] private float movementSmoothing = 0.5f;
@@ -47,7 +47,7 @@ public class FPSController : MonoBehaviour
 
     private void Awake()
     {
-        audio = GetComponent<AudioSource>();
+        playerAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         flashlight = GetComponentInChildren<Light>();
@@ -99,7 +99,7 @@ public class FPSController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (HUDManager.instance.isPaused || HUDManager.instance.isMenu)
+        if (GameManager.instance.IsPaused())
             return;
 
         Move();
@@ -218,9 +218,9 @@ public class FPSController : MonoBehaviour
 
     public void Footstep()
     {
-        if (audio && footStepsDirt.Length > 0)
+        if (playerAudio && footStepsDirt.Length > 0)
         {
-            audio.PlayOneShot(footStepsDirt[Random.Range(0, footStepsDirt.Length)]);
+            playerAudio.PlayOneShot(footStepsDirt[Random.Range(0, footStepsDirt.Length)]);
         }
     }
 }

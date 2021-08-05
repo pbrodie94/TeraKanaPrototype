@@ -10,7 +10,7 @@ public enum ItemType
     Armour
 }
 
-public class InventoryItem : Interactible
+public class InventoryItem : Interactable
 {
     [Header("Item Properties")]
     public string itemName;

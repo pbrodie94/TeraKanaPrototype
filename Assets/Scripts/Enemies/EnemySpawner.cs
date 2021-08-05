@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public bool spawnComplete = false;
+    public float spawnProgress = 0;
     public LinkedList<SpawnArea> areas = new LinkedList<SpawnArea>();
 
     public GameObject Monster;
@@ -32,6 +34,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemies()
     {
+        spawnComplete = false;
+        spawnProgress = 0;
+
         int x = Random.Range(minEnemies, maxEnemies);
 
         for (int i = 0; i < x; i++)
@@ -83,7 +88,11 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(Monster, point, rotation);
 
             areas.GetAtIndex(areaIndex).AddedEnemy();
+
+            spawnProgress = i / x;
         }
+
+        spawnComplete = true;
     }
 
     public void SetEnemySpawnBounds(int min, int max)

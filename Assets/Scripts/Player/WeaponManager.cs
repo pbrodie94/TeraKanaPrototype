@@ -21,7 +21,7 @@ public class WeaponManager : ObjectHoldManager
 
     void Update()
     {
-        if (hud.isPaused || hud.isMenu)
+        if (GameManager.instance.IsPaused())
             return;
 
         if (activeWeapon)
@@ -98,7 +98,7 @@ public class WeaponManager : ObjectHoldManager
 
     void FixedUpdate()
     {
-        if (hud.isPaused || hud.isMenu)
+        if (GameManager.instance.IsPaused())
             return;
 
         if (activeWeapon)

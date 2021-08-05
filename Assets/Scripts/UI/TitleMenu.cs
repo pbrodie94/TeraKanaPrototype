@@ -8,15 +8,7 @@ public class TitleMenu : MenuScript
 
     protected override void Update()
     {
-        if (!instructionsPanel.activeSelf && !optionsPanel.activeSelf)
-        {
-            for (int i = 0; i < menuItems.Length; i++)
-            {
-                menuItems[i].color = defaultColor;
-            }
-
-            menuItems[menuSelection].color = selectedColor;
-        }
+        base.Update();
 
         if (instructionsPanel.activeSelf)
         {
@@ -41,7 +33,7 @@ public class TitleMenu : MenuScript
         {
             case 0:
                 //Load Level
-                SceneManager.LoadScene(LevelManager.Level);
+                GameManager.instance.LoadLevel(LevelManager.Level);
 
                 break;
 
@@ -61,11 +53,7 @@ public class TitleMenu : MenuScript
 
             case 3:
                 //Quit
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-                Application.Quit();
-#endif
+                GameManager.instance.QuitGame();
                 break;
         }
     }

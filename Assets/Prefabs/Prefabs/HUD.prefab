@@ -2576,6 +2576,85 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &501149624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 501149625}
+  - component: {fileID: 501149627}
+  - component: {fileID: 501149626}
+  m_Layer: 5
+  m_Name: MainMenuText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &501149625
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501149624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 53954117047794439}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 300}
+  m_SizeDelta: {x: 500, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &501149627
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501149624}
+  m_CullTransparentMesh: 1
+--- !u!114 &501149626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501149624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 70
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 7
+    m_MaxSize: 70
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Return To Ship
 --- !u!1 &507608512
 GameObject:
   m_ObjectHideFlags: 0
@@ -10735,6 +10814,98 @@ MonoBehaviour:
   m_Spacing: {x: 13, y: 13}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &1237801343005874386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53954117047794439}
+  - component: {fileID: 3599348930479829356}
+  - component: {fileID: 5393914996372506307}
+  - component: {fileID: 2134473638}
+  m_Layer: 5
+  m_Name: GameOverPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &53954117047794439
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237801343005874386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1276256326761638197}
+  - {fileID: 501149625}
+  m_Father: {fileID: 2681633155674461657}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3599348930479829356
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237801343005874386}
+  m_CullTransparentMesh: 1
+--- !u!114 &5393914996372506307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237801343005874386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2134473638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237801343005874386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605f5c4c266b5f74da96783e531931de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuItems:
+  - {fileID: 501149626}
 --- !u!1 &1767611841557238807
 GameObject:
   m_ObjectHideFlags: 0
@@ -11449,6 +11620,7 @@ RectTransform:
   - {fileID: 1937024021}
   - {fileID: 1544834987886583742}
   - {fileID: 2179843808196598156}
+  - {fileID: 53954117047794439}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11494,8 +11666,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0.2
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -11530,6 +11702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd008f4b0350814bbab4db0e338f455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenDim: {fileID: 8893658564244765304}
   healthSlider: {fileID: 2681633155573689139}
   messageText: {fileID: 5636612292486903650}
   messagePanel: {fileID: 6492062268952168405}
@@ -11537,8 +11710,8 @@ MonoBehaviour:
   weaponIcon: {fileID: 7334084340999502698}
   weaponName: {fileID: 3006177854888075643}
   weaponPanel: {fileID: 6966587997633318467}
-  aimRetical: {fileID: 2681633155135330933}
-  defaultAimRetical: {fileID: 2800000, guid: 27cd6abec3ce0334b9db6698e88939ad, type: 3}
+  aimReticle: {fileID: 2681633155135330933}
+  defaultAimReticle: {fileID: 2800000, guid: 27cd6abec3ce0334b9db6698e88939ad, type: 3}
   hitMarkerImage: {fileID: 5313877675580848085}
   hitMarker: {fileID: 21300000, guid: bb237981189599049b1c5c8e1495fd49, type: 3}
   killMarker: {fileID: 21300000, guid: f34b816e29d60434e8a3e149143aec9d, type: 3}
@@ -11556,7 +11729,8 @@ MonoBehaviour:
   menuOpen: {fileID: 8300000, guid: ef517eab81f62284a82495693b7c5fec, type: 3}
   menuClose: {fileID: 8300000, guid: db366d6961c8fc74c8a9dd2b25582d1b, type: 3}
   pauseMenu: {fileID: 1937024020}
-  pauseDim: {fileID: 8893658564244765304}
+  gameOverScreen: {fileID: 1237801343005874386}
+  gameOverText: {fileID: 6426761549133683398}
   hitMarkerSFX: {fileID: 8300000, guid: fa26836e472fdde44bf5097e17efe22d, type: 3}
 --- !u!82 &137622501
 AudioSource:
@@ -12256,6 +12430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c015399d3bdb242b399ee65825fc72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSlots: 20
   detailsPanel: {fileID: 31859156920336217}
   inventorySlots:
   - {fileID: 1846551550}
@@ -12277,433 +12452,7 @@ MonoBehaviour:
   - {fileID: 1491032329}
   - {fileID: 1692418908}
   - {fileID: 471280526}
-  - {fileID: 1846551550}
   - {fileID: 1683719989}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
-  - {fileID: 1846551550}
   itemSlotGrid: {fileID: 8188368424245236268}
   inventorySlot: {fileID: 3038881118217669293}
   slideSpeed: 10
@@ -13008,6 +12757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46a61abc8f44924888cd37daca9a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSlots: 20
   detailsPanel: {fileID: 7913593356348545365}
   inventorySlots:
   - {fileID: 783583875}
@@ -13029,441 +12779,90 @@ MonoBehaviour:
   - {fileID: 551789548}
   - {fileID: 960209428}
   - {fileID: 929413599}
-  - {fileID: 783583875}
   - {fileID: 1196735206}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
-  - {fileID: 783583875}
   itemSlotGrid: {fileID: 203463218831656268}
   inventorySlot: {fileID: 3564680136816702343}
   slideSpeed: 10
   detailDisplayPosition: {x: -350, y: 0, z: 0}
+--- !u!1 &4688504850054862541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1276256326761638197}
+  - component: {fileID: 4646819548727899710}
+  - component: {fileID: 6426761549133683398}
+  m_Layer: 5
+  m_Name: GameOverText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1276256326761638197
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4688504850054862541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 53954117047794439}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 1000, y: 150}
+  m_Pivot: {x: 0, y: 1}
+--- !u!222 &4646819548727899710
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4688504850054862541}
+  m_CullTransparentMesh: 1
+--- !u!114 &6426761549133683398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4688504850054862541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 100
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 108
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: DROP COMPLETED!
 --- !u!1 &5147358831942547225
 GameObject:
   m_ObjectHideFlags: 0
@@ -14965,12 +14364,12 @@ GameObject:
   - component: {fileID: 2250832998145233290}
   - component: {fileID: 7023108243490982194}
   m_Layer: 5
-  m_Name: PauseDim
+  m_Name: ScreenDim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5612450292176331209
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14988,7 +14387,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2250832998145233290
 CanvasRenderer:

@@ -6,13 +6,11 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MenuScript
 {
     [SerializeField] private GameObject optionsPanel;
-    private HUDManager hud;
 
     protected override void Start()
     {
         base.Start();
 
-        hud = GetComponentInParent<HUDManager>();
     }
 
     protected override void Update()
@@ -42,7 +40,7 @@ public class PauseMenu : MenuScript
         {
             case 0:
                 //Resume: Un-pause
-                hud.UnPauseGame();
+                HUDManager.instance.UnPauseGame();
                 break;
 
             case 1:
@@ -52,19 +50,15 @@ public class PauseMenu : MenuScript
 
             case 2:
                 //Main Menu
-                hud.UnPauseGame();
+                HUDManager.instance.UnPauseGame();
                 Cursor.lockState = CursorLockMode.None;
-                SceneManager.LoadScene(LevelManager.MainMenu);
+                GameManager.instance.LoadLevel(LevelManager.MainMenu);
 
                 break;
 
             case 3:
                 //Quit
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-                Application.Quit();
-#endif
+                GameManager.instance.QuitGame();
                 break;
         }
     }

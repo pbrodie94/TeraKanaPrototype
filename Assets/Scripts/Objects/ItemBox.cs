@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemBox : Interactible
+public class ItemBox : Interactable
 {
     [Header("Item Crate Properties")]
     public InventoryItem item;
@@ -20,8 +20,14 @@ public class ItemBox : Interactible
         base.Interact();
 
         Inventory inv = player.gameObject.GetComponent<Inventory>();
-        inv.PickupItem(item);
 
-        audio.PlayOneShot(interactSound);
+        if (inv.PickupItem(item))
+        {
+            audioSource.PlayOneShot(interactSound);
+            return;
+        }
+
+        isInteractable = true;
+
     }
 }

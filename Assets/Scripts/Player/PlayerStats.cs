@@ -1,23 +1,40 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerStats : Stats
 {
-    HUDManager hud;
+
+    private bool godMode = false;
 
     protected override void Start()
     {
         base.Start();
 
-        hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
+        HUDManager.instance.UpdateHealth(health, maxHealth);
+    }
 
-        hud.UpdateHealth(health, maxHealth);
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            godMode = !godMode;
+
+            string gmMsg = "God Mode ";
+
+            gmMsg += godMode ? "Enabled" : "Disabled";
+
+            HUDManager.instance.AddNotification(gmMsg, Color.blue);
+        }
     }
 
     public override void TakeDamage(float damage)
     {
+        if (godMode)
+            return;
+
         base.TakeDamage(damage);
 
-        hud.UpdateHealth(health);
+        HUDManager.instance.UpdateHealth(health);
     }
 
     public bool AddHealth(float amount)
@@ -30,8 +47,24 @@ public class PlayerStats : Stats
         if (health > maxHealth)
             health = maxHealth;
 
-        hud.UpdateHealth(health);
+        HUDManager.instance.UpdateHealth(health);
 
         return true;
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+
+        StartCoroutine(DeathSequence());
+    }
+
+    private IEnumerator DeathSequence()
+    {
+        //Player falls/play die animation
+
+        yield return new WaitForSeconds(2);
+
+        HUDManager.instance.GameOver(false);
     }
 }

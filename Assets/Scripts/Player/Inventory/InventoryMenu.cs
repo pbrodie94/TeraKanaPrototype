@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InventoryMenu : MonoBehaviour
 {
     [Header("Menu Properties")]
+    [SerializeField] private int maxSlots;
     [SerializeField] protected GameObject detailsPanel;
     [SerializeField] List<InventorySlot> inventorySlots = new List<InventorySlot>();
     [SerializeField] GridLayoutGroup itemSlotGrid;
@@ -19,12 +20,10 @@ public class InventoryMenu : MonoBehaviour
 
     private string error = "Inventory full.";
 
-    protected AudioSource audio;
+    protected AudioSource inventoryAudio;
 
     protected Inventory inventory;
     protected DetailsWindow detailsWindow;
-
-    protected HUDManager hud;
 
     protected int inventoryCapacity = 0;
 
@@ -48,8 +47,7 @@ public class InventoryMenu : MonoBehaviour
             slot.InitializeSlot(this);
         }
 
-        hud = GetComponentInParent<HUDManager>();
-        audio = hud.gameObject.GetComponent<AudioSource>();
+        inventoryAudio = HUDManager.instance.gameObject.GetComponent<AudioSource>();
 
         LevelController.PlayerSpawned += GetInventoryReference;
     }
@@ -57,17 +55,28 @@ public class InventoryMenu : MonoBehaviour
     protected virtual void OnValidate()
     {
         if (!inventorySlot)
+        {
             inventorySlot = transform.Find("SelectionSlot").gameObject;
 
-        inventorySlots.Add(inventorySlot.GetComponent<InventorySlot>());
-
-        int baseSlots = (4 * 5) - inventorySlots.Count;
-
-        for (int i = 0; i <= baseSlots; i++)
-        {
-            GameObject slot = Instantiate(inventorySlot, itemSlotGrid.gameObject.transform);
-            inventorySlots.Add(slot.GetComponent<InventorySlot>());
+            inventorySlots.Add(inventorySlot.GetComponent<InventorySlot>());
         }
+
+        if (maxSlots <= 0)
+        {
+            maxSlots = 4 * 5;
+        }
+
+        if (inventorySlots.Count < maxSlots)
+        {
+            int baseSlots = maxSlots - inventorySlots.Count - 1;
+
+            for (int i = 0; i <= baseSlots; i++)
+            {
+                GameObject slot = Instantiate(inventorySlot, itemSlotGrid.gameObject.transform);
+                inventorySlots.Add(slot.GetComponent<InventorySlot>());
+            }
+        }
+
     }
 
     public void GetInventoryReference()
@@ -77,6 +86,8 @@ public class InventoryMenu : MonoBehaviour
 
     public virtual bool AddInventoryItem(InventoryItem item)
     {
+        Debug.Log("Capacity: " + inventoryCapacity + " # Slots: " + inventorySlots.Count + " Filled = " + IsFull());
+
         if (IsFull())
             return false;
 
@@ -87,11 +98,13 @@ public class InventoryMenu : MonoBehaviour
                 inventorySlots[i].SetSlot(item);
                 ++inventoryCapacity;
 
+                Debug.Log("Capacity: " + inventoryCapacity + " # Slots: " + inventorySlots.Count + " Filled = " + IsFull());
+
                 return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     protected virtual void RemoveInventoryItem(InventorySlot slot)
@@ -100,13 +113,20 @@ public class InventoryMenu : MonoBehaviour
         slot.ClearSlot();
         --inventoryCapacity;
 
+        Debug.Log("Capacity: " + inventoryCapacity + " # Slots: " + inventorySlots.Count + " Filled = " + IsFull());
+
         //Rearrange items in the slots
         int index = inventorySlots.IndexOf(slot);
 
         for (int i = index + 1; i < inventorySlots.Count; i++)
         {
             if (!inventorySlots[i].SlotFilled())
+            {
                 break;
+            }
+
+            //Decrease inventory capacity, because we add in the Add function
+            --inventoryCapacity;
 
             AddInventoryItem(inventorySlots[i].item);
             inventorySlots[i].ClearSlot();
@@ -122,31 +142,32 @@ public class InventoryMenu : MonoBehaviour
 
         if (inventory.RemoveItem(slot.item))
         {
-
             //use the item
             if (slot.item.Use())
             {
                 //Remove item
-                hud.AddNotification("Used " + slot.item.itemName);
-                if (slot.item.itemUseSound)
-                    audio.PlayOneShot(slot.item.itemUseSound);
+                HUDManager.instance.AddNotification("Used " + slot.item.itemName);
 
+                if (slot.item.itemUseSound)
+                {
+                    inventoryAudio.PlayOneShot(slot.item.itemUseSound);
+                }
 
                 RemoveInventoryItem(slot);
-
 
                 ItemHover();
 
             } else
             {
-                //Display reson why it could not be used
-                hud.AddNotification(slot.item.GetUseFailure(), HUDManager.NotificationType.Warning);
+                //Display reason why it could not be used
+                HUDManager.instance.AddNotification(slot.item.GetUseFailure(), HUDManager.NotificationType.Warning);
                 slot.ClearSlot();
+                --inventoryCapacity;
                 inventory.AddItem(slot.item);
             }
         } else
         {
-            hud.AddNotification("Could not use item", HUDManager.NotificationType.Warning);
+            HUDManager.instance.AddNotification("Could not use item", HUDManager.NotificationType.Warning);
         }
     }
 

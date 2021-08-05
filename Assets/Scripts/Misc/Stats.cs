@@ -37,8 +37,13 @@ public class Stats : MonoBehaviour
 
         if (health <= 0)
         {
-            health = 0;
-            dead = true;
+            Die();
         }
+    }
+
+    protected virtual void Die()
+    {
+        health = 0;
+        dead = true;
     }
 }

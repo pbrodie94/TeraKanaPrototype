@@ -90,8 +90,6 @@ public class EnemyAIStateManager : MonoBehaviour
                 UpdateState(defaultState);
             }
         }
-
-       
     }
 
     void UpdateState(EnemyState newState)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
+    public bool spawnComplete = false;
+    public float progress;
     private GameObject[] itemSpawnPoints;
     private LinkedList<GameObject> availableSpawnPoints = new LinkedList<GameObject>();
 
@@ -38,8 +40,14 @@ public class ItemSpawner : MonoBehaviour
 
     public void SpawnItems(int min, int max)
     {
+        progress = 0;
+        spawnComplete = false;
+
         if (availableSpawnPoints.size <= 0 || itemObjects.Length <= 0)
+        {
+            spawnComplete = true;
             return;
+        }
 
         int minItems, maxItems;
 
@@ -68,6 +76,10 @@ public class ItemSpawner : MonoBehaviour
 
             //Remove the spawnpoint from the available spawn points so it can't be used again
             availableSpawnPoints.RemoveAtIndex(spIndex);
+
+            progress = i / itemCount;
         }
+
+        spawnComplete = true;
     }
 }

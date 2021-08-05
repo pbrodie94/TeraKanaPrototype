@@ -90,11 +90,19 @@ public class Enemy : MonoBehaviour
         anim.SetFloat("MoveSpeed", speed);
         anim.SetBool("Alert", (aiState.state == EnemyAIStateManager.EnemyState.Alert || aiState.state == EnemyAIStateManager.EnemyState.Engaging));
 
-        distToTarget = Vector3.Distance(transform.position, target.position);
+        if (target)
+        {
+            distToTarget = Vector3.Distance(transform.position, target.position);
+        }
     }
 
     protected virtual void RotateTowards()
     {
+        if (!target)
+        {
+            return;
+        }
+
         Vector3 dir = (target.position - transform.position).normalized;
         Quaternion rot = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
         transform.rotation = rot;
@@ -102,7 +110,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Engage()
     {
-        if (stats.died)
+        if (stats.died || !target)
             return;
 
         //Combat manager has given enemy a turn to attack
@@ -172,7 +180,7 @@ public class Enemy : MonoBehaviour
         anim.SetInteger("AttackIndex", 0);
         anim.SetTrigger("Attack");
 
-        //Legth of 1 anim frame (24fps 1sec / 24frames) x the number of frames needed to wait
+        //Length of 1 anim frame (24fps 1sec / 24frames) x the number of frames needed to wait
         float wait = 0.042f * onOffFrames[0].x;
 
         yield return new WaitForSeconds(wait);
@@ -256,9 +264,9 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        this.enabled = false;
-
         Destroy(gameObject, 30);
+
+        this.enabled = false;
     }
 
     private void OnDrawGizmosSelected()

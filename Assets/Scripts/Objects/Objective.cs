@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Objective : Interactible
+public class Objective : Interactable
 {
     [Header("Objective Properties")]
     public MissionType objectiveType;
@@ -16,13 +16,9 @@ public class Objective : Interactible
         }
     }
 
-    protected LevelMission missionManager;
-
-    public virtual void InitializeObjective(LevelMission manager, HUDManager hudManager)
+    public virtual void InitializeObjective()
     {
         _completed = false;
-        missionManager = manager;
-        hud = hudManager;
 
         if (interactionRange <= 0)
             interactionRange = 4;

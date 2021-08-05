@@ -15,8 +15,8 @@ public class Weapon : InventoryItem
     public Vector3 sprintPosition;
     public Vector3 sprintRotation;
 
-    [SerializeField] protected Texture2D aimRetical;
-    [SerializeField] protected Vector2 reticalDimensions = Vector2.zero;
+    [SerializeField] protected Texture2D aimReticle;
+    [SerializeField] protected Vector2 reticleDimensions = Vector2.zero;
     protected bool isHeld = false;
 
     protected InventoryItem itemCreds;
@@ -53,10 +53,10 @@ public class Weapon : InventoryItem
         if (inventory.PickupItem(itemCreds))
         {
             //Play pickup sound
-            if (audio && interactSound)
-                audio.PlayOneShot(interactSound);
+            if (audioSource && interactSound)
+                audioSource.PlayOneShot(interactSound);
 
-            hud.UpdateAimRetical(aimRetical, reticalDimensions);
+            hud.UpdateAimReticle(aimReticle, reticleDimensions);
         }
     }
 

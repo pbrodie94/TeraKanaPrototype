@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactible : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
     [Header("Interact Preferences")]
     [SerializeField] protected float interactionRange = 4;
@@ -12,13 +12,14 @@ public class Interactible : MonoBehaviour
     protected float holdProgress = 0;
     [SerializeField] protected float progressSpeed = 150;
 
-    protected bool isInteractible = true;
+    protected bool isInteractable = true;
+    private bool canInteract = true;
     protected bool messageShown = false;
 
     protected Transform player;
     protected Transform cam;
 
-    protected AudioSource audio;
+    protected AudioSource audioSource;
     [SerializeField] protected AudioClip interactSound;
 
     protected HUDManager hud;
@@ -31,7 +32,7 @@ public class Interactible : MonoBehaviour
 
         interactMessage = holdInteract ? "Hold 'E' to " : "Press 'E' to ";
 
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public virtual void GetPlayerReference()
@@ -42,7 +43,7 @@ public class Interactible : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (!player || !isInteractible)
+        if (!player || !isInteractable)
             return;
 
         //Get distance from the player
@@ -65,7 +66,7 @@ public class Interactible : MonoBehaviour
                         messageShown = true;
 
                         //If player is holding the button
-                        if (Input.GetButton(InputManager.Action))
+                        if (Input.GetButton(InputManager.Action) && canInteract)
                         {
                             //Check if progress is greater than 100
                             if (holdProgress < 100)
@@ -83,12 +84,6 @@ public class Interactible : MonoBehaviour
 
                             }
                         } 
-
-                        //If player releases the button, reset the progress to 0
-                        if (Input.GetButtonUp(InputManager.Action))
-                        {
-                            holdProgress = 0;
-                        }
                     }
                     else
                     {
@@ -100,7 +95,7 @@ public class Interactible : MonoBehaviour
                         }
 
                         //Player only needs to press the button once to interact
-                        if (Input.GetButtonDown(InputManager.Action))
+                        if (Input.GetButtonDown(InputManager.Action) && canInteract)
                         {
 
                             Interact();
@@ -116,6 +111,7 @@ public class Interactible : MonoBehaviour
                     {
                         hud.HideInteractBar();
                         messageShown = false;
+                        holdProgress = 0;
                     }
                     else
                     {
@@ -135,6 +131,7 @@ public class Interactible : MonoBehaviour
             {
                 hud.HideInteractBar();
                 messageShown = false;
+                holdProgress = 0;
             }
             else
             {
@@ -142,6 +139,12 @@ public class Interactible : MonoBehaviour
                 messageShown = false;
             }
 
+        }
+
+        if (Input.GetButtonUp(InputManager.Action))
+        {
+            canInteract = true;
+            holdProgress = 0;
         }
     }
 
@@ -158,7 +161,9 @@ public class Interactible : MonoBehaviour
             hud.ShowMessage(null, false);
         }
 
-        isInteractible = false;
+        isInteractable = false;
+        canInteract = false;
+        holdProgress = 0;
     }
 
     //Show the interaction range when the object is selected

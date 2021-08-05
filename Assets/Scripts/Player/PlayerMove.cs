@@ -16,24 +16,23 @@ public class PlayerMove : MonoBehaviour
 
 	private Vector3 moveDirection = Vector3.zero;
 	private CharacterController controller;
-	private Transform cam;
 	private Light flashlight;
 
-	private HUDManager hud;
+	PlayerStats stats;
 
     void Start()
 	{
         controller = gameObject.GetComponent<CharacterController>();
-        cam = GameObject.Find("Main Camera").transform;
 		flashlight = GetComponentInChildren<Light>();
-		hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
+
+		stats = GetComponent<PlayerStats>();
 
 		flashlight.enabled = false;
     }
 
 	void Update()
 	{
-		if (hud.isPaused || hud.isMenu)
+		if (GameManager.instance.IsPaused() || stats.died)
 			return;
 
 		//Movement
