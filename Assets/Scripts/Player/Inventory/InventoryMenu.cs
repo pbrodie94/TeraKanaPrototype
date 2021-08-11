@@ -113,8 +113,6 @@ public class InventoryMenu : MonoBehaviour
         slot.ClearSlot();
         --inventoryCapacity;
 
-        Debug.Log("Capacity: " + inventoryCapacity + " # Slots: " + inventorySlots.Count + " Filled = " + IsFull());
-
         //Rearrange items in the slots
         int index = inventorySlots.IndexOf(slot);
 

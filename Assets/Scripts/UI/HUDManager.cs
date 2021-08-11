@@ -42,6 +42,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Sprite hitMarker;
     [SerializeField] private Sprite killMarker;
 
+    [Header("Damage Hud")] 
+    [SerializeField] private RawImage damageHud;
 
     [Header("Progress Panel")]
     [SerializeField] private Slider progressBar;
@@ -130,6 +132,13 @@ public class HUDManager : MonoBehaviour
             Color c = hitMarkerImage.color;
             c.a = 0;
             hitMarkerImage.color = c;
+        }
+
+        if (damageHud)
+        {
+            Color c = damageHud.color;
+            c.a = 0;
+            damageHud.color = c;
         }
 
         screenDimImage = screenDim.GetComponent<RawImage>();
@@ -225,7 +234,14 @@ public class HUDManager : MonoBehaviour
     {
         healthSlider.maxValue = maxValue;
         healthSlider.value = value;
-    }    
+    }
+
+    public void ApplyDamageHud()
+    {
+        Color damageHudColor = damageHud.color;
+        damageHudColor.a = 1;
+        damageHud.color = damageHudColor;
+    }
 
     public void UpdateObjective(string objective)
     {
@@ -544,5 +560,8 @@ public class HUDManager : MonoBehaviour
         markerColor.a = Mathf.Lerp(markerColor.a, 0, fadeSpeed * Time.fixedDeltaTime);
         hitMarkerImage.color = markerColor;
 
+        Color damageHudColor = damageHud.color;
+        damageHudColor.a = Mathf.Lerp(damageHudColor.a, 0, fadeSpeed * Time.deltaTime);
+        damageHud.color = damageHudColor;
     }
 }

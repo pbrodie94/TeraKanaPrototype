@@ -141,4 +141,9 @@ public class EnemyAIStateManager : MonoBehaviour
     {
         cm.RemoveEnemy(enemy);
     }
+
+    public EnemyState GetCurrentState()
+    {
+        return state;
+    }
 }

@@ -35,6 +35,7 @@ public class PlayerStats : Stats
         base.TakeDamage(damage);
 
         HUDManager.instance.UpdateHealth(health);
+        HUDManager.instance.ApplyDamageHud();
     }
 
     public bool AddHealth(float amount)

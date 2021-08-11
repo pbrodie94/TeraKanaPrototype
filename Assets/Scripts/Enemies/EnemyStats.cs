@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStats : Stats
-{ 
+{
+    [SerializeField] private string enemyName;
+    
     public float damageAnimRatio = 35;
 
     int takeDamageAnim = 0;
@@ -12,6 +14,8 @@ public class EnemyStats : Stats
     public Animator anim;
 
     EnemyAIStateManager aiState;
+    private static readonly int DamageIndex = Animator.StringToHash("DamageIndex");
+    private static readonly int Damage = Animator.StringToHash("TakeDamage");
 
     protected override void Start()
     {
@@ -49,8 +53,8 @@ public class EnemyStats : Stats
             nextDamageAnim -= damageAnimHealth;
 
             takeDamageAnim = Random.Range(0, 2);
-            anim.SetInteger("DamageIndex", takeDamageAnim);
-            anim.SetTrigger("TakeDamage");
+            anim.SetInteger(DamageIndex, takeDamageAnim);
+            anim.SetTrigger(Damage);
         } 
 
     }
@@ -65,5 +69,20 @@ public class EnemyStats : Stats
 
         Enemy e = GetComponent<Enemy>();
         e.Die();
+    }
+
+    public float GetCurrentHealth()
+    {
+        return health;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public string GetEnemyName()
+    {
+        return enemyName;
     }
 }
