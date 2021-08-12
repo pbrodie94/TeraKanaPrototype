@@ -20,6 +20,7 @@ public class ExtractionPoint : BioScan
 
     protected virtual void ScanComplete()
     {
-
+        //Show the drop complete screen
+        HUDManager.instance.GameOver(true);
     }
 }

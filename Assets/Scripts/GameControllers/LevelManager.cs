@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public const int MainMenu = 0;
-    public const int Level = 1;
+    public const int LoadingScreen = 0;
+    public const int MainMenu = 1;
+    public const int Level = 2;
 }

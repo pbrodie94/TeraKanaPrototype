@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56e01482defb72498464481ec7e47f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: []
   Monster: {fileID: 8780731402932399666, guid: e84beaf4bf14765419d0cd694dc7fb22, type: 3}
 --- !u!114 &1045439433114665301
 MonoBehaviour:
@@ -111,3 +110,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemObjects: []
+  items: []

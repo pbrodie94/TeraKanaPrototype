@@ -14,7 +14,7 @@ public class MeleeHitDetection : MonoBehaviour
     {
         if (myTag == "Enemy")
         {
-            if (other.tag == "Player")
+            if (other.CompareTag("Player"))
             {
                 Enemy e = transform.root.GetComponent<Enemy>();
 

@@ -18,11 +18,13 @@ public class BioScan : MonoBehaviour
 
     protected string scanMessage;
 
-    protected HUDManager hud;
+    [Header("Audio")]
+    [SerializeField] protected AudioSource audioSource;
+    [SerializeField] protected AudioClip scanCompleteAudio;
 
     protected virtual void Start()
     {
-        hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         scanMessage = "Bio Scan At: ";
     }
@@ -31,7 +33,7 @@ public class BioScan : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            hud.InitializeProgressBar(scanMessage, progress);
+            HUDManager.instance.InitializeProgressBar(scanMessage, progress);
         }
     }
 
@@ -47,10 +49,16 @@ public class BioScan : MonoBehaviour
                 progress = 100;
                 _scanComplete = true;
 
+                //Handle audio
+                if (scanCompleteAudio)
+                {
+                    audioSource.PlayOneShot(scanCompleteAudio);
+                }
+
                 StartCoroutine(OnScanComplete());
             }
 
-            hud.UpdateProgressBar(scanMessage, progress);
+            HUDManager.instance.UpdateProgressBar(scanMessage, progress);
         }
     }
 

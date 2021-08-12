@@ -13,11 +13,4 @@ public class InteractionItem : InventoryItem
 
         
     }
-
-    public override bool Use()
-    {
-        useFailure = "Cannot use " + itemName + " yet";
-
-        return base.Use();
-    }
 }

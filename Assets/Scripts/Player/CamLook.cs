@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,21 +16,19 @@ public class CamLook : MonoBehaviour
 
     Transform playerTrans;
     PlayerMove player;
-    HUDManager hud;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
-        hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
 
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
-        if (hud.isPaused || hud.isMenu)
-                return;
+        if (GameManager.instance.IsPaused())
+            return;
 
         targetDirection.x = -Input.GetAxisRaw(InputManager.MouseY) * lookSensitivityX;
         targetDirection.y = Input.GetAxisRaw(InputManager.MouseX) * lookSensitivityY;

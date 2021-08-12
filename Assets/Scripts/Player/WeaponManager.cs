@@ -15,13 +15,19 @@ public class WeaponManager : ObjectHoldManager
 
     private Weapon activeWeapon = null;
     private Weapon secondaryWeapon = null;
-    
+
+    private bool reloading = false;
+    private float timeBeganReloading;
+    private static readonly int Reload = Animator.StringToHash("Reload");
+
     public delegate void ShotFired(Transform pos);
     public static event ShotFired OnShotFired;
+    
+    
 
     void Update()
     {
-        if (hud.isPaused || hud.isMenu)
+        if (GameManager.instance.IsPaused())
             return;
 
         if (activeWeapon)
@@ -32,7 +38,7 @@ public class WeaponManager : ObjectHoldManager
 
                 if (activeWeapon.ranged && Input.GetButton(InputManager.Aim))
                 {
-                    playerControl.sprinting = false;
+                    playerController.SetSprinting(false);
 
                     holdPosition = aimPosition;
                     wantedRotation = Quaternion.identity;
@@ -40,7 +46,7 @@ public class WeaponManager : ObjectHoldManager
                 }
                 else
                 {
-                    if (playerControl.sprinting)
+                    if (playerController.IsSprinting())
                     {
                         holdPosition = sprintPosition;
                         wantedRotation = sprintRotation;
@@ -53,32 +59,38 @@ public class WeaponManager : ObjectHoldManager
                     }
                 }
 
-                if (activeWeapon.ranged && Input.GetButtonDown(InputManager.Aim))
+                if (activeWeapon.ranged && Input.GetButtonDown(InputManager.Aim) && !reloading)
                 {
-                    hud.FadeRetical(true);
+                    HUDManager.instance.FadeRetical(true);
+                    playerController.SetAiming(true);
                 }
 
                 if (activeWeapon.ranged && Input.GetButtonUp(InputManager.Aim))
                 {
-                    hud.FadeRetical(false);
+                    HUDManager.instance.FadeRetical(false);
+                    playerController.SetAiming(false);
                 }
 
-                if (activeWeapon.ranged && Time.time > (timeDeployed + deployShootDelay))
+                if (activeWeapon.ranged && Time.time > (timeDeployed + deployShootDelay) && !reloading)
                 {
 
                     Firearm fa = activeWeapon.gameObject.GetComponent<Firearm>();
 
-                    if (Input.GetButtonDown(InputManager.Reload))
+                    if (Input.GetButtonDown(InputManager.Reload) && fa.CanReload())
                     {
-                        playerControl.sprinting = false;
+                        playerController.SetSprinting(false);
+                        HUDManager.instance.FadeRetical(false);
+                        playerController.SetAiming(false);
+                        
+                        anim.SetTrigger(Reload);
+                        reloading = true;
 
-                        //Relaod weapon
-                        fa.Reload();
+                        timeBeganReloading = Time.time;
                     }
 
-                    if (fa.auto == true ? Input.GetButton(InputManager.Shoot) : Input.GetButtonDown(InputManager.Shoot))
+                    if (fa.auto == true ? Input.GetButton(InputManager.Shoot) : Input.GetButtonDown(InputManager.Shoot) && !reloading)
                     {
-                        playerControl.sprinting = false;
+                        playerController.SetSprinting(false);
 
                         if (fa.Shoot())
                         {
@@ -90,10 +102,24 @@ public class WeaponManager : ObjectHoldManager
                     }
                 }                
             }
-
-            activeWeapon.transform.localPosition = Vector3.Lerp(activeWeapon.transform.localPosition, holdPosition, smoothing * Time.deltaTime);
-            activeWeapon.transform.localRotation = Quaternion.Slerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.deltaTime);
             
+        }
+
+        if (reloading && Time.time >= timeBeganReloading + (3 * 0.0167f))
+        {
+            reloading = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (GameManager.instance.IsPaused())
+            return;
+
+        if (activeWeapon)
+        {
+            activeWeapon.transform.localPosition = Vector3.Lerp(activeWeapon.transform.localPosition, holdPosition, smoothing * Time.fixedDeltaTime);
+            activeWeapon.transform.localRotation = Quaternion.Slerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.fixedDeltaTime);
         }
     }
 
@@ -143,7 +169,7 @@ public class WeaponManager : ObjectHoldManager
                 child.gameObject.layer = 8;
             }
 
-            activeWeapon.transform.SetParent(cam);
+            activeWeapon.transform.SetParent(weaponParent);
 
             hipPosition = activeWeapon.holdPosition;
             aimPosition = activeWeapon.aimPosition;
@@ -160,7 +186,7 @@ public class WeaponManager : ObjectHoldManager
             }
 
             //Deploying animations
-            activeWeapon.transform.localPosition = hipPosition;
+            activeWeapon.transform.localPosition = holdPosition;
 
             holstered = false;
             holdPosition = hipPosition;
@@ -250,4 +276,20 @@ public class WeaponManager : ObjectHoldManager
         }
     }
 
+    public void ReloadUpdateAmmo()
+    {
+        Firearm fa = activeWeapon.gameObject.GetComponent<Firearm>();
+
+        fa.Reload();
+    }
+
+    public void FinishedReload()
+    {
+        reloading = false;
+    }
+
+    public bool IsReloading()
+    {
+        return reloading;
+    }
 }

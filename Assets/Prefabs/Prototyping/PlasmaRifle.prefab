@@ -151,7 +151,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -206,10 +206,12 @@ MonoBehaviour:
   interactionRange: 4
   holdInteract: 1
   progressSpeed: 200
+  interactSound: {fileID: 8300000, guid: 5517f977effbeb24db6ddf1b65aa5e36, type: 3}
   itemName: Plasma Rifle
   description: Plasme rifle go pew pew
   sprite: {fileID: 21300000, guid: 252820bc257be194eba9a8423a58f68b, type: 3}
   itemType: 2
+  itemUseSound: {fileID: 8300000, guid: 5517f977effbeb24db6ddf1b65aa5e36, type: 3}
   hudIcon: {fileID: 21300000, guid: 252820bc257be194eba9a8423a58f68b, type: 3}
   ranged: 1
   holdPosition: {x: 0.15, y: -0.23, z: 0.3}
@@ -217,20 +219,20 @@ MonoBehaviour:
   holsterPosition: {x: 0.6, y: -1, z: -0.4}
   sprintPosition: {x: 0.15, y: -0.25, z: 0.3}
   sprintRotation: {x: 25, y: -50, z: 0}
-  aimRetical: {fileID: 2800000, guid: 27cd6abec3ce0334b9db6698e88939ad, type: 3}
-  reticalDimensions: {x: 50, y: 50}
+  aimReticle: {fileID: 2800000, guid: 27cd6abec3ce0334b9db6698e88939ad, type: 3}
+  reticleDimensions: {x: 50, y: 50}
   damage: 15
   mag: 30
   ammo: 210
   magSize: 30
-  fireRate: 13
+  fireRate: 500
   auto: 1
   recoil: 0.1
   recRot: 5
   muzzle: {fileID: 332023160177069742}
   muzzleFlash: {fileID: 347235254310302345, guid: 6e10ab0301b33e248b77c5b9c0d3f601, type: 3}
   bulletImpact: {fileID: 3936576059992541753, guid: b964deabe9761fc45879e6f0ef32d38b, type: 3}
-  gunShot: {fileID: 8300000, guid: 27ab67df2f14336468be993b218148d4, type: 3}
+  gunShot: {fileID: 8300000, guid: 38649d9e1f795f749ba89365759f9c86, type: 3}
 --- !u!1001 &332023159928419707
 PrefabInstance:
   m_ObjectHideFlags: 0
