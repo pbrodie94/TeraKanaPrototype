@@ -484,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   maxHealth: 100
-  attack: 10
+  attack: 15
   defence: 0
   enemyName: Crabby Boi
   numberOfDamageAnims: 3
