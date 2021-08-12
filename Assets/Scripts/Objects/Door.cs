@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Door : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Door : MonoBehaviour
     protected bool canClose = true;
 
     [SerializeField] private bool locked = false;
+    private InteractionItem requiredKey = null;
     public bool isLocked
     {
         get
@@ -23,19 +25,16 @@ public class Door : MonoBehaviour
     [SerializeField] protected GameObject[] controlBox;
 
     protected Transform player;
+    protected Inventory playerInventory;
     protected Transform cam;
-
-    protected HUDManager hud;
+    
     protected Animation doorAnimation;
 
     protected virtual void Start()
     {
-        
-        hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
-
         doorAnimation = GetComponentInChildren<Animation>();
 
-        message = "Press 'E' to open door.";
+        message = locked ? message :  "Press 'E' to open door.";
         messageShown = false;
 
         LevelController.PlayerSpawned += GetPlayerReference;
@@ -45,6 +44,13 @@ public class Door : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         cam = Camera.main.transform;
+        playerInventory = player.gameObject.GetComponent<Inventory>();
+
+        if (locked && requiredKey == null)
+        {
+            locked = false;
+            message = "Press 'E' to open door.";
+        }
     }
 
     private void Update()
@@ -69,30 +75,39 @@ public class Door : MonoBehaviour
 
                 if (hit.collider.gameObject == controlBox[0] || hit.collider.gameObject == controlBox[1])
                 {
-                    hud.ShowMessage(message, true);
+                    HUDManager.instance.ShowMessage(message, true);
                     messageShown = true;
 
-                    if (Input.GetButtonDown(InputManager.Action))
+                    if (!playerInventory.IsHoldingItem())
                     {
-                        DoorInteraction();
+                        if (Input.GetButtonDown(InputManager.Action))
+                        {
+                            DoorInteraction();
+                        }
+                    }
+                    else
+                    {
+                        if (Input.GetButtonDown(InputManager.Action) || Input.GetButtonDown(InputManager.Shoot))
+                        {
+                            playerInventory.UseInterractItem(UnlockDoor(playerInventory.GetHeldItem()));
+                        }
                     }
                 }
                 else
                 {
                     if (messageShown)
                     {
-                        hud.ShowMessage(null, false);
+                        HUDManager.instance.ShowMessage(null, false);
                         messageShown = false;
                     }
                 }
             }
-            
         }
         else
         {
             if (messageShown)
             {
-                hud.ShowMessage(null, false);
+                HUDManager.instance.ShowMessage(null, false);
                 messageShown = false;
             }
         }
@@ -100,6 +115,13 @@ public class Door : MonoBehaviour
 
     protected virtual void DoorInteraction()
     {
+        if (locked)
+        {
+            HUDManager.instance.AddNotification("Door locked, go find" + requiredKey.itemName, Color.red);
+
+            return;
+        }
+        
         //Open door
         if (!opened)
         {
@@ -113,5 +135,30 @@ public class Door : MonoBehaviour
             message = "Press 'E' to open door.";
             opened = false;
         }
+    }
+
+    public bool UnlockDoor(InteractionItem key)
+    {
+        if (key != requiredKey)
+        {
+            HUDManager.instance.AddNotification("Incorrect key", Color.red);
+            return false;
+        }
+        
+        locked = false;
+        HUDManager.instance.AddNotification("Unlocked door", Color.cyan);
+
+        message = "Press 'E' to open door.";
+
+        return true;
+    }
+
+    public void SetUnlockKey(InteractionItem key)
+    {
+        requiredKey = key;
+
+        message = "Door locked, go find " + key.itemName + ".";
+        
+        Debug.Log(message);
     }
 }

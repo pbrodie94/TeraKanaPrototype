@@ -10,6 +10,7 @@ public class ItemSpawner : MonoBehaviour
     private LinkedList<GameObject> availableSpawnPoints = new LinkedList<GameObject>();
 
     [SerializeField] private GameObject[] itemObjects;
+    [SerializeField] private InventoryItem key;
     [SerializeField] private InventoryItem[] items;
 
     private void Start()
@@ -36,6 +37,54 @@ public class ItemSpawner : MonoBehaviour
                 Destroy(go);
             }
         }*/
+    }
+
+    public void SpawnKeys(LinkedList<Door> lockedDoors)
+    {
+        if (lockedDoors.size <= 0)
+        {
+            return;
+        }
+
+        List<int> usedKeyNumbers = new List<int>();
+
+        for (int i = 0; i < lockedDoors.size; ++i)
+        {
+            //Get the spawn point that key will be spawned at
+            int spawnPointIndex = Random.Range(0, availableSpawnPoints.size - 1);
+            int iIndex = Random.Range(0, itemObjects.Length - 1);
+            Transform spawnPoint = itemSpawnPoints[spawnPointIndex].transform;
+            
+            //Spawn the box
+            GameObject box = Instantiate(itemObjects[iIndex], spawnPoint.position, spawnPoint.rotation);
+            ItemBox itemBox = box.GetComponent<ItemBox>();
+            
+            //Create the key and add it to the box
+            InteractionItem keyInstance = Instantiate(key.gameObject).GetComponent<InteractionItem>();
+            
+            //Get unique key number
+            int keyNumber;
+
+            do
+            {
+                keyNumber = Random.Range(100, 999);
+
+                if (usedKeyNumbers.Count > 0)
+                {
+                    break;
+                }
+
+            } while (usedKeyNumbers.Contains(keyNumber));
+            
+            //Add the key number to a list so it's not used again
+            usedKeyNumbers.Add(keyNumber);
+
+            keyInstance.itemName = "Key " + keyNumber.ToString();
+            itemBox.item = keyInstance;
+
+            //Pass the reference of the key to the particular door
+            lockedDoors.GetAtIndex(i).SetUnlockKey(keyInstance);
+        }
     }
 
     public void SpawnItems(int min, int max)

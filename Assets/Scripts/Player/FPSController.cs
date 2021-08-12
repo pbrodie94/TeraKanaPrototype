@@ -44,12 +44,19 @@ public class FPSController : MonoBehaviour
 
     private Rigidbody rb;
     private Animator anim;
+    private WeaponManager weaponManager;
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int Sprinting = Animator.StringToHash("Sprinting");
+    private static readonly int Aiming = Animator.StringToHash("Aiming");
+    private static readonly int Crouched = Animator.StringToHash("Crouched");
+    private static readonly int Grounded = Animator.StringToHash("Grounded");
 
     private void Awake()
     {
         playerAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        weaponManager = GetComponent<WeaponManager>();
         flashlight = GetComponentInChildren<Light>();
         speed = walkSpeed;
 
@@ -75,7 +82,7 @@ public class FPSController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown(InputManager.Sprint))
+        if (Input.GetButtonDown(InputManager.Sprint) && !weaponManager.IsReloading())
         {
             Sprint();
         }
@@ -90,11 +97,11 @@ public class FPSController : MonoBehaviour
             flashlight.enabled = !flashlight.enabled;
         }
 
-        anim.SetFloat("Speed", rb.velocity.magnitude);
-        anim.SetBool("Sprinting", sprinting);
-        anim.SetBool("Aiming", aiming);
-        anim.SetBool("Crouched", crouching);
-        anim.SetBool("Grounded", IsGrounded());
+        anim.SetFloat(Speed, rb.velocity.magnitude);
+        anim.SetBool(Sprinting, sprinting);
+        anim.SetBool(Aiming, aiming);
+        anim.SetBool(Crouched, crouching);
+        anim.SetBool(Grounded, IsGrounded());
     }
 
     private void FixedUpdate()

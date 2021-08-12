@@ -181,4 +181,14 @@ public class Firearm : Weapon
 
         Destroy(impact, 0.5f);
     }
+
+    public bool CanReload()
+    {
+        if (mag >= magSize || ammo <= 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

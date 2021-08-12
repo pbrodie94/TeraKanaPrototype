@@ -13,8 +13,8 @@ public enum MissionType
 public class LevelMission : MonoBehaviour
 {
     public static LevelMission instance;
-    public bool initComplete = false;
-    public float totalInitProgress = 0;
+    [HideInInspector] public bool initComplete = false;
+    [HideInInspector] public float totalInitProgress = 0;
     private int numberOfTasks;
     private int tasksCompleted;
     public MissionType mission = MissionType.Specimen;

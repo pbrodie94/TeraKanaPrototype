@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class Inventory : MonoBehaviour
 
     private EquipmentMenu equipmentMenu;
     private InteractMenu interactMenu;
+
+    private InteractionItem currentHeldItem;
 
     private WeaponManager wManager;
 
@@ -265,5 +268,41 @@ public class Inventory : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void AddInteractItem(InteractionItem item)
+    {
+        currentHeldItem = item;
+        wManager.HolsterWeapon(true);
+        HUDManager.instance.AddActiveItem(item);
+    }
+
+    public void UseInterractItem(bool useSuccessful)
+    {
+        interactMenu.ItemUsed(useSuccessful);
+        HUDManager.instance.HideActiveItem();
+        wManager.HolsterWeapon(false);
+        currentHeldItem = null;
+    }
+
+    public InteractionItem GetHeldItem()
+    {
+        return currentHeldItem;
+    }
+
+    public bool IsHoldingItem()
+    {
+        return currentHeldItem;
+    }
+
+    private void Update()
+    {
+        if (IsHoldingItem() && !HUDManager.instance.IsMenuOpen())
+        {
+            if (Input.GetButtonDown(InputManager.Action) || Input.GetButtonDown(InputManager.Shoot))
+            {
+                UseInterractItem(false);
+            }
+        }
     }
 }

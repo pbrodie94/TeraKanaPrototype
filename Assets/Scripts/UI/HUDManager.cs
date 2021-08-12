@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
@@ -70,7 +71,9 @@ public class HUDManager : MonoBehaviour
     private float notificationInterval = 0.3f;
     private float notificationLifeTime = 5;
     private float timeLastNotified = 0;
-
+    
+    [Header("Item Usage")] 
+    [SerializeField] private Image activeItemImage;
 
     [Header("Inventory Menus")]
     public GameObject equipmentMenu;
@@ -395,7 +398,7 @@ public class HUDManager : MonoBehaviour
         audioSource.PlayOneShot(menuOpen);
     }
 
-    private void CloseMenu()
+    public void CloseMenu()
     {
         Cursor.lockState = CursorLockMode.Locked;
         equipmentMenu.SetActive(false);
@@ -407,6 +410,11 @@ public class HUDManager : MonoBehaviour
         GameManager.instance.PauseGame(false);
 
         audioSource.PlayOneShot(menuClose);
+    }
+
+    public bool IsMenuOpen()
+    {
+        return activeMenu;
     }
 
     public void GameOver(bool dropComplete)
@@ -440,6 +448,19 @@ public class HUDManager : MonoBehaviour
 
         //Show gameover screen
         gameOverScreen.SetActive(true);
+    }
+
+    public void AddActiveItem(InteractionItem item)
+    {
+        activeItemImage.sprite = item.sprite;
+        activeItemImage.gameObject.SetActive(true);
+        aimReticle.gameObject.SetActive(false);
+    }
+
+    public void HideActiveItem()
+    {
+        activeItemImage.gameObject.SetActive(false);
+        aimReticle.gameObject.SetActive(true);
     }
 
     private void Update()

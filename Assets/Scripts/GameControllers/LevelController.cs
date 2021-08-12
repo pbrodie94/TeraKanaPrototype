@@ -5,11 +5,11 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public static LevelController instance;
-    public float progress;
+    [HideInInspector] public float progress;
     private int numberOfTasks;
     private int tasksCompleted;
     private float taskProgress;
-    public bool isLoaded = false;
+    [HideInInspector] public bool isLoaded = false;
     public delegate void OnPlayerSpawned();
     public static OnPlayerSpawned PlayerSpawned;
 
@@ -162,8 +162,6 @@ public class LevelController : MonoBehaviour
     private void HandleLockedDoors()
     {
         taskProgress = 0;
-
-        int numLocks = 0;
         GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
         LinkedList<Door> lockedDoors = new LinkedList<Door>();
 
@@ -174,22 +172,13 @@ public class LevelController : MonoBehaviour
             if (door.isLocked)
             {
                 lockedDoors.AddBack(door);
-                numLocks++;
             }
         }
 
         //If there are no locked doors, don't run the rest
-        if (numLocks <= 0)
+        if (lockedDoors.size <= 0)
             return;
 
-        for (int i = 0; i < numLocks; i++)
-        {
-            //Spawn keys
-
-
-            //Set the doors to the key needed
-
-
-        }
+        itemSpawner.SpawnKeys(lockedDoors);
     }
 }

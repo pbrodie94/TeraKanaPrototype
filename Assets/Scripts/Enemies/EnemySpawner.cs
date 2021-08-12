@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Range(0, 99)]
     [SerializeField] private float spawnHeavyProbability = 15;
+    [Range(0, 99)]
     [SerializeField] private float spawnRangedProbability = 25;
     
     [SerializeField] private GameObject LightMonsters;

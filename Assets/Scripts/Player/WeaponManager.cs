@@ -15,9 +15,14 @@ public class WeaponManager : ObjectHoldManager
 
     private Weapon activeWeapon = null;
     private Weapon secondaryWeapon = null;
-    
+
+    private bool reloading = false;
+    private static readonly int Reload = Animator.StringToHash("Reload");
+
     public delegate void ShotFired(Transform pos);
     public static event ShotFired OnShotFired;
+    
+    
 
     void Update()
     {
@@ -53,32 +58,34 @@ public class WeaponManager : ObjectHoldManager
                     }
                 }
 
-                if (activeWeapon.ranged && Input.GetButtonDown(InputManager.Aim))
+                if (activeWeapon.ranged && Input.GetButtonDown(InputManager.Aim) && !reloading)
                 {
-                    hud.FadeRetical(true);
+                    HUDManager.instance.FadeRetical(true);
                     playerController.SetAiming(true);
                 }
 
                 if (activeWeapon.ranged && Input.GetButtonUp(InputManager.Aim))
                 {
-                    hud.FadeRetical(false);
+                    HUDManager.instance.FadeRetical(false);
                     playerController.SetAiming(false);
                 }
 
-                if (activeWeapon.ranged && Time.time > (timeDeployed + deployShootDelay))
+                if (activeWeapon.ranged && Time.time > (timeDeployed + deployShootDelay) && !reloading)
                 {
 
                     Firearm fa = activeWeapon.gameObject.GetComponent<Firearm>();
 
-                    if (Input.GetButtonDown(InputManager.Reload))
+                    if (Input.GetButtonDown(InputManager.Reload) && fa.CanReload())
                     {
                         playerController.SetSprinting(false);
-
-                        //Relaod weapon
-                        fa.Reload();
+                        HUDManager.instance.FadeRetical(false);
+                        playerController.SetAiming(false);
+                        
+                        anim.SetTrigger(Reload);
+                        reloading = true;
                     }
 
-                    if (fa.auto == true ? Input.GetButton(InputManager.Shoot) : Input.GetButtonDown(InputManager.Shoot))
+                    if (fa.auto == true ? Input.GetButton(InputManager.Shoot) : Input.GetButtonDown(InputManager.Shoot) && !reloading)
                     {
                         playerController.SetSprinting(false);
 
@@ -261,4 +268,20 @@ public class WeaponManager : ObjectHoldManager
         }
     }
 
+    public void ReloadUpdateAmmo()
+    {
+        Firearm fa = activeWeapon.gameObject.GetComponent<Firearm>();
+
+        fa.Reload();
+    }
+
+    public void FinishedReload()
+    {
+        reloading = false;
+    }
+
+    public bool IsReloading()
+    {
+        return reloading;
+    }
 }

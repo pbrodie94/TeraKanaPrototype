@@ -46,7 +46,9 @@ MonoBehaviour:
   interactionRange: 4
   holdInteract: 0
   progressSpeed: 150
+  interactSound: {fileID: 0}
   itemName: Key
   description: Use this to unlock something
   sprite: {fileID: 21300000, guid: b4b227726eb88e247853181cde38b586, type: 3}
   itemType: 0
+  itemUseSound: {fileID: 8300000, guid: 53f571d040661a341aea6272cb59685e, type: 3}

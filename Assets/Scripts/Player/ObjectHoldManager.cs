@@ -25,8 +25,8 @@ public class ObjectHoldManager : MonoBehaviour
     protected FPSController playerController;
     protected PlayerStats stats;
     protected Inventory inventory;
-    protected HUDManager hud;
     protected Transform cam;
+    protected Animator anim;
     [SerializeField] protected Transform weaponParent;
 
     //[SerializeField] protected Transform fpsArms;
@@ -44,8 +44,7 @@ public class ObjectHoldManager : MonoBehaviour
         if (!inventory)
             inventory = GetComponent<Inventory>();
 
-        if (!hud)
-            hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
+        anim = GetComponent<Animator>();
 
         holdPosition = hipPosition;
     }

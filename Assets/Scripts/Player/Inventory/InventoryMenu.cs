@@ -8,7 +8,7 @@ public class InventoryMenu : MonoBehaviour
     [Header("Menu Properties")]
     [SerializeField] private int maxSlots;
     [SerializeField] protected GameObject detailsPanel;
-    [SerializeField] List<InventorySlot> inventorySlots = new List<InventorySlot>();
+    [SerializeField] protected List<InventorySlot> inventorySlots = new List<InventorySlot>();
     [SerializeField] GridLayoutGroup itemSlotGrid;
 
     [SerializeField] private GameObject inventorySlot;
@@ -86,7 +86,6 @@ public class InventoryMenu : MonoBehaviour
 
     public virtual bool AddInventoryItem(InventoryItem item)
     {
-
         if (IsFull())
             return false;
 
@@ -104,7 +103,7 @@ public class InventoryMenu : MonoBehaviour
         return false;
     }
 
-    protected virtual void RemoveInventoryItem(InventorySlot slot)
+    public virtual void RemoveInventoryItem(InventorySlot slot)
     {
         //Remove the item
         slot.ClearSlot();
@@ -128,7 +127,7 @@ public class InventoryMenu : MonoBehaviour
         }
     }
 
-    public void PrimaryItemSelect(InventorySlot slot)
+    public virtual void PrimaryItemSelect(InventorySlot slot)
     {
         if (!inventory)
         {
@@ -187,9 +186,6 @@ public class InventoryMenu : MonoBehaviour
             detailsRect.localPosition = Vector3.zero;
             detailsPanel.SetActive(true);
         }
-
-        //Animate the details panel outward
-
     }
 
     public virtual void ItemHover()
