@@ -46,9 +46,10 @@ MonoBehaviour:
   interactionRange: 4
   holdInteract: 0
   progressSpeed: 150
+  interactSound: {fileID: 0}
   itemName: Ammo Pack
   description: Increses ammo
   sprite: {fileID: 21300000, guid: c526e39707d3e244e8ee752f60507716, type: 3}
   itemType: 1
   itemUseSound: {fileID: 8300000, guid: 04f348eee3621d0458c9e53c99581036, type: 3}
-  amount: 30
+  amount: 90

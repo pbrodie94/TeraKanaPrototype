@@ -86,7 +86,6 @@ public class InventoryMenu : MonoBehaviour
 
     public virtual bool AddInventoryItem(InventoryItem item)
     {
-        Debug.Log("Capacity: " + inventoryCapacity + " # Slots: " + inventorySlots.Count + " Filled = " + IsFull());
 
         if (IsFull())
             return false;
@@ -97,9 +96,7 @@ public class InventoryMenu : MonoBehaviour
             {
                 inventorySlots[i].SetSlot(item);
                 ++inventoryCapacity;
-
-                Debug.Log("Capacity: " + inventoryCapacity + " # Slots: " + inventorySlots.Count + " Filled = " + IsFull());
-
+                
                 return true;
             }
         }

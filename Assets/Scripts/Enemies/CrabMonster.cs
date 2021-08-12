@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class CrabMonster : Enemy
 {
-    protected override void Start()
+    private static readonly int Alert1 = Animator.StringToHash("Alert");
+
+    protected override void LateUpdate()
     {
-        base.Start();
+        base.LateUpdate();
+        
+        anim.SetBool(Alert1, (aiState.state == EnemyAIStateManager.EnemyState.Alert || aiState.state == EnemyAIStateManager.EnemyState.Engaging));
     }
 
     protected override IEnumerator Melee()
     {
-        //Time last attacked for delay
-        timeLastAttacked = Time.time;
-
+        attacking = true;
+        
         int atkIndex = SelectAttack();
         float wait;
 
@@ -22,17 +25,17 @@ public class CrabMonster : Enemy
             case 0:
 
                 //Set attack animation
-                anim.SetInteger("AttackIndex", atkIndex);
-                anim.SetTrigger("Attack");
+                anim.SetInteger(AttackIndex, atkIndex);
+                anim.SetTrigger(Attack);
 
                 //Legth of 1 anim frame (24fps 1sec / 24frames) x the number of frames needed to wait
-                wait = 0.042f * onOffFrames[atkIndex].x;
+                wait = frameInterval * onOffFrames[atkIndex].x;
 
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(0, true);
 
-                wait = 0.042f * onOffFrames[atkIndex].y;
+                wait = frameInterval * onOffFrames[atkIndex].y;
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(0, false);
@@ -42,17 +45,17 @@ public class CrabMonster : Enemy
             case 1:
 
                 //Set attack animation
-                anim.SetInteger("AttackIndex", atkIndex);
-                anim.SetTrigger("Attack");
+                anim.SetInteger(AttackIndex, atkIndex);
+                anim.SetTrigger(Attack);
 
                 //Legth of 1 anim frame (24fps 1sec / 24frames) x the number of frames needed to wait
-                wait = 0.042f * onOffFrames[atkIndex].x;
+                wait = frameInterval * onOffFrames[atkIndex].x;
 
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(0, true);
 
-                wait = 0.042f * onOffFrames[atkIndex].y;
+                wait = frameInterval * onOffFrames[atkIndex].y;
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(0, false);
@@ -62,17 +65,17 @@ public class CrabMonster : Enemy
             case 2:
 
                 //Set attack animation
-                anim.SetInteger("AttackIndex", atkIndex);
-                anim.SetTrigger("Attack");
+                anim.SetInteger(AttackIndex, atkIndex);
+                anim.SetTrigger(Attack);
 
                 //Legth of 1 anim frame (24fps 1sec / 24frames) x the number of frames needed to wait
-                wait = 0.042f * onOffFrames[atkIndex].x;
+                wait = frameInterval * onOffFrames[atkIndex].x;
 
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(1, true);
 
-                wait = 0.042f * onOffFrames[atkIndex].y;
+                wait = frameInterval * onOffFrames[atkIndex].y;
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(1, false);
@@ -82,18 +85,18 @@ public class CrabMonster : Enemy
             case 3:
 
                 //Set attack animation
-                anim.SetInteger("AttackIndex", atkIndex);
-                anim.SetTrigger("Attack");
+                anim.SetInteger(AttackIndex, atkIndex);
+                anim.SetTrigger(Attack);
 
                 //Legth of 1 anim frame (24fps 1sec / 24frames) x the number of frames needed to wait
-                wait = 0.042f * onOffFrames[atkIndex].x;
+                wait = frameInterval * onOffFrames[atkIndex].x;
 
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(0, true);
                 SetMeleeColliders(1, true);
 
-                wait = 0.042f * onOffFrames[atkIndex].y;
+                wait = frameInterval * onOffFrames[atkIndex].y;
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(0, false);
@@ -103,24 +106,28 @@ public class CrabMonster : Enemy
             case 4:
 
                 //Set attack animation
-                anim.SetInteger("AttackIndex", atkIndex);
-                anim.SetTrigger("Attack");
+                anim.SetInteger(AttackIndex, atkIndex);
+                anim.SetTrigger(Attack);
 
                 //Legth of 1 anim frame (24fps 1sec / 24frames) x the number of frames needed to wait
-                wait = 0.042f * onOffFrames[atkIndex].x;
+                wait = frameInterval * onOffFrames[atkIndex].x;
 
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(2, true);
 
-                wait = 0.042f * onOffFrames[atkIndex].y;
+                wait = frameInterval * onOffFrames[atkIndex].y;
                 yield return new WaitForSeconds(wait);
 
                 SetMeleeColliders(2, false);
 
                 break;
         }
-       
+        
+        //Time last attacked for delay
+        timeLastAttacked = Time.time;
+
+        attacking = false;
     }
 
     int SelectAttack()

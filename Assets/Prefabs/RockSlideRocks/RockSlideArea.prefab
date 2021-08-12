@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5305687408270876686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5305687408270876685}
+  - component: {fileID: 5305687408270876684}
+  - component: {fileID: 5305687408270876687}
+  m_Layer: 2
+  m_Name: RockSlideArea
+  m_TagString: RockSlide
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5305687408270876685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5305687408270876686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 109.37, y: 307.26, z: 70.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5305687408270876684
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5305687408270876686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 40, y: 15, z: 14.41}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5305687408270876687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5305687408270876686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219a5e3d2b0173c4aa097ae5290ca1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockSlideProbability: 40
+  rockSpawnRange: {x: 3, y: 7}
+  rockScaleRange: {x: 1, y: 3}
+  possibilityCheckInterval: 3
+  coolDownTime: 30
+  rockSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rockSpawns:
+  - {fileID: 552809823548011381, guid: 56472b77e3f7fad43b4f12b2193c4177, type: 3}
+  - {fileID: 1216568776400037385, guid: a39e3ca861aad49439fd6d5bf9e3fdaf, type: 3}
+  - {fileID: 2918272956103190809, guid: 75493e7a55cd31b4bbc8162c5aa6dfaf, type: 3}
