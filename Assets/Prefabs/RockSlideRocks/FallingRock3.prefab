@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536a3ef3d8643b64dba36638e284d374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   rockSounds:
   - {fileID: 8300000, guid: 14b0fe7e8310dd843bf021387b2002be, type: 3}
   - {fileID: 8300000, guid: 9e8e937c6cafb9a4188f431fe5044b63, type: 3}

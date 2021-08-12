@@ -221,7 +221,7 @@ MonoBehaviour:
   sprintRotation: {x: 25, y: -50, z: 0}
   aimReticle: {fileID: 2800000, guid: 27cd6abec3ce0334b9db6698e88939ad, type: 3}
   reticleDimensions: {x: 50, y: 50}
-  damage: 15
+  damage: 12
   mag: 30
   ammo: 210
   magSize: 30
