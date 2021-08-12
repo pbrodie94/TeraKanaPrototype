@@ -17,6 +17,7 @@ public class WeaponManager : ObjectHoldManager
     private Weapon secondaryWeapon = null;
 
     private bool reloading = false;
+    private float timeBeganReloading;
     private static readonly int Reload = Animator.StringToHash("Reload");
 
     public delegate void ShotFired(Transform pos);
@@ -83,6 +84,8 @@ public class WeaponManager : ObjectHoldManager
                         
                         anim.SetTrigger(Reload);
                         reloading = true;
+
+                        timeBeganReloading = Time.time;
                     }
 
                     if (fa.auto == true ? Input.GetButton(InputManager.Shoot) : Input.GetButtonDown(InputManager.Shoot) && !reloading)
@@ -100,6 +103,11 @@ public class WeaponManager : ObjectHoldManager
                 }                
             }
             
+        }
+
+        if (reloading && Time.time >= timeBeganReloading + (3 * 0.0167f))
+        {
+            reloading = false;
         }
     }
 

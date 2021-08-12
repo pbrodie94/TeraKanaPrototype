@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Titan : Enemy
 {
-    [Header("Titan Combat")] 
-    [SerializeField] private float lightAttackProbability = 65;
+    [Header("Titan Combat")]
     [SerializeField] private float mediumAttackProbability = 30;
     [SerializeField] private float heavyAttackProbability = 5;
 

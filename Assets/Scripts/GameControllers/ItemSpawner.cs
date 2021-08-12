@@ -84,6 +84,9 @@ public class ItemSpawner : MonoBehaviour
 
             //Pass the reference of the key to the particular door
             lockedDoors.GetAtIndex(i).SetUnlockKey(keyInstance);
+            
+            //Remove item spawn point from index
+            availableSpawnPoints.RemoveAtIndex(spawnPointIndex);
         }
     }
 

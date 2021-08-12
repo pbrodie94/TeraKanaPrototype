@@ -3,14 +3,18 @@ using UnityEngine;
 
 public class PlayerStats : Stats
 {
-
     private bool godMode = false;
+
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip[] takeHitAudio;
 
     protected override void Start()
     {
         base.Start();
 
         HUDManager.instance.UpdateHealth(health, maxHealth);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -33,6 +37,18 @@ public class PlayerStats : Stats
             return;
 
         base.TakeDamage(damage);
+
+        if (audioSource && takeHitAudio[0])
+        {
+            int audioIndex = 0;
+
+            if (takeHitAudio.Length > 1)
+            {
+                audioIndex = Random.Range(0, takeHitAudio.Length - 1);
+            }
+            
+            audioSource.PlayOneShot(takeHitAudio[audioIndex]);
+        }
 
         HUDManager.instance.UpdateHealth(health);
         HUDManager.instance.ApplyDamageHud();

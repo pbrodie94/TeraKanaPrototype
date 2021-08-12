@@ -37,6 +37,11 @@ public class Enemy : MonoBehaviour
     protected EnemyStats stats;
     protected NavMeshAgent agent;
     protected Animator anim;
+
+    protected AudioSource audioSource;
+    [SerializeField] protected AudioClip deathAudio;
+    [SerializeField] protected AudioClip[] hitSoundEffects;
+    
     private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
     protected static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
     protected static readonly int Attack = Animator.StringToHash("Attack");
@@ -47,6 +52,7 @@ public class Enemy : MonoBehaviour
         stats = GetComponent<EnemyStats>();
         anim = transform.GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
 
         //agent.baseOffset = 0;
 
@@ -235,6 +241,18 @@ public class Enemy : MonoBehaviour
         PlayerStats ps = go.GetComponent<PlayerStats>();
 
         ps.TakeDamage(stats.attack);
+
+        if (audioSource && hitSoundEffects[0])
+        {
+            int soundIndex = 0;
+
+            if (hitSoundEffects.Length > 1)
+            {
+                soundIndex = Random.Range(0, hitSoundEffects.Length - 1);
+            }
+            
+            audioSource.PlayOneShot(hitSoundEffects[soundIndex]);
+        }
     }
 
     public virtual void Yell(Transform target)
@@ -280,6 +298,11 @@ public class Enemy : MonoBehaviour
             {
                 c.enabled = false;
             }
+        }
+
+        if (audioSource && deathAudio)
+        {
+            audioSource.PlayOneShot(deathAudio);
         }
 
         Destroy(gameObject, 30);

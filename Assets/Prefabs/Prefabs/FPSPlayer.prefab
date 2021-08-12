@@ -143,7 +143,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 0
-  audio: {fileID: 0}
+  playerAudio: {fileID: 0}
   footStepsDirt:
   - {fileID: 8300000, guid: 8dc6ba3cfe943a342803ba36f62ff141, type: 3}
   - {fileID: 8300000, guid: 3089c57e5aaf73648846fa10902e6b64, type: 3}
@@ -184,6 +184,10 @@ MonoBehaviour:
   maxHealth: 100
   attack: 0
   defence: 0
+  takeHitAudio:
+  - {fileID: 8300000, guid: d586a350a897c4341b1a04d1c7d85435, type: 3}
+  - {fileID: 8300000, guid: da0b1ce60b1634d4c86762fb835932c3, type: 3}
+  - {fileID: 8300000, guid: 44fc4c98fe2822b49ad42dd2f7de699e, type: 3}
 --- !u!114 &115947919996651629
 MonoBehaviour:
   m_ObjectHideFlags: 0
