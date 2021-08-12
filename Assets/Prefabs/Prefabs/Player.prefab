@@ -272,6 +272,7 @@ MonoBehaviour:
   maxHipSwayAmount: 0.15
   maxAimSwayAmount: 0.02
   swaySmoothing: 5
+  weaponParent: {fileID: 0}
   aimRecoilDecrease: 0.5
   deployShootDelay: 0.5
 --- !u!114 &988812511237328694
@@ -318,6 +319,7 @@ MonoBehaviour:
   maxHipSwayAmount: 0.15
   maxAimSwayAmount: 0.02
   swaySmoothing: 5
+  weaponParent: {fileID: 0}
   laserTarget: {fileID: 3180002369223265618, guid: 1b4de4254900c9a479f9d9536500388b, type: 3}
 --- !u!1 &3562797249232043205
 GameObject:
@@ -344,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3562797249232043205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.152}
+  m_LocalPosition: {x: 0, y: 0, z: 0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 988812511152373711}

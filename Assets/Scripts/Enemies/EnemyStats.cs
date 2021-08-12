@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStats : Stats
-{ 
+{
+    [SerializeField] private string enemyName;
+
+    [SerializeField] private int numberOfDamageAnims = 0;
+    
     public float damageAnimRatio = 35;
 
     int takeDamageAnim = 0;
     float damageAnimHealth;
     float nextDamageAnim;
-    public Animator anim;
+    private Animator anim;
 
     EnemyAIStateManager aiState;
+    private static readonly int DamageIndex = Animator.StringToHash("DamageIndex");
+    private static readonly int Damage = Animator.StringToHash("TakeDamage");
+    private static readonly int Die1 = Animator.StringToHash("Die");
 
     protected override void Start()
     {
@@ -35,26 +42,54 @@ public class EnemyStats : Stats
         if (aiState.state != EnemyAIStateManager.EnemyState.Alert)
             aiState.Alerted();
 
+        if (health <= 0)
+        {
+            HUDManager.instance.SetHitMarker(true);
+        } else
+        {
+            HUDManager.instance.SetHitMarker(false);
+        }
+
         //take damage animation
-        if (!dead && health <= nextDamageAnim)
+        if (!dead && health <= nextDamageAnim && numberOfDamageAnims > 0)
         {
             nextDamageAnim -= damageAnimHealth;
 
-            takeDamageAnim = Random.Range(0, 2);
-            anim.SetInteger("DamageIndex", takeDamageAnim);
-            anim.SetTrigger("TakeDamage");
+            if (numberOfDamageAnims > 1)
+            {
+                takeDamageAnim = Random.Range(0, numberOfDamageAnims - 1);
+                anim.SetInteger(DamageIndex, takeDamageAnim);
+            }
+
+            anim.SetTrigger(Damage);
         } 
-        
-        if (dead) 
-        {
-            dead = true;
 
-            anim.SetTrigger("Die");
+    }
 
-            Enemy e = GetComponent<Enemy>();
-            e.Die();
+    protected override void Die()
+    {
+        base.Die();
 
-        }
+        dead = true;
 
+        anim.SetTrigger(Die1);
+
+        Enemy e = GetComponent<Enemy>();
+        e.Die();
+    }
+
+    public float GetCurrentHealth()
+    {
+        return health;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public string GetEnemyName()
+    {
+        return enemyName;
     }
 }

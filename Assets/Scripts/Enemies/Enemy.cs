@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform target;
+    [HideInInspector] public Transform target;
 
     public float walkSpeed = 6;
     public float runSpeed = 8;
@@ -17,10 +18,11 @@ public class Enemy : MonoBehaviour
 
     [Header("Combat")]
 
-    public bool attackTurn = false;
-    public float attackDist;
+    [HideInInspector] public bool attackTurn = false;
+    public float meleeAttackDist = 3;
     public float engageRadius = 10;
     public float attackDelay = 1.5f;
+    protected bool attacking = false;
 
     public Collider[] meleeColliders;
     [Tooltip ("Set frames to wait before tuning the melee colliders on, and off.")]
@@ -28,11 +30,21 @@ public class Enemy : MonoBehaviour
 
     protected float distToTarget;
     protected float timeLastAttacked; 
+    
+    protected const float frameInterval = 0.042f;
 
     protected EnemyAIStateManager aiState;
     protected EnemyStats stats;
     protected NavMeshAgent agent;
     protected Animator anim;
+
+    protected AudioSource audioSource;
+    [SerializeField] protected AudioClip deathAudio;
+    [SerializeField] protected AudioClip[] hitSoundEffects;
+    
+    private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
+    protected static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
+    protected static readonly int Attack = Animator.StringToHash("Attack");
 
     protected virtual void Start()
     {
@@ -40,11 +52,12 @@ public class Enemy : MonoBehaviour
         stats = GetComponent<EnemyStats>();
         anim = transform.GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
 
         //agent.baseOffset = 0;
 
-        if (attackDist > 0)
-            agent.stoppingDistance = attackDist;
+        if (meleeAttackDist > 0)
+            agent.stoppingDistance = meleeAttackDist;
 
         LevelController.PlayerSpawned += GetPlayerReference;
     }
@@ -56,7 +69,7 @@ public class Enemy : MonoBehaviour
         LevelController.PlayerSpawned -= GetPlayerReference;
     }
 
-    protected void LateUpdate()
+    protected virtual void LateUpdate()
     {
         if (stats.died)
             return;
@@ -87,14 +100,22 @@ public class Enemy : MonoBehaviour
         speed = Mathf.Lerp(speed, wantedSpeed, acceleration * Time.deltaTime);
 
         agent.speed = speed;
-        anim.SetFloat("MoveSpeed", speed);
-        anim.SetBool("Alert", (aiState.state == EnemyAIStateManager.EnemyState.Alert || aiState.state == EnemyAIStateManager.EnemyState.Engaging));
+        anim.SetFloat(MoveSpeed, speed);
+        
 
-        distToTarget = Vector3.Distance(transform.position, target.position);
+        if (target)
+        {
+            distToTarget = Vector3.Distance(transform.position, target.position);
+        }
     }
 
     protected virtual void RotateTowards()
     {
+        if (!target)
+        {
+            return;
+        }
+
         Vector3 dir = (target.position - transform.position).normalized;
         Quaternion rot = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
         transform.rotation = rot;
@@ -102,14 +123,14 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Engage()
     {
-        if (stats.died)
+        if (stats.died || !target)
             return;
 
         //Combat manager has given enemy a turn to attack
         if (attackTurn)
         {
             //Set to attacking distance
-            agent.stoppingDistance = attackDist;
+            agent.stoppingDistance = meleeAttackDist;
 
             //If too far, move towards target
             if (distToTarget > agent.stoppingDistance)
@@ -120,7 +141,7 @@ public class Enemy : MonoBehaviour
                 //Run
                 wantedSpeed = runSpeed;
             }
-            else if (distToTarget < agent.stoppingDistance)
+            else if (distToTarget < meleeAttackDist)
             {
                 speed = 0;
                 agent.velocity = Vector3.zero;
@@ -128,7 +149,7 @@ public class Enemy : MonoBehaviour
                 RotateTowards();
 
                 //If last attacked is greater than the time elapsed + the delay
-                if (Time.time > timeLastAttacked + attackDelay)
+                if (Time.time > timeLastAttacked + attackDelay && !attacking)
                 {
                     StartCoroutine(Melee());
                 }
@@ -157,7 +178,7 @@ public class Enemy : MonoBehaviour
                 //We're close enough, just look at target for now
                 RotateTowards();
 
-                if (distToTarget < attackDist)
+                if (distToTarget < meleeAttackDist && Time.time >= timeLastAttacked + attackDelay)
                     StartCoroutine(Melee());
             }
         }
@@ -165,24 +186,28 @@ public class Enemy : MonoBehaviour
 
     protected virtual IEnumerator Melee()
     {
-        //Time last attacked for delay
-        timeLastAttacked = Time.time;
+        attacking = true;
         
         //Set attack animation
-        anim.SetInteger("AttackIndex", 0);
-        anim.SetTrigger("Attack");
+        anim.SetInteger(AttackIndex, 0);
+        anim.SetTrigger(Attack);
 
-        //Legth of 1 anim frame (24fps 1sec / 24frames) x the number of frames needed to wait
-        float wait = 0.042f * onOffFrames[0].x;
+        //Length of 1 anim frame (24fps 1sec / 24frames) x the number of frames needed to wait
+        float wait = frameInterval * onOffFrames[0].x;
 
         yield return new WaitForSeconds(wait);
 
         SetMeleeColliders(0, true);
 
-        wait = 0.042f * onOffFrames[0].y;
+        wait = frameInterval * onOffFrames[0].y;
         yield return new WaitForSeconds(wait);
 
         SetMeleeColliders(0, false);
+        
+        //Time last attacked for delay
+        timeLastAttacked = Time.time;
+
+        attacking = false;
     }
 
     public void SetMeleeColliders(int colliderIndex, bool TurnedOn)
@@ -216,18 +241,37 @@ public class Enemy : MonoBehaviour
         PlayerStats ps = go.GetComponent<PlayerStats>();
 
         ps.TakeDamage(stats.attack);
+
+        if (audioSource && hitSoundEffects[0])
+        {
+            int soundIndex = 0;
+
+            if (hitSoundEffects.Length > 1)
+            {
+                soundIndex = Random.Range(0, hitSoundEffects.Length - 1);
+            }
+            
+            audioSource.PlayOneShot(hitSoundEffects[soundIndex]);
+        }
     }
 
     public virtual void Yell(Transform target)
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, alertRadius);
 
-        foreach (Collider c in cols)
+        if (cols.Length > 0)
         {
-            if (c.tag == "Enemy")
+            foreach (Collider c in cols)
             {
-                Enemy e = c.GetComponent<Enemy>();
-                e.Alert();
+                if (c.CompareTag("Enemy") && c.gameObject != gameObject)
+                {
+                    Enemy e = c.GetComponent<Enemy>();
+
+                    if (e)
+                    {
+                        e.Alert();
+                    }
+                }
             }
         }
     }
@@ -256,9 +300,14 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        this.enabled = false;
+        if (audioSource && deathAudio)
+        {
+            audioSource.PlayOneShot(deathAudio);
+        }
 
         Destroy(gameObject, 30);
+
+        this.enabled = false;
     }
 
     private void OnDrawGizmosSelected()

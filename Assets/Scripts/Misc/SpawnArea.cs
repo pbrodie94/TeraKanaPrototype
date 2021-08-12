@@ -119,7 +119,7 @@ public class SpawnArea : MonoBehaviour
 
         foreach (Collider c in cols)
         {
-            if (c.tag != "Ground" && c.tag != "SpawnArea")
+            if (c.tag != "Ground" && c.tag != "SpawnArea" && !c.CompareTag("RockSlide") && !c.CompareTag("Gas"))
             {
                 //Debug.Log("Placement obstructed by: " + c.gameObject);
 

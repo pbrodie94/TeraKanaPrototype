@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,17 +12,16 @@ public class Inventory : MonoBehaviour
     private EquipmentMenu equipmentMenu;
     private InteractMenu interactMenu;
 
-    private WeaponManager wManager;
+    private InteractionItem currentHeldItem;
 
-    private HUDManager hud;
+    private WeaponManager wManager;
 
     private void Start()
     {
-        hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
         wManager = GetComponent<WeaponManager>();
 
-        equipmentMenu = hud.equipmentMenu.gameObject.GetComponentInChildren<EquipmentMenu>();
-        interactMenu = hud.interactMenu.gameObject.GetComponentInChildren<InteractMenu>();
+        equipmentMenu = HUDManager.instance.equipmentMenu.gameObject.GetComponentInChildren<EquipmentMenu>();
+        interactMenu = HUDManager.instance.interactMenu.gameObject.GetComponentInChildren<InteractMenu>();
     }
 
     public bool PickupItem(InventoryItem item)
@@ -53,10 +53,13 @@ public class Inventory : MonoBehaviour
             case ItemType.Aid:
 
                 //Add to aid inventory
+                if (AddAidItems(item))
+                {
+                    HUDManager.instance.AddNotification("Picked up " + item.itemName);
+                    return true;
+                }
 
-                AddAidItems(item);
-
-                break;
+                return false;
 
             case ItemType.Item:
 
@@ -77,7 +80,7 @@ public class Inventory : MonoBehaviour
                 break;
         }
 
-        hud.AddNotification("Picked up " + item.itemName);
+        HUDManager.instance.AddNotification("Picked up " + item.itemName);
 
         return true;
     }
@@ -105,7 +108,7 @@ public class Inventory : MonoBehaviour
                     AddWeapons(w);
                 }
 
-                equipmentMenu.AddInventoryItem(item);
+                //equipmentMenu.AddInventoryItem(item);
 
                 break;
 
@@ -114,7 +117,7 @@ public class Inventory : MonoBehaviour
                 //Add to aid inventory
 
                 AddAidItems(item);
-
+                
                 break;
 
             case ItemType.Item:
@@ -148,23 +151,17 @@ public class Inventory : MonoBehaviour
 
                 return weapons.Contains(item);
 
-                break;
-
             case ItemType.Aid:
 
                 //Add to aid inventory
 
                 return aidItems.Contains(item);
 
-                break;
-
             case ItemType.Item:
 
                 //Add item to items inventory
 
                 return items.Contains(item);
-
-                break;
 
             case ItemType.Armour:
 
@@ -188,23 +185,17 @@ public class Inventory : MonoBehaviour
 
                 return RemoveWeapons(item);
 
-                break;
-
             case ItemType.Aid:
 
                 //Add to aid inventory
 
                 return RemoveAidItems(item);
 
-                break;
-
             case ItemType.Item:
 
                 //Add item to items inventory
 
                 return RemoveItems(item);
-
-                break;
 
             case ItemType.Armour:
 
@@ -225,14 +216,19 @@ public class Inventory : MonoBehaviour
         weapons.Add(weapon);
     }
 
-    private void AddAidItems(InventoryItem aid)
+    private bool AddAidItems(InventoryItem aid)
     {
-        aidItems.Add(aid);
 
         if (!equipmentMenu.AddInventoryItem(aid))
         {
-            hud.AddNotification(equipmentMenu.GetError(), HUDManager.NotificationType.Warning);
+            HUDManager.instance.AddNotification(equipmentMenu.GetError(), HUDManager.NotificationType.Warning);
+
+            return false;
         }
+
+        aidItems.Add(aid);
+
+        return true;
     }
 
     private void AddItems(InventoryItem item)
@@ -272,5 +268,41 @@ public class Inventory : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void AddInteractItem(InteractionItem item)
+    {
+        currentHeldItem = item;
+        wManager.HolsterWeapon(true);
+        HUDManager.instance.AddActiveItem(item);
+    }
+
+    public void UseInterractItem(bool useSuccessful)
+    {
+        interactMenu.ItemUsed(useSuccessful);
+        HUDManager.instance.HideActiveItem();
+        wManager.HolsterWeapon(false);
+        currentHeldItem = null;
+    }
+
+    public InteractionItem GetHeldItem()
+    {
+        return currentHeldItem;
+    }
+
+    public bool IsHoldingItem()
+    {
+        return currentHeldItem;
+    }
+
+    private void Update()
+    {
+        if (IsHoldingItem() && !HUDManager.instance.IsMenuOpen())
+        {
+            if (Input.GetButtonDown(InputManager.Action) || Input.GetButtonDown(InputManager.Shoot))
+            {
+                UseInterractItem(false);
+            }
+        }
     }
 }

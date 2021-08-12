@@ -36,7 +36,7 @@ public class ToolManager : ObjectHoldManager
             {
                 HoldTool();
 
-                if (playerControl.sprinting)
+                if (playerController.IsSprinting())
                 {
                     holdPosition = sprintPosition;
                     wantedRotation = sprintRotation;
@@ -60,7 +60,7 @@ public class ToolManager : ObjectHoldManager
 
         GameObject go = Instantiate(tool.gameObject, transform.position, Quaternion.Euler(90, 0, 0));
         activeTool = go.GetComponent<Tool>();
-        activeTool.transform.parent = cam.transform;
+        activeTool.transform.parent = weaponParent.transform;
         activeTool.holstered = false;
 
         hipPosition = activeTool.hipPosition;

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    public static LevelController instance;
+    [HideInInspector] public float progress;
+    private int numberOfTasks;
+    private int tasksCompleted;
+    private float taskProgress;
+    [HideInInspector] public bool isLoaded = false;
     public delegate void OnPlayerSpawned();
     public static OnPlayerSpawned PlayerSpawned;
 
@@ -13,14 +19,20 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Transform spawnPoint;
 
-    private HUDManager hud;
     private ItemSpawner itemSpawner;
     private EnemySpawner enemySpawner;
     private LevelMission mission;
 
     private void Start()
     {
-        hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
+        instance = this;
+        isLoaded = false;
+
+        progress = 0;
+        numberOfTasks = 5;
+        tasksCompleted = 0;
+        taskProgress = 0;
+
         itemSpawner = GetComponent<ItemSpawner>();
         enemySpawner = GetComponent<EnemySpawner>();
         mission = GetComponent<LevelMission>();
@@ -38,6 +50,9 @@ public class LevelController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
+        ++tasksCompleted;
+        progress = (float)tasksCompleted / (float)numberOfTasks;
+
         StartCoroutine(InitializeLevel());
     }
 
@@ -49,35 +64,78 @@ public class LevelController : MonoBehaviour
         yield return null;
 
         //Setup Mission
-        Debug.Log("Initializing mission");
-        mission.InitializeMission(this, hud);
+        mission.initComplete = false;
+        StartCoroutine(mission.InitializeMission());
+
+        taskProgress = 0;
+        
+        while(!mission.initComplete)
+        {
+            taskProgress = mission.totalInitProgress / 100;
+            taskProgress = taskProgress * (1.0f / (float)numberOfTasks);
+            progress = (((float)tasksCompleted / (float)numberOfTasks) + taskProgress);
+
+            yield return null;
+        }
+
+        ++tasksCompleted;
+        progress = (float)tasksCompleted / (float)numberOfTasks;
+
         yield return null;
 
         //Spawn items
-        
-
-        Debug.Log("Spawning items.");
         if (levelItemCount != Vector2.zero)
         {
+            itemSpawner.spawnComplete = false;
+
             itemSpawner.SpawnItems((int)levelItemCount.x, (int)levelItemCount.y);
+
+            taskProgress = 0;
+            while (!itemSpawner.spawnComplete)
+            {
+                taskProgress = itemSpawner.progress;
+                
+                taskProgress = taskProgress * (1.0f / (float)numberOfTasks);
+                progress = (((float)tasksCompleted / (float)numberOfTasks) + taskProgress);
+
+                yield return null;
+            }
         }
 
         //Destroy(itemSpawner);
 
+        ++tasksCompleted;
+        progress = (float)tasksCompleted / (float)numberOfTasks;
+
         yield return null;
 
         //Spawn Enemies
-        Debug.Log("Spawning enemies");
+
         if (levelEnemyCountRange != Vector2.zero)
         {
+            enemySpawner.spawnComplete = false;
+            taskProgress = 0;
+
             enemySpawner.SetEnemySpawnBounds(Mathf.RoundToInt(levelEnemyCountRange.x), Mathf.RoundToInt(levelEnemyCountRange.y));
             enemySpawner.SpawnEnemies();
+
+            while(!enemySpawner.spawnComplete)
+            {
+                taskProgress = enemySpawner.spawnProgress;
+
+                taskProgress = taskProgress * (1.0f / (float)numberOfTasks);
+                progress = (((float)tasksCompleted / (float)numberOfTasks) + taskProgress);
+
+                yield return null;
+            }
         }
+
+        ++tasksCompleted;
+        progress = (float)tasksCompleted / (float)numberOfTasks;
 
         yield return null;
 
         //Spawn player
-        Debug.Log("Spawning player.");
         Instantiate(player, spawnPoint.position, spawnPoint.rotation);
 
         //Call delegate function so objects can find reference to player
@@ -85,6 +143,13 @@ public class LevelController : MonoBehaviour
         {
             PlayerSpawned();
         }
+
+        ++tasksCompleted;
+        progress = (float)tasksCompleted / (float)numberOfTasks;
+
+        yield return new WaitForSeconds(0.5f);
+
+        isLoaded = true;
     }
 
     private int GetNumLockedDoors()
@@ -96,7 +161,7 @@ public class LevelController : MonoBehaviour
 
     private void HandleLockedDoors()
     {
-        int numLocks = 0;
+        taskProgress = 0;
         GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
         LinkedList<Door> lockedDoors = new LinkedList<Door>();
 
@@ -107,22 +172,13 @@ public class LevelController : MonoBehaviour
             if (door.isLocked)
             {
                 lockedDoors.AddBack(door);
-                numLocks++;
             }
         }
 
         //If there are no locked doors, don't run the rest
-        if (numLocks <= 0)
+        if (lockedDoors.size <= 0)
             return;
 
-        for (int i = 0; i < numLocks; i++)
-        {
-            //Spawn keys
-
-
-            //Set the doors to the key needed
-
-
-        }
+        itemSpawner.SpawnKeys(lockedDoors);
     }
 }

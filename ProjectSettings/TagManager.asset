@@ -16,6 +16,8 @@ TagManager:
   - ItemSpawn
   - PlayerSpawn
   - Door
+  - Gas
+  - RockSlide
   layers:
   - Default
   - TransparentFX

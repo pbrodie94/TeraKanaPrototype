@@ -10,7 +10,7 @@ public enum ItemType
     Armour
 }
 
-public class InventoryItem : Interactible
+public class InventoryItem : Interactable
 {
     [Header("Item Properties")]
     public string itemName;
@@ -19,6 +19,8 @@ public class InventoryItem : Interactible
     protected string useFailure;
 
     public ItemType itemType;
+    
+    public AudioClip itemUseSound;
 
     protected override void Start()
     {

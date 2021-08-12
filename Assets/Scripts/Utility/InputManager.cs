@@ -22,4 +22,5 @@ public class InputManager : MonoBehaviour
     public const string Pause = "Pause";
     public const string Flashlight = "Flashlight";
     public const string Tool = "Tool";
+    public const string Crouch = "Crouch";
 }

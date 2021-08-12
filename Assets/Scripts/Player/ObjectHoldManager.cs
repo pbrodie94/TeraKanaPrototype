@@ -19,30 +19,32 @@ public class ObjectHoldManager : MonoBehaviour
     protected Quaternion sprintRotation;
     protected Quaternion wantedRotation = Quaternion.identity;
 
-    protected GameObject player;
+    //protected GameObject player;
 
-    protected PlayerMove playerControl;
+    //protected PlayerMove playerControl;
+    protected FPSController playerController;
     protected PlayerStats stats;
     protected Inventory inventory;
-    protected HUDManager hud;
     protected Transform cam;
+    protected Animator anim;
+    [SerializeField] protected Transform weaponParent;
+
+    //[SerializeField] protected Transform fpsArms;
+    //[SerializeField] protected Animator weaponAnim;
+    //[SerializeField] private RuntimeAnimatorController defaultController;
 
     protected virtual void Start()
     {
         if (!cam)
-            cam = GameObject.Find("Main Camera").transform;
+            cam = Camera.main.transform;
 
-        if (!player)
-            player = GameObject.FindGameObjectWithTag("Player");
-
-        if (!playerControl)
-            playerControl = GetComponent<PlayerMove>();
+        if (!playerController)
+            playerController = GetComponent<FPSController>();
 
         if (!inventory)
             inventory = GetComponent<Inventory>();
 
-        if (!hud)
-            hud = GameObject.FindGameObjectWithTag("UI").GetComponent<HUDManager>();
+        anim = GetComponent<Animator>();
 
         holdPosition = hipPosition;
     }

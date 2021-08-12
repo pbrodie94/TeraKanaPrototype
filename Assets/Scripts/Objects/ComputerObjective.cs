@@ -27,7 +27,7 @@ public class ComputerObjective : Objective
         //Start Upload progress bar
         hud.InitializeProgressBar(downloadMessage, progress);
         downloading = true;
-        isInteractible = false;
+        isInteractable = false;
 
         hud.AddNotification("Downloading computer data.", HUDManager.NotificationType.Warning);
         hud.AddNotification("ALARM DETECTED!", HUDManager.NotificationType.Alert);
@@ -45,7 +45,7 @@ public class ComputerObjective : Objective
                 progress = 100;
                 downloadComplete = true;
 
-                missionManager.CompletedObjective(this);
+                LevelMission.instance.CompletedObjective(this);
             }
 
             hud.UpdateProgressBar(downloadMessage, progress);

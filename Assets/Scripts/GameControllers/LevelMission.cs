@@ -12,6 +12,11 @@ public enum MissionType
 
 public class LevelMission : MonoBehaviour
 {
+    public static LevelMission instance;
+    [HideInInspector] public bool initComplete = false;
+    [HideInInspector] public float totalInitProgress = 0;
+    private int numberOfTasks;
+    private int tasksCompleted;
     public MissionType mission = MissionType.Specimen;
 
     [SerializeField] private GameObject[] objectiveObjects;
@@ -40,8 +45,17 @@ public class LevelMission : MonoBehaviour
 
     private List<Objective> objectives = new List<Objective>();
     private GameObject extractionPoint;
-    private LevelController lvlManager;
-    private HUDManager hud;
+
+    private void Awake()
+    {
+        instance = this;
+
+        initComplete = false;
+
+        tasksCompleted = 0;
+        totalInitProgress = 0;
+        numberOfTasks = 7;
+    }
 
     private void Start()
     {
@@ -52,10 +66,8 @@ public class LevelMission : MonoBehaviour
             extractionPoint.SetActive(false);
     }
 
-    public void InitializeMission(LevelController manager, HUDManager hudManager)
+    public IEnumerator InitializeMission()
     {
-        lvlManager = manager;
-        hud = hudManager;
         missionCompleted = false;
 
         //Select random mission type
@@ -63,6 +75,11 @@ public class LevelMission : MonoBehaviour
         {
             mission = (MissionType)Random.Range(0, System.Enum.GetValues(typeof(MissionType)).Length - 1);
         }
+
+        ++tasksCompleted;
+        totalInitProgress = (tasksCompleted / numberOfTasks) * 100;
+
+        yield return null;
 
         //Place the objectives in the level
         //Get list of objective locations that correspond with the objective type
@@ -84,6 +101,7 @@ public class LevelMission : MonoBehaviour
                     goodSP = true;
                 }
 
+                yield return null;
             }
             
             //If we don't need the spawn point, destroy it
@@ -91,7 +109,14 @@ public class LevelMission : MonoBehaviour
             {
                 Destroy(sp);
             }
+
+            yield return null;
         }
+
+        ++tasksCompleted;
+        totalInitProgress = (tasksCompleted / numberOfTasks) * 100;
+
+        yield return null;
 
         //Create a list of potential objective objects to spawn for the mission
         List<GameObject> objectiveSpawn = new List<GameObject>();
@@ -104,7 +129,14 @@ public class LevelMission : MonoBehaviour
             {
                 objectiveSpawn.Add(go);
             }
+
+            yield return null;
         }
+
+        ++tasksCompleted;
+        totalInitProgress = (tasksCompleted / numberOfTasks) * 100;
+
+        yield return null;
 
         //Get number of required objectives (objective type dependent)
         switch (mission)
@@ -143,6 +175,11 @@ public class LevelMission : MonoBehaviour
                 break;
         }
 
+        ++tasksCompleted;
+        totalInitProgress = (tasksCompleted / numberOfTasks) * 100;
+
+        yield return null;
+
         objectivesList.Enqueue("Get to the extraction point.");
 
         //Randomly place objectives
@@ -164,31 +201,52 @@ public class LevelMission : MonoBehaviour
             spawnPoints.RemoveAt(spawnPoint); //Remove the potential spawn point from the list of points since it's occupied now
             Destroy(location.gameObject); //Destroy the spawnpoint object
             newObjective = go.GetComponent<Objective>(); //Get a reference to the objective script
-            newObjective.InitializeObjective(this, hud); //Initialize the objective
+            newObjective.InitializeObjective(); //Initialize the objective
             objectives.Add(newObjective); //Add the newly created objective to the list of objectives
+
+            yield return null;
         }
+
+        ++tasksCompleted;
+        totalInitProgress = (tasksCompleted / numberOfTasks) * 100;
+
+        yield return null;
 
         //Destroy the spawn points since they're no longer needed
         foreach (ObjectiveSpawnPoint osp in spawnPoints)
         {
             Destroy(osp.gameObject);
+
+            yield return null;
         }
 
         spawnPoints.Clear();
         objectiveSpawn.Clear();
+
+        ++tasksCompleted;
+        totalInitProgress = (tasksCompleted / numberOfTasks) * 100;
+
+        yield return null;
 
         currentObjective = objectivesList.Dequeue().ToString();
 
         //Update the hud
         if (_numObjectives > 1)
         {
-            hud.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
+            HUDManager.instance.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
         } else
         {
-            hud.UpdateObjective(currentObjective);
+            HUDManager.instance.UpdateObjective(currentObjective);
         }
 
         //Display in the middle of the screen
+
+        ++tasksCompleted;
+        totalInitProgress = (tasksCompleted / numberOfTasks) * 100;
+
+        yield return new WaitForSeconds(0.1f);
+
+        initComplete = true;
     }
 
     public void CompletedObjective(Objective obj)
@@ -203,7 +261,7 @@ public class LevelMission : MonoBehaviour
 
             //Update hud for next mission objective
             currentObjective = objectivesList.Dequeue().ToString();
-            hud.UpdateObjective(currentObjective);
+            HUDManager.instance.UpdateObjective(currentObjective);
 
             //Unlock the extraction point
             extractionPoint.SetActive(true);
@@ -212,7 +270,7 @@ public class LevelMission : MonoBehaviour
         } else
         {
             //Otherwise update the current objective
-            hud.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
+            HUDManager.instance.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
         }
     }
 
@@ -226,7 +284,7 @@ public class LevelMission : MonoBehaviour
 
             //Update hud for next mission objective
             currentObjective = objectivesList.Dequeue().ToString();
-            hud.UpdateObjective(currentObjective);
+            HUDManager.instance.UpdateObjective(currentObjective);
 
             //Unlock the extraction point
             extractionPoint.SetActive(true);
@@ -235,7 +293,7 @@ public class LevelMission : MonoBehaviour
         else
         {
             //Otherwise update the current objective
-            hud.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
+            HUDManager.instance.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
         }
     }
 

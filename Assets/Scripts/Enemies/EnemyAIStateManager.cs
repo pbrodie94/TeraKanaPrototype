@@ -90,8 +90,6 @@ public class EnemyAIStateManager : MonoBehaviour
                 UpdateState(defaultState);
             }
         }
-
-       
     }
 
     void UpdateState(EnemyState newState)
@@ -142,5 +140,10 @@ public class EnemyAIStateManager : MonoBehaviour
     public void Die()
     {
         cm.RemoveEnemy(enemy);
+    }
+
+    public EnemyState GetCurrentState()
+    {
+        return state;
     }
 }

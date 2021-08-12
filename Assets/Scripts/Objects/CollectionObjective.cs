@@ -28,11 +28,11 @@ public class CollectionObjective : Objective
         //Hide message, and destroy script
         hud.ShowMessage(null, false);
         messageShown = false;
-        isInteractible = false;
+        isInteractable = false;
 
         hud.AddNotification("Acquired " + objectName);
 
-        missionManager.CompletedObjective();
+        LevelMission.instance.CompletedObjective();
         Destroy(gameObject);
     }
 }

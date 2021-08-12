@@ -18,10 +18,10 @@ public class SpecimenObjective : Objective
         //Hide message, and destroy script
         hud.ShowMessage(null, false);
         messageShown = false;
-        isInteractible = false;
+        isInteractable = false;
 
         hud.AddNotification("Acquired specimen sample");
 
-        missionManager.CompletedObjective(this);
+        LevelMission.instance.CompletedObjective(this);
     }
 }

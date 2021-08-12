@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -50,7 +51,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void ClearSlot()
     {
-        selected = false;
+        DeSelectSlot();
         slotItemImage.enabled = false;
     }
 
@@ -97,5 +98,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             menu.ThirdItemSelect(this);
         }
+    }
+
+    public bool IsSelected()
+    {
+        return selected;
     }
 }
