@@ -518,7 +518,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c1f162867bac8264eb37af7332807a1f, type: 3}
   projectile: {fileID: 868440782559472418, guid: a356c0d983fe57b4885909b1c5d1991f, type: 3}
   firePoint: {fileID: 9025596758493047000}
-  firePower: 500
+  firePower: 1000
   fireRate: 3
 --- !u!1 &9025596759314244157
 GameObject:
