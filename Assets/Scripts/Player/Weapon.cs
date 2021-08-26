@@ -83,6 +83,7 @@ public class Weapon : InventoryItem
 
         col.enabled = false;
         body.useGravity = false;
+        body.isKinematic = true;
     }
     public virtual bool AddAmmo(int amount)
     {
