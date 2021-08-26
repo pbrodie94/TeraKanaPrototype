@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Firearm : Weapon
 {
     [Header("Firearm Properties")]
-    public float damage = 24;
+    [SerializeField] protected float damage = 24;
 
     public int mag = 30;
     public int ammo = 360;
@@ -18,7 +16,7 @@ public class Firearm : Weapon
     public float recoil = 0.1f;
     public float recRot = 5;
 
-    private bool canShoot = true;
+    protected bool canShoot = true;
     protected float timeLastShot;
 
     public Transform muzzle;
@@ -26,7 +24,7 @@ public class Firearm : Weapon
     public GameObject bulletImpact;
 
     [Header("Audio")]
-    private AudioSource gunAudio;
+    protected AudioSource gunAudio;
     public AudioClip gunShot;
 
     protected override void Start()
@@ -55,7 +53,7 @@ public class Firearm : Weapon
         }
     }
 
-    public bool Shoot()
+    public virtual bool Shoot()
     {
         if (!canShoot)
             return false;
@@ -92,19 +90,18 @@ public class Firearm : Weapon
             }
         }
 
-        //Muzzle flash and tracers
-
         mag--;
         hud.UpdateWeaponPanel(mag, ammo);
-
+        
+        //Muzzle flash and tracers
         if (muzzleFlash)
         {
             GameObject flash = Instantiate(muzzleFlash.gameObject, muzzle.position, muzzle.rotation, muzzle);
             flash.transform.localRotation = Quaternion.Euler(0, -90, 0);
-            Destroy(flash, rof);
+            Destroy(flash, 0.12f);
         }
 
-        if (gunAudio)
+        if (gunAudio && gunShot)
         {
             gunAudio.PlayOneShot(gunShot);
         }
