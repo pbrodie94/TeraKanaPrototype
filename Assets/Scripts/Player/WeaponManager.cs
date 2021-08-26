@@ -102,6 +102,28 @@ public class WeaponManager : ObjectHoldManager
                     }
                 }                
             }
+
+            if (Input.GetAxis(InputManager.WeaponScroll) > 0)
+            {
+                if (!secondaryWeapon)
+                {
+                    return;
+                }
+
+                //Next Weapon
+                SwapWeapon();
+            }
+
+            if (Input.GetAxis(InputManager.WeaponScroll) < 0)
+            {
+                if (!secondaryWeapon)
+                {
+                    return;
+                }
+                
+                //Previous weapon
+                SwapWeapon();
+            }
             
         }
 
@@ -118,8 +140,10 @@ public class WeaponManager : ObjectHoldManager
 
         if (activeWeapon)
         {
-            activeWeapon.transform.localPosition = Vector3.Lerp(activeWeapon.transform.localPosition, holdPosition, smoothing * Time.fixedDeltaTime);
-            activeWeapon.transform.localRotation = Quaternion.Slerp(activeWeapon.transform.localRotation, wantedRotation, smoothing * Time.fixedDeltaTime);
+            Transform weapon = activeWeapon.transform;
+            
+            weapon.localPosition = Vector3.Lerp(weapon.localPosition, holdPosition, smoothing * Time.fixedDeltaTime);
+            weapon.localRotation = Quaternion.Slerp(weapon.localRotation, wantedRotation, smoothing * Time.fixedDeltaTime);
         }
     }
 
@@ -160,39 +184,49 @@ public class WeaponManager : ObjectHoldManager
 
     void DeployWeapon()
     {
-        if (activeWeapon)
+        if (!activeWeapon)
         {
-            activeWeapon.gameObject.layer = 8;
-
-            foreach (Transform child in activeWeapon.gameObject.transform)
-            {
-                child.gameObject.layer = 8;
-            }
-
-            activeWeapon.transform.SetParent(weaponParent);
-
-            hipPosition = activeWeapon.holdPosition;
-            aimPosition = activeWeapon.aimPosition;
-            holsterPosition = activeWeapon.holsterPosition;
-            sprintPosition = activeWeapon.sprintPosition;
-            sprintRotation = Quaternion.Euler(activeWeapon.sprintRotation);
-            
-
-            if (activeWeapon.ranged)
-            {
-                Firearm fa = activeWeapon.gameObject.GetComponent<Firearm>();
-                recoil = fa.recoil;
-                recRot = fa.recRot;
-            }
-
-            //Deploying animations
-            activeWeapon.transform.localPosition = holdPosition;
-
-            holstered = false;
-            holdPosition = hipPosition;
-
-            timeDeployed = Time.time;
+            return;
         }
+
+        GameObject weapon = activeWeapon.gameObject;
+        
+        if (!weapon.activeSelf)
+        {
+            weapon.SetActive(true);
+        }
+
+        weapon.layer = 8;
+
+        foreach (Transform child in weapon.transform)
+        {
+            child.gameObject.layer = 8;
+        }
+
+        weapon.transform.SetParent(weaponParent);
+
+        hipPosition = activeWeapon.holdPosition;
+        aimPosition = activeWeapon.aimPosition;
+        holsterPosition = activeWeapon.holsterPosition;
+        sprintPosition = activeWeapon.sprintPosition;
+        sprintRotation = Quaternion.Euler(activeWeapon.sprintRotation);
+        
+
+        if (activeWeapon.ranged)
+        {
+            Firearm fa = activeWeapon.gameObject.GetComponent<Firearm>();
+            recoil = fa.recoil;
+            recRot = fa.recRot;
+        }
+
+        //Deploying animations
+        weapon.transform.localPosition = holdPosition;
+
+        holstered = false;
+        holdPosition = hipPosition;
+
+        timeDeployed = Time.time;
+        
     }
 
     public bool EquipWeapon(Weapon newWeapon, bool activate)
@@ -209,19 +243,28 @@ public class WeaponManager : ObjectHoldManager
                 DeployWeapon();
 
                 return true;
-            } else if (!secondaryWeapon)
+            } 
+            
+            if (!secondaryWeapon)
             {
+
                 //has no secondary weapon, equip to secondary weapon
                 secondaryWeapon = newWeapon;
-                Destroy(newWeapon);
+                secondaryWeapon.Equip(false);
+
+                Transform weapon = secondaryWeapon.gameObject.transform;
+                
+                weapon.SetParent(transform);
+                weapon.localPosition = secondaryWeapon.holsterPosition;
+                weapon.gameObject.SetActive(false);
 
                 return true;
-            } else
-            {
-                return false;
             }
-        } else
-        {
+            
+            return false;
+            
+        } else {
+            
             //Replace active weapon and send active weapon to inventory
 
             //inventory.AddWeapons(activeWeapon);
@@ -232,6 +275,28 @@ public class WeaponManager : ObjectHoldManager
             return true;
         }
 
+    }
+
+    private void SwapWeapon()
+    {
+        //Do a safety check
+        if (!activeWeapon || !secondaryWeapon)
+        {
+            return;
+        }
+        
+        //Swap variables
+        (activeWeapon, secondaryWeapon) = (secondaryWeapon, activeWeapon);
+
+        //Activate and deploy the swapped weapon
+        activeWeapon.Equip(true);
+        DeployWeapon();
+        
+        //Set the previous weapon in the secondary slot then deactivate it
+        Transform weapon = secondaryWeapon.gameObject.transform;
+        weapon.SetParent(transform);
+        weapon.localPosition = secondaryWeapon.holsterPosition;
+        weapon.gameObject.SetActive(false);
     }
 
     public void HolsterWeapon(bool holst)

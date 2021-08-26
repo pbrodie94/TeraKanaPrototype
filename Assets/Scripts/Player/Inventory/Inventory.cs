@@ -33,20 +33,13 @@ public class Inventory : MonoBehaviour
 
                 Weapon w = item.gameObject.GetComponent<Weapon>();
 
-                if (!wManager.HasWeapon())
+                if (!wManager.EquipWeapon(w, false))
                 {
                     //Have an empty weapon slot, equip it to either primary or secondary
 
-                    wManager.EquipWeapon(w, false);
+                    //AddWeapons(w);
 
-                } else
-                {
-                    //Weapon slots full, add to inventory
-
-                    AddWeapons(w);
                 }
-
-                //equipmentMenu.AddInventoryItem(item);
 
                 break;
 
@@ -94,21 +87,14 @@ public class Inventory : MonoBehaviour
 
                 Weapon w = item.gameObject.GetComponent<Weapon>();
 
-                if (!wManager.HasWeapon())
+                if (!wManager.EquipWeapon(w, false))
                 {
+                    Debug.Log("Didn't pickup");
                     //Have an empty weapon slot, equip it to either primary or secondary
 
-                    wManager.EquipWeapon(w, false);
+                    //AddWeapons(w);
 
                 }
-                else
-                {
-                    //Weapon slots full, add to inventory
-
-                    AddWeapons(w);
-                }
-
-                //equipmentMenu.AddInventoryItem(item);
 
                 break;
 

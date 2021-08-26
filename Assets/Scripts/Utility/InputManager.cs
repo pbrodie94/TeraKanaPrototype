@@ -14,13 +14,12 @@ public class InputManager : MonoBehaviour
     public const string Reload = "Reload";
     public const string Action = "Action";
     public const string Menu = "Menu";
-    public const string Equip = "Equip";
     public const string Throw = "Throw";
-    public const string Aid = "Aid";
     public const string Swap = "Swap";
     public const string Sprint = "Sprint";
     public const string Pause = "Pause";
     public const string Flashlight = "Flashlight";
     public const string Tool = "Tool";
     public const string Crouch = "Crouch";
+    public const string WeaponScroll = "WeaponScroll";
 }
