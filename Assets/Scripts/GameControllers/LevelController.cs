@@ -216,15 +216,15 @@ public class LevelController : MonoBehaviour
         //Spawn player
         Instantiate(player, spawnPoint.position, spawnPoint.rotation);
 
+        //Load player data
+        LoadPlayerData(gameData.player);
+
         //Call delegate function so objects can find reference to player
         if (PlayerSpawned != null)
         {
             PlayerSpawned();
         }
-        
-        //Load player data
-        LoadPlayerData(gameData.player);
-        
+
         ++tasksCompleted;
         progress = (float)tasksCompleted / (float)numberOfTasks;
         

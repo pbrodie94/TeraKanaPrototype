@@ -7,6 +7,8 @@ public class ItemBox : Interactable
     [Header("Item Crate Properties")]
     public InventoryItem item;
 
+    [HideInInspector] public int itemIndex;
+
     protected override void Start()
     {
         base.Start();
@@ -24,6 +26,7 @@ public class ItemBox : Interactable
         if (inv.PickupItem(item))
         {
             audioSource.PlayOneShot(interactSound);
+            itemIndex = 0;
             return;
         }
 

@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     private static bool saving = false;
 
     private bool paused = false;
+    public static int lives = 3;
 
     void Awake()
     {
@@ -204,6 +205,7 @@ public class GameManager : MonoBehaviour
         player.SavePlayerData();
         
         playerData = _gameData.gameSaveData.player;
+        playerData.lives = lives;
         
         //Add player's current checkpoint spawn point
         if (LevelController.instance)
@@ -265,7 +267,12 @@ public class GameManager : MonoBehaviour
             
             //Save item data
             boxData.ID = items[i].GetInstanceID();
-            //boxData.item = box.item;
+            boxData.itemIndex = box.itemIndex;
+
+            if (box.itemIndex == 4)
+            {
+                boxData.keyName = box.item.itemName;
+            }
             
             //Get transform data
             Transform boxTransform = items[i].transform;

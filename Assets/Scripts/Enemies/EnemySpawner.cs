@@ -60,9 +60,29 @@ public class EnemySpawner : MonoBehaviour
             float rot = Random.Range(0, 360);
             Quaternion rotation = Quaternion.Euler(0, rot, 0);
 
-            GameObject monster = GetMonsterToSpawn();
-            
-            Instantiate(monster, point, rotation);
+            GameObject monsterType = LightMonsters;
+            int monsterTypeIndex = GetMonsterToSpawn();
+
+            switch (monsterTypeIndex)
+            {
+                case 1:
+                    //Small
+                    monsterType = LightMonsters;
+                    break;
+                case 2:
+                    //Ranged
+                    monsterType = RangedMonsters;
+                    break;
+                case 3:
+                    //Heavy
+                    monsterType = HeavyMonsters;
+                    break;
+            }
+
+            GameObject monster = Instantiate(monsterType, point, rotation);
+            Enemy enemy = monster.GetComponent<Enemy>();
+            enemy.enemySpawnIndex = 0;
+            enemy.enemyTypeIndex = monsterTypeIndex;
 
             areas.GetAtIndex(areaIndex).AddedEnemy();
 
@@ -127,29 +147,50 @@ public class EnemySpawner : MonoBehaviour
             rot.x = enemyData[i].transformData.rotation.x;
             rot.y = enemyData[i].transformData.rotation.y;
             rot.z = enemyData[i].transformData.rotation.z;
+
+            int enemyType = enemyData[i].enemyTypeIndex;
+            int enemyIndex = enemyData[i].enemyIndex;
+
+            GameObject monsterType = LightMonsters;
+            
+            switch (enemyType)
+            {
+                case 1:
+                    //Small
+                    monsterType = LightMonsters;
+                    break;
+                case 2:
+                    //Ranged
+                    monsterType = RangedMonsters;
+                    break;
+                case 3:
+                    //Heavy
+                    monsterType = HeavyMonsters;
+                    break;
+            }
             
             //Instatiate enemy and apply the saved data
-            //GameObject go = Instantiate(enemyData[i].enemy, pos, Quaternion.Euler(rot));
-            //EnemyStats stats = go.GetComponent<EnemyStats>();
-            //stats.SetHealth(enemyData[i].health);
+            GameObject go = Instantiate(monsterType, pos, Quaternion.Euler(rot));
+            EnemyStats stats = go.GetComponent<EnemyStats>();
+            stats.SetHealth(enemyData[i].health);
         }
     }
 
-    private GameObject GetMonsterToSpawn()
+    private int GetMonsterToSpawn()
     {
         float monsterSpawnRand = Random.Range(0, 100);
 
         if (monsterSpawnRand <= spawnHeavyProbability)
         {
-            return HeavyMonsters;
+            return 3;
         }
 
         if (monsterSpawnRand <= spawnRangedProbability)
         {
-            return RangedMonsters;
+            return 2;
         }
         
-        return LightMonsters;
+        return 1;
     }
 
     public void SetEnemySpawnBounds(int min, int max)

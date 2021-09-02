@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
-using JetBrains.Annotations;
 
 public class LoadSaveManager : MonoBehaviour
 {
@@ -19,15 +18,17 @@ public class LoadSaveManager : MonoBehaviour
             
             //Health
             public float health;
-            
+
+            public int lives;
+
             //Items inventory
             //public List<InventoryItem> aidItems = new List<InventoryItem>();
             //public List<InventoryItem> items = new List<InventoryItem>();
-            
+
             //Weapons
             //public Weapon primaryWeapon;
             //public Weapon secondaryWeapon;
-            
+
         }
 
         public class EnemyData
@@ -42,7 +43,8 @@ public class LoadSaveManager : MonoBehaviour
             public float health;
             
             //Enemy type
-            //public GameObject enemy;
+            public int enemyIndex;
+            public int enemyTypeIndex;
         }
 
         public class ItemBoxData
@@ -54,7 +56,9 @@ public class LoadSaveManager : MonoBehaviour
             public int ID;
 
             //Contents
-            //public InventoryItem item;
+            public int itemIndex;
+
+            public string keyName;
         }
 
         public class DoorData
@@ -126,6 +130,14 @@ public class LoadSaveManager : MonoBehaviour
         stream.Flush();
         stream.Dispose();
         stream.Close();
+    }
+
+    public void DeleteGame(string fileName = "GameSaveData.xml")
+    {
+        if (File.Exists(fileName))
+        {
+            File.Delete(fileName);
+        }
     }
     
     //Transform data

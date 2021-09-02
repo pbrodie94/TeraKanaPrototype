@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public Transform target;
+    [HideInInspector] public int enemySpawnIndex;
+    [HideInInspector] public int enemyTypeIndex;
 
     public float walkSpeed = 6;
     public float runSpeed = 8;
@@ -83,7 +85,8 @@ public class Enemy : MonoBehaviour
         enemyData.health = stats.GetHealth();
         
         //Save gameobject info
-        //enemyData.enemy = gameObject;
+        enemyData.enemyIndex = enemySpawnIndex;
+        enemyData.enemyTypeIndex = enemyTypeIndex;
         
         //Save ID
         enemyData.ID = GetInstanceID();

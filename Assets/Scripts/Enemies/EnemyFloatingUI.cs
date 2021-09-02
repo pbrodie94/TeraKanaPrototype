@@ -38,6 +38,8 @@ public class EnemyFloatingUI : MonoBehaviour
     {
         //Get player reference
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        
+        Debug.Log("Player " + player.gameObject.name);
     }
 
     private void LateUpdate()

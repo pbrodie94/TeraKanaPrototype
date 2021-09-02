@@ -82,6 +82,8 @@ public class ItemSpawner : MonoBehaviour
             keyInstance.itemName = "Key " + keyNumber.ToString();
             itemBox.item = keyInstance;
 
+            itemBox.itemIndex = -1;
+
             //Pass the reference of the key to the particular door
             lockedDoors.GetAtIndex(i).SetUnlockKey(keyInstance);
             
@@ -123,7 +125,7 @@ public class ItemSpawner : MonoBehaviour
 
                 int itemIndex = Random.Range(0, items.Length);
                 box.item = items[itemIndex];
-
+                box.itemIndex = itemIndex;
             }
 
             //Remove the spawnpoint from the available spawn points so it can't be used again
@@ -160,7 +162,18 @@ public class ItemSpawner : MonoBehaviour
             int iIndex = Random.Range(0, itemObjects.Length - 1);
             GameObject go = Instantiate(itemObjects[iIndex], pos, Quaternion.Euler(rot));
             ItemBox box = go.GetComponent<ItemBox>();
-            //box.item = itemBoxData[i].item;
+
+            if (itemBoxData[i].itemIndex > 0)
+            {
+                box.item = items[itemBoxData[i].itemIndex];
+            }
+            else if (itemBoxData[i].itemIndex == -1)
+            {
+                //Create the key and add it to the box
+                InteractionItem keyInstance = Instantiate(key.gameObject).GetComponent<InteractionItem>();
+                keyInstance.itemName = itemBoxData[i].keyName;
+                box.item = keyInstance;
+            }
         }
     }
 }
