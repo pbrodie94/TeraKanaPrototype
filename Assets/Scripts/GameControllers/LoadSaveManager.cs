@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using System.Security;
+using System.Security.Cryptography;
+using System.Text;
 
 public class LoadSaveManager : MonoBehaviour
 {
@@ -105,10 +108,7 @@ public class LoadSaveManager : MonoBehaviour
     public void SaveGame(string fileName = "GameSaveData.xml")
     {
         //Clear existing data
-        if (File.Exists(fileName))
-        {
-            File.Delete(fileName);
-        }
+        DeleteGame(fileName);
         
         //Save game 
         XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
@@ -123,6 +123,11 @@ public class LoadSaveManager : MonoBehaviour
 
     public void LoadGame(string fileName = "GameSaveData.xml")
     {
+        if (!File.Exists(fileName))
+        {
+            return;
+        }
+        
         //Load game 
         XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
         FileStream stream = new FileStream(fileName, FileMode.Open);
