@@ -46,4 +46,14 @@ public class Stats : MonoBehaviour
         health = 0;
         dead = true;
     }
+
+    public void SetHealth(float health)
+    {
+        this.health = health;
+    }
+
+    public float GetHealth()
+    {
+        return health;
+    }
 }

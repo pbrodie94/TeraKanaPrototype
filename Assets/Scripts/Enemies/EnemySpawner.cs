@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -36,8 +35,6 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
-
-        //SpawnEnemies();
     }
 
     public void SpawnEnemies()
@@ -109,6 +106,33 @@ public class EnemySpawner : MonoBehaviour
         }
         
         return -1;
+    }
+
+    public void LoadEnemiesFromData(List<LoadSaveManager.GameSaveData.EnemyData> enemyData)
+    {
+        if (enemyData.Count <= 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < enemyData.Count; ++i)
+        {
+            //Get enemy location and position
+            Vector3 pos = Vector3.zero;
+            pos.x = enemyData[i].transformData.position.x;
+            pos.y = enemyData[i].transformData.position.y;
+            pos.z = enemyData[i].transformData.position.z;
+            
+            Vector3 rot = Vector3.zero;
+            rot.x = enemyData[i].transformData.rotation.x;
+            rot.y = enemyData[i].transformData.rotation.y;
+            rot.z = enemyData[i].transformData.rotation.z;
+            
+            //Instatiate enemy and apply the saved data
+            //GameObject go = Instantiate(enemyData[i].enemy, pos, Quaternion.Euler(rot));
+            //EnemyStats stats = go.GetComponent<EnemyStats>();
+            //stats.SetHealth(enemyData[i].health);
+        }
     }
 
     private GameObject GetMonsterToSpawn()

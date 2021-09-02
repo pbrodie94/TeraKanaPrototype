@@ -29,7 +29,7 @@ public class EnemyFloatingUI : MonoBehaviour
         
         //Set the health bar to defaults
         enemyHealthSlider.maxValue = enemyStats.GetMaxHealth();
-        enemyHealthSlider.value = enemyStats.GetCurrentHealth();
+        enemyHealthSlider.value = enemyStats.GetHealth();
         
         enemyFloatingUI.SetActive(false);
     }
@@ -57,6 +57,6 @@ public class EnemyFloatingUI : MonoBehaviour
             enemyFloatingUI.SetActive(false);
         }
 
-        enemyHealthSlider.value = enemyStats.GetCurrentHealth();
+        enemyHealthSlider.value = enemyStats.GetHealth();
     }
 }

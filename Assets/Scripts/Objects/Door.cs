@@ -10,6 +10,10 @@ public class Door : MonoBehaviour
     protected string message;
     private bool messageShown = false;
     private bool opened = false;
+    public bool isOpened
+    {
+        get { return opened; }
+    }
     protected bool canClose = true;
 
     [SerializeField] private bool locked = false;
@@ -160,5 +164,36 @@ public class Door : MonoBehaviour
         message = "Door locked, go find " + key.itemName + ".";
         
         Debug.Log(message);
+    }
+
+    public void SetDoorData(bool opened, bool locked)
+    {
+        //If locked, set door being locked, then return since if locked it won't be open
+        if (locked)
+        {
+            locked = true;
+
+            if (opened)
+            {
+                doorAnimation.Play("close");
+                opened = false;
+            }
+
+            return;
+        }
+
+        locked = false;
+        
+        //Set door being opened 
+        if (opened)
+        {
+            doorAnimation.Play("open");
+            opened = true;
+        }
+        else
+        {
+            doorAnimation.Play("close");
+            opened = false;
+        }
     }
 }

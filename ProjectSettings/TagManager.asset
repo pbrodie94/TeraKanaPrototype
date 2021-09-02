@@ -18,6 +18,8 @@ TagManager:
   - Door
   - Gas
   - RockSlide
+  - Weapon
+  - Item
   layers:
   - Default
   - TransparentFX

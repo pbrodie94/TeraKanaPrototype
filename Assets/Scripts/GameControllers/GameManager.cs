@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,19 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+
+    private static LoadSaveManager _gameData = null;
+    public static LoadSaveManager gameData
+    {
+        get
+        {
+            return _gameData;
+        }
+    }
+
+    private static bool shouldLoad = false;
+    private static bool saving = false;
+
     private bool paused = false;
 
     void Awake()
@@ -29,6 +43,11 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         } else {
             _instance = this;
+        }
+
+        if (!_gameData)
+        {
+            _gameData = GetComponent<LoadSaveManager>();
         }
 
         DontDestroyOnLoad(this.gameObject);
@@ -44,6 +63,17 @@ public class GameManager : MonoBehaviour
 
             loadingScreen.SetActive(false);
         }
+    }
+
+    private void Start()
+    {
+        if (shouldLoad)
+        {
+            _gameData.LoadGame(Application.persistentDataPath + "/GameData.xml");
+
+            shouldLoad = false;
+        }
+        
     }
 
     public void PauseGame(bool pause)
@@ -117,7 +147,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GetTotalProgress()
     {
-
         StartCoroutine(GetSceneLoadingProgress());
         
         float totalProgress = 0;
@@ -141,6 +170,149 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         loadingScreen.SetActive(false);
+        shouldLoad = false;
+    }
+
+    public void SaveGame()
+    {
+        if (!saving)
+        {
+            StartCoroutine(ProgressiveSaveGame());
+        }
+    }
+
+    public void LoadGame()
+    {
+        
+    }
+
+    private IEnumerator ProgressiveSaveGame()
+    {
+        saving = true;
+        
+        if (HUDManager.instance)
+        {
+            HUDManager.instance.AddNotification("Saving...", Color.yellow);
+        }
+
+        //Prepare player save
+        LoadSaveManager.GameSaveData.PlayerData playerData = _gameData.gameSaveData.player;
+        playerData = new LoadSaveManager.GameSaveData.PlayerData();
+        FPSController player = GameObject.FindGameObjectWithTag("Player").GetComponent<FPSController>();
+        player.SavePlayerData();
+        
+        //Add player's current checkpoint spawn point
+        if (LevelController.instance)
+        {
+            Transform spawnPoint = LevelController.instance.GetSpawnPoint();
+
+            playerData.spawnPoint.position.x = spawnPoint.position.x;
+            playerData.spawnPoint.position.y = spawnPoint.position.y;
+            playerData.spawnPoint.position.z = spawnPoint.position.z;
+
+            playerData.spawnPoint.rotation.x = spawnPoint.rotation.x;
+            playerData.spawnPoint.rotation.y = spawnPoint.rotation.y;
+            playerData.spawnPoint.rotation.z = spawnPoint.rotation.z;
+        }
+        
+        yield return null;
+
+        //Prepare enemies save
+        _gameData.gameSaveData.enemies.Clear();
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        
+        for (int i = 0; i < enemies.Length; ++i)
+        {
+            Enemy enemy = enemies[i].GetComponent<Enemy>();
+            if (enemy)
+            {
+                enemy.SaveEnemyData();
+            }
+
+            yield return null;
+        }
+
+        yield return null;
+        
+        //Save mission data
+        if (LevelMission.instance)
+        {
+            LevelMission.instance.SaveMissionData();
+        }
+
+        yield return null;
+        
+        //Prepare doors save
+        SaveDoorData();
+
+        yield return null;
+        
+        //Save items
+        _gameData.gameSaveData.itemBoxes.Clear();
+        GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
+
+        for (int i = 0; i < items.Length; ++i)
+        {
+            LoadSaveManager.GameSaveData.ItemBoxData boxData = new LoadSaveManager.GameSaveData.ItemBoxData();
+            ItemBox box = items[i].GetComponent<ItemBox>();
+            
+            //Save item data
+            boxData.ID = items[i].GetInstanceID();
+            //boxData.item = box.item;
+            
+            //Get transform data
+            Transform boxTransform = items[i].transform;
+
+            boxData.transformData.position.x = boxTransform.position.x;
+            boxData.transformData.position.y = boxTransform.position.y;
+            boxData.transformData.position.z = boxTransform.position.z;
+
+            boxData.transformData.rotation.x = boxTransform.rotation.x;
+            boxData.transformData.rotation.y = boxTransform.rotation.y;
+            boxData.transformData.rotation.z = boxTransform.rotation.z;
+            
+            _gameData.gameSaveData.itemBoxes.Add(boxData);
+            
+            yield return null;
+        }
+
+        yield return null;
+        
+        _gameData.SaveGame(Application.persistentDataPath + "/GameData.xml");
+
+        saving = false;
+        
+        if (HUDManager.instance)
+        {
+            HUDManager.instance.AddNotification("Saved Game.", Color.green);
+        }
+    }
+
+    private void SaveDoorData()
+    {
+        //Create list of door data, and find all doors
+        List<LoadSaveManager.GameSaveData.DoorData> doorData = new List<LoadSaveManager.GameSaveData.DoorData>();
+        GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
+
+        //Iterate through all doors and save their data
+        for (int i = 0; i < doors.Length; ++i)
+        {
+            LoadSaveManager.GameSaveData.DoorData doorInstance = new LoadSaveManager.GameSaveData.DoorData();
+            Door door = doors[i].GetComponent<Door>();
+
+            doorInstance.locked = door.isLocked;
+            doorInstance.opened = door.isOpened;
+            doorInstance.ID = doors[i].GetInstanceID();
+            
+            doorData.Add(doorInstance);
+        }
+
+        _gameData.gameSaveData.doors = doorData;
+    }
+
+    public bool GetIsLoading()
+    {
+        return shouldLoad;
     }
 
     public void QuitGame()

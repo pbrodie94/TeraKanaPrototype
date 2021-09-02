@@ -5,9 +5,21 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<InventoryItem> weapons = new List<InventoryItem>();
-    private List<InventoryItem> aidItems = new List<InventoryItem>();
-    private List<InventoryItem> items = new List<InventoryItem>();
+    private List<InventoryItem> _weapons = new List<InventoryItem>();
+    public List<InventoryItem> weapons
+    {
+        get { return _weapons; }
+    }
+    private List<InventoryItem> _aidItems = new List<InventoryItem>();
+    public List<InventoryItem> aidItems
+    {
+        get { return _aidItems; }
+    }
+    private List<InventoryItem> _items = new List<InventoryItem>();
+    public List<InventoryItem> items
+    {
+        get { return _items; }
+    }
 
     private EquipmentMenu equipmentMenu;
     private InteractMenu interactMenu;
@@ -127,6 +139,58 @@ public class Inventory : MonoBehaviour
 
         return true;
     }
+    
+    public bool LoadItems(InventoryItem item)
+    {
+        //Take in the Inventory Item class and check the item type to sort where it goes
+        switch (item.itemType)
+        {
+            case ItemType.Weapon:
+
+                Weapon w = item.gameObject.GetComponent<Weapon>();
+
+                if (!wManager.EquipWeapon(w, false))
+                {
+                    //Have an empty weapon slot, equip it to either primary or secondary
+
+                    //AddWeapons(w);
+
+                }
+
+                break;
+
+            case ItemType.Aid:
+
+                //Add to aid inventory
+                if (AddAidItems(item))
+                {
+                    HUDManager.instance.AddNotification("Picked up " + item.itemName);
+                    return true;
+                }
+
+                return false;
+
+            case ItemType.Item:
+
+                //Add item to items inventory
+
+                AddItems(item);
+
+                break;
+
+            case ItemType.Armour:
+
+                //Add item to armour inventory
+
+                break;
+
+            default:
+
+                break;
+        }
+
+        return true;
+    }
 
     public bool ContainsItem(InventoryItem item)
     {
@@ -135,19 +199,19 @@ public class Inventory : MonoBehaviour
         {
             case ItemType.Weapon:
 
-                return weapons.Contains(item);
+                return _weapons.Contains(item);
 
             case ItemType.Aid:
 
                 //Add to aid inventory
 
-                return aidItems.Contains(item);
+                return _aidItems.Contains(item);
 
             case ItemType.Item:
 
                 //Add item to items inventory
 
-                return items.Contains(item);
+                return _items.Contains(item);
 
             case ItemType.Armour:
 
@@ -199,7 +263,7 @@ public class Inventory : MonoBehaviour
 
     private void AddWeapons(InventoryItem weapon)
     {
-        weapons.Add(weapon);
+        _weapons.Add(weapon);
     }
 
     private bool AddAidItems(InventoryItem aid)
@@ -212,22 +276,22 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
-        aidItems.Add(aid);
+        _aidItems.Add(aid);
 
         return true;
     }
 
     private void AddItems(InventoryItem item)
     {
-        items.Add(item);
+        _items.Add(item);
         interactMenu.AddInventoryItem(item);
     }
 
     private bool RemoveWeapons(InventoryItem item)
     {
-        if (weapons.Contains(item))
+        if (_weapons.Contains(item))
         {
-            weapons.Remove(item);
+            _weapons.Remove(item);
             return true;
         }
 
@@ -236,9 +300,9 @@ public class Inventory : MonoBehaviour
 
     private bool RemoveAidItems(InventoryItem item)
     {
-        if (aidItems.Contains(item))
+        if (_aidItems.Contains(item))
         {
-            aidItems.Remove(item);
+            _aidItems.Remove(item);
             return true;
         }
 
@@ -247,9 +311,9 @@ public class Inventory : MonoBehaviour
 
     private bool RemoveItems(InventoryItem item)
     {
-        if (items.Contains(item))
+        if (_items.Contains(item))
         {
-            items.Remove(item);
+            _items.Remove(item);
             return true;
         }
 

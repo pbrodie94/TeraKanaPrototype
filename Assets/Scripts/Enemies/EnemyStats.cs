@@ -78,11 +78,6 @@ public class EnemyStats : Stats
         e.Die();
     }
 
-    public float GetCurrentHealth()
-    {
-        return health;
-    }
-
     public float GetMaxHealth()
     {
         return maxHealth;

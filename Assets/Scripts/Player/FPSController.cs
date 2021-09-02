@@ -65,6 +65,29 @@ public class FPSController : MonoBehaviour
         wantedSize = standingSize;
     }
 
+    public void SavePlayerData()
+    {
+        LoadSaveManager.GameSaveData.PlayerData playerData = new LoadSaveManager.GameSaveData.PlayerData();
+        
+        //Save health
+        PlayerStats stats = GetComponent<PlayerStats>();
+        playerData.health = stats.GetHealth();
+        
+        //Save weapons
+        if (weaponManager.HasWeapon())
+        {
+            //playerData.primaryWeapon = weaponManager.GetPrimaryWeapon();
+            //playerData.secondaryWeapon = weaponManager.GetSecondaryWeapon();
+        }
+        
+        //Save items
+        Inventory inventory = GetComponent<Inventory>();
+        //playerData.aidItems = inventory.aidItems;
+        //playerData.items = inventory.items;
+
+        GameManager.gameData.gameSaveData.player = playerData;
+    }
+
     private void Update()
     {
         //Movement

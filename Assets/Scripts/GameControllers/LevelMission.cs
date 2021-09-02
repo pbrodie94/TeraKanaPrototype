@@ -249,6 +249,97 @@ public class LevelMission : MonoBehaviour
         initComplete = true;
     }
 
+    public void SaveMissionData()
+    {
+        LoadSaveManager.GameSaveData.MissionData missionData = new LoadSaveManager.GameSaveData.MissionData();
+
+        //Save mission data
+        missionData.missionType = mission;
+        missionData.progress = _completedObjectives;
+        missionData.goal = _numObjectives;
+        missionData.currentObjective = currentObjective;
+        //missionData.objectives = objectivesList;
+
+        //Save the transform data of each objective in the scene
+        for (int i = 0; i < objectives.Count; ++i)
+        {
+            LoadSaveManager.TransformData transformData = new LoadSaveManager.TransformData();
+            Transform objectiveTransform = objectives[i].transform;
+
+            transformData.position.x = objectiveTransform.position.x;
+            transformData.position.y = objectiveTransform.position.y;
+            transformData.position.z = objectiveTransform.position.z;
+
+            transformData.rotation.x = objectiveTransform.rotation.x;
+            transformData.rotation.y = objectiveTransform.rotation.y;
+            transformData.rotation.z = objectiveTransform.rotation.z;
+            
+            missionData.missionObjectiveLocations.Add(transformData);
+        }
+
+        GameManager.gameData.gameSaveData.missionData = missionData;
+    }
+
+    public void LoadMissionData(LoadSaveManager.GameSaveData.MissionData missionData)
+    {
+        _numObjectives = missionData.goal;
+        _completedObjectives = missionData.progress;
+        mission = missionData.missionType;
+        
+        //Set objective text/Queue
+        currentObjective = missionData.currentObjective;
+        //objectivesList = missionData.objectives;
+
+        //Place objectives in their spots
+        //Create a list of potential objective objects to spawn for the mission
+        List<GameObject> objectiveSpawn = new List<GameObject>();
+
+        foreach (GameObject go in objectiveObjects)
+        {
+            Objective o = go.GetComponent<Objective>();
+
+            if (o.objectiveType == mission)
+            {
+                objectiveSpawn.Add(go);
+            }
+        }
+
+        for (int i = 0; i < missionData.missionObjectiveLocations.Count; ++i)
+        {
+            GameObject objective = objectiveSpawn[0];
+            
+            if (objectiveSpawn.Count > 1)
+            {
+                objective = objectiveSpawn[Random.Range(0, objectiveSpawn.Count - 1)];
+            }
+
+            //Get position and rotation of the objective
+            Vector3 pos = Vector3.zero;
+            pos.x = missionData.missionObjectiveLocations[i].position.x;
+            pos.y = missionData.missionObjectiveLocations[i].position.y;
+            pos.z = missionData.missionObjectiveLocations[i].position.z;
+
+            Vector3 rot = Vector3.zero;
+            rot.x = missionData.missionObjectiveLocations[i].rotation.x;
+            rot.y = missionData.missionObjectiveLocations[i].rotation.y;
+            rot.z = missionData.missionObjectiveLocations[i].rotation.z;
+            
+            //Instantiate the objective
+            GameObject go = Instantiate(objective, pos, Quaternion.Euler(rot));
+            Objective newObjective = go.GetComponent<Objective>();
+            objectives.Add(newObjective);
+        }
+        
+        //Update the hud
+        if (_numObjectives > 1)
+        {
+            HUDManager.instance.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
+        } else
+        {
+            HUDManager.instance.UpdateObjective(currentObjective);
+        }
+    }
+
     public void CompletedObjective(Objective obj)
     {
         _completedObjectives++;

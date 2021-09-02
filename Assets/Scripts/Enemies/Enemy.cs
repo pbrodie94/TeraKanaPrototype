@@ -62,6 +62,35 @@ public class Enemy : MonoBehaviour
         LevelController.PlayerSpawned += GetPlayerReference;
     }
 
+    public void SaveEnemyData()
+    {
+        LoadSaveManager.GameSaveData.EnemyData enemyData = new LoadSaveManager.GameSaveData.EnemyData();
+
+        //Save transform data
+        enemyData.transformData.position.x = transform.position.x;
+        enemyData.transformData.position.y = transform.position.y;
+        enemyData.transformData.position.z = transform.position.z;
+
+        enemyData.transformData.rotation.x = transform.rotation.x;
+        enemyData.transformData.rotation.y = transform.rotation.y;
+        enemyData.transformData.rotation.z = transform.rotation.z;
+
+        enemyData.transformData.scale.x = transform.localScale.x;
+        enemyData.transformData.scale.y = transform.localScale.y;
+        enemyData.transformData.scale.z = transform.localScale.z;
+
+        //Save health
+        enemyData.health = stats.GetHealth();
+        
+        //Save gameobject info
+        //enemyData.enemy = gameObject;
+        
+        //Save ID
+        enemyData.ID = GetInstanceID();
+        
+        GameManager.gameData.gameSaveData.enemies.Add(enemyData);
+    }
+
     public void GetPlayerReference()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;

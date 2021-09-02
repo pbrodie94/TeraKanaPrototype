@@ -134,4 +134,33 @@ public class ItemSpawner : MonoBehaviour
 
         spawnComplete = true;
     }
+
+    public void LoadItemData(List<LoadSaveManager.GameSaveData.ItemBoxData> itemBoxData)
+    {
+        //If no saved items, return
+        if (itemBoxData.Count <= 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < itemBoxData.Count; ++i)
+        {
+            //Get position and rotation the box
+            Vector3 pos = Vector3.zero;
+            pos.x = itemBoxData[i].transformData.position.x;
+            pos.y = itemBoxData[i].transformData.position.y;
+            pos.z = itemBoxData[i].transformData.position.z;
+            
+            Vector3 rot = Vector3.zero;
+            rot.x = itemBoxData[i].transformData.rotation.x;
+            rot.y = itemBoxData[i].transformData.rotation.y;
+            rot.z = itemBoxData[i].transformData.rotation.z;
+            
+            //Spawn the item, and set necessary values
+            int iIndex = Random.Range(0, itemObjects.Length - 1);
+            GameObject go = Instantiate(itemObjects[iIndex], pos, Quaternion.Euler(rot));
+            ItemBox box = go.GetComponent<ItemBox>();
+            //box.item = itemBoxData[i].item;
+        }
+    }
 }

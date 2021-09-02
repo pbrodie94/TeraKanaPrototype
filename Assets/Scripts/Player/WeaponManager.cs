@@ -357,4 +357,14 @@ public class WeaponManager : ObjectHoldManager
     {
         return reloading;
     }
+
+    public Weapon GetPrimaryWeapon()
+    {
+        return activeWeapon;
+    }
+
+    public Weapon GetSecondaryWeapon()
+    {
+        return secondaryWeapon;
+    }
 }
