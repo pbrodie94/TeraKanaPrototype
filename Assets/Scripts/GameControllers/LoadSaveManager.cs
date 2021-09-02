@@ -95,6 +95,8 @@ public class LoadSaveManager : MonoBehaviour
             public List<TransformData> missionObjectiveLocations = new List<TransformData>();
         }
 
+        public int levelIndex;
+
         public PlayerData player = new PlayerData();
 
         public List<EnemyData> enemies = new List<EnemyData>();
@@ -104,21 +106,56 @@ public class LoadSaveManager : MonoBehaviour
     }
 
     public GameSaveData gameSaveData = new GameSaveData();
+    private string dataPath = "GameSaveData.xml";
 
     public void SaveGame(string fileName = "GameSaveData.xml")
     {
         //Clear existing data
         DeleteGame(fileName);
-        
-        //Save game 
-        XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
-        FileStream stream = new FileStream(fileName, FileMode.Create);
-        serializer.Serialize(stream, gameSaveData);
-        stream.Flush();
-        stream.Dispose();
-        stream.Close();
-        
-        Debug.Log(fileName);
+
+        try
+        {
+            //Save game 
+            XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
+            FileStream stream = new FileStream(fileName, FileMode.Create);
+            serializer.Serialize(stream, gameSaveData);
+            stream.Flush();
+            stream.Dispose();
+            stream.Close();
+            
+            /*using (FileStream stream = new FileStream(fileName, FileMode.Create))
+            {
+                using (Aes aes = Aes.Create())
+                {
+                    byte[] key =
+                    {
+                        0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
+                        0x09, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16
+                    };
+                    aes.Key = key;
+
+                    byte[] iv = aes.IV;
+                    stream.Write(iv, 0, iv.Length);
+
+                    using (CryptoStream cryptoStream =
+                        new CryptoStream(stream, aes.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter encryptWriter = new StreamWriter(cryptoStream))
+                        {
+                            encryptWriter.Write(gameSaveData);
+                        }
+                    }
+                }
+            }*/
+
+            Debug.Log(fileName);
+            dataPath = fileName;
+            
+        }
+        finally
+        {
+            Debug.LogError("Error occurred, could not save");
+        }
     }
 
     public void LoadGame(string fileName = "GameSaveData.xml")
@@ -135,6 +172,36 @@ public class LoadSaveManager : MonoBehaviour
         stream.Flush();
         stream.Dispose();
         stream.Close();
+        
+        /*using (FileStream stream = new FileStream(fileName, FileMode.Open))
+        {
+            using (Aes aes = Aes.Create())
+            {
+                byte[] key =
+                {
+                    0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
+                    0x09, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16
+                };
+                aes.Key = key;
+
+                byte[] iv = aes.IV;
+                stream.Write(iv, 0, iv.Length);
+
+                using (CryptoStream cryptoStream =
+                    new CryptoStream(stream, aes.CreateDecryptor(), CryptoStreamMode.Read))
+                {
+                    using (StreamReader encryptReader = new StreamReader(cryptoStream))
+                    {
+                        string line;
+
+                        while ((line = encryptReader.ReadLine()) != null)
+                        {
+                            Debug.Log(line);
+                        }
+                    }
+                }
+            }
+        }*/
     }
 
     public void DeleteGame(string fileName = "GameSaveData.xml")
@@ -143,6 +210,11 @@ public class LoadSaveManager : MonoBehaviour
         {
             File.Delete(fileName);
         }
+    }
+
+    public bool ContainsSaveFile(string fileName = "GameSaveData.xml")
+    {
+        return File.Exists(fileName);
     }
     
     //Transform data

@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     {
         shouldLoad = true;
         _gameData.LoadGame(Application.persistentDataPath + "/GameData.xml");
-        LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        LoadLevel(_gameData.gameSaveData.levelIndex);
     }
 
     private IEnumerator ProgressiveSaveGame()
@@ -291,7 +291,9 @@ public class GameManager : MonoBehaviour
         }
 
         yield return null;
-        
+
+        _gameData.gameSaveData.levelIndex = SceneManager.GetActiveScene().buildIndex;
+
         _gameData.SaveGame(Application.persistentDataPath + "/GameData.xml");
 
         saving = false;
