@@ -60,6 +60,11 @@ public class PauseMenu : MenuScript
                 //Quit
                 GameManager.instance.QuitGame();
                 break;
+            
+            case 4:
+                //Load checkpoint
+                GameManager.instance.LoadGame();
+                break;
         }
     }
 }

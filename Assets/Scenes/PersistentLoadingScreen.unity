@@ -208,6 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 261104328}
   - component: {fileID: 261104329}
+  - component: {fileID: 261104330}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -243,6 +244,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 458299452}
   progressBar: {fileID: 595054866}
+--- !u!114 &261104330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261104327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094e7ae3d5585f54ba2929eb96f59fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &359537692
 GameObject:
   m_ObjectHideFlags: 0

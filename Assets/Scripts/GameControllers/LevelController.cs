@@ -361,7 +361,7 @@ public class LevelController : MonoBehaviour
         currentCheckpoint = checkpoint;
         currentCheckpoint.SetCurrentCheckpoint(true);
         spawnPoint = currentCheckpoint.gameObject.transform;
-        
+
         HUDManager.instance.AddNotification("Checkpoint", Color.cyan);
         
         GameManager.instance.SaveGame();

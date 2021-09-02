@@ -183,7 +183,9 @@ public class GameManager : MonoBehaviour
 
     public void LoadGame()
     {
-        
+        shouldLoad = true;
+        _gameData.LoadGame(Application.persistentDataPath + "/GameData.xml");
+        LoadLevel(SceneManager.GetActiveScene().buildIndex);
     }
 
     private IEnumerator ProgressiveSaveGame()
@@ -201,10 +203,13 @@ public class GameManager : MonoBehaviour
         FPSController player = GameObject.FindGameObjectWithTag("Player").GetComponent<FPSController>();
         player.SavePlayerData();
         
+        playerData = _gameData.gameSaveData.player;
+        
         //Add player's current checkpoint spawn point
         if (LevelController.instance)
         {
             Transform spawnPoint = LevelController.instance.GetSpawnPoint();
+            Debug.Log(spawnPoint.position);
 
             playerData.spawnPoint.position.x = spawnPoint.position.x;
             playerData.spawnPoint.position.y = spawnPoint.position.y;
@@ -214,6 +219,8 @@ public class GameManager : MonoBehaviour
             playerData.spawnPoint.rotation.y = spawnPoint.rotation.y;
             playerData.spawnPoint.rotation.z = spawnPoint.rotation.z;
         }
+
+        _gameData.gameSaveData.player = playerData;
         
         yield return null;
 

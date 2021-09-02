@@ -101,6 +101,10 @@ public class LoadSaveManager : MonoBehaviour
     public void SaveGame(string fileName = "GameSaveData.xml")
     {
         //Clear existing data
+        if (File.Exists(fileName))
+        {
+            File.Delete(fileName);
+        }
         
         //Save game 
         XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
