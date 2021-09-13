@@ -38,14 +38,18 @@ public class EnemyFloatingUI : MonoBehaviour
     {
         //Get player reference
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        
-        Debug.Log("Player " + player.gameObject.name);
     }
 
     private void LateUpdate()
     {
-        //Check for distance to show floating ui, and also if the enemy is alerted
-        float distance = Vector3.Distance(transform.position, player.position);
+        float distance = int.MaxValue;
+        
+        if (player)
+        {
+            //Check for distance to show floating ui, and also if the enemy is alerted
+            distance = Vector3.Distance(transform.position, player.position);
+        }
+
         if (distance <= showDistance || aiStateManager.GetCurrentState() != EnemyAIStateManager.EnemyState.Sleep &&
             aiStateManager.GetCurrentState() != EnemyAIStateManager.EnemyState.Idle)
         {

@@ -32,6 +32,9 @@ public class TargetDetection : MonoBehaviour
 
     public bool DetectTarget(Transform target)
     {
+        if (!target)
+            return false;
+        
         targetDistance = Vector3.Distance(transform.position, target.position);
 
         if (targetDistance <= detectionRadius)

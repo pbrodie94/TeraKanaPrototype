@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ using System.Text;
 
 public class LoadSaveManager : MonoBehaviour
 {
+    string key = "A60A5770FE5E7AB200BA9CFC94E4E8B0"; //set any string of 32 chars
+    string iv = "1234567887654321"; //set any string of 16 chars
+    
     //Game save data
     [XmlRoot("GameData")]
     public class GameSaveData
@@ -116,45 +120,49 @@ public class LoadSaveManager : MonoBehaviour
         try
         {
             //Save game 
-            XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
+            /*XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
             FileStream stream = new FileStream(fileName, FileMode.Create);
             serializer.Serialize(stream, gameSaveData);
             stream.Flush();
             stream.Dispose();
+            stream.Close();*/
+
+            // Create new AES instance.
+            Aes aes = Aes.Create();
+            aes.Key = ASCIIEncoding.ASCII.GetBytes(key);
+            aes.IV = ASCIIEncoding.ASCII.GetBytes(iv);
+
+            // Create FileStream for writing
+            FileStream stream = new FileStream(fileName, FileMode.Create);
+
+            // Create (wrap) the FileStream in a CryptoStream for writing
+            CryptoStream cryptoStream = new CryptoStream(
+                stream,
+                aes.CreateEncryptor(aes.Key, aes.IV),
+                CryptoStreamMode.Write);
+
+            // Create (wrap) the CryptoStream in a StreamWriter
+            StreamWriter streamWriter = new StreamWriter(cryptoStream);
+
+            // Write to the innermost stream (which will encrypt).
+            XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
+            serializer.Serialize(streamWriter, gameSaveData);
+            //sWriter.Write(gameData);
+
+            // Close innermost.
+            streamWriter.Close();
+
+            // Close crytostream
+            cryptoStream.Close();
+
+            // Close FileStream.
             stream.Close();
             
-            /*using (FileStream stream = new FileStream(fileName, FileMode.Create))
-            {
-                using (Aes aes = Aes.Create())
-                {
-                    byte[] key =
-                    {
-                        0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
-                        0x09, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16
-                    };
-                    aes.Key = key;
-
-                    byte[] iv = aes.IV;
-                    stream.Write(iv, 0, iv.Length);
-
-                    using (CryptoStream cryptoStream =
-                        new CryptoStream(stream, aes.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter encryptWriter = new StreamWriter(cryptoStream))
-                        {
-                            encryptWriter.Write(gameSaveData);
-                        }
-                    }
-                }
-            }*/
-
             Debug.Log(fileName);
-            dataPath = fileName;
-            
         }
-        finally
+        catch (Exception e)
         {
-            Debug.LogError("Error occurred, could not save");
+            Debug.LogError("Error occurred, could not save. Exception: " + e);
         }
     }
 
@@ -166,42 +174,49 @@ public class LoadSaveManager : MonoBehaviour
         }
         
         //Load game 
-        XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
+        /*XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
         FileStream stream = new FileStream(fileName, FileMode.Open);
         gameSaveData = serializer.Deserialize(stream) as GameSaveData;
         stream.Flush();
         stream.Dispose();
-        stream.Close();
-        
-        /*using (FileStream stream = new FileStream(fileName, FileMode.Open))
+        stream.Close();*/
+
+        try
         {
-            using (Aes aes = Aes.Create())
-            {
-                byte[] key =
-                {
-                    0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
-                    0x09, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16
-                };
-                aes.Key = key;
+            // Create new AES instance.
+            Aes aes = Aes.Create();
+            aes.Key = ASCIIEncoding.ASCII.GetBytes(key);
+            aes.IV = ASCIIEncoding.ASCII.GetBytes(iv);
+            
+            // Create FileStream for writing
+            FileStream stream = new FileStream(fileName, FileMode.Open);
+            
+            // Create (wrap) the FileStream in a CryptoStream for reading
+            CryptoStream cryptoStream = new CryptoStream(
+                stream,
+                aes.CreateDecryptor(aes.Key, aes.IV),
+                CryptoStreamMode.Read);
+            
+            // Create (wrap) the CryptoStream in a StreamWriter
+            StreamReader streamReader = new StreamReader(cryptoStream);
 
-                byte[] iv = aes.IV;
-                stream.Write(iv, 0, iv.Length);
+            // Write to the innermost stream (which will encrypt).
+            XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
+            gameSaveData = serializer.Deserialize(streamReader) as GameSaveData;
 
-                using (CryptoStream cryptoStream =
-                    new CryptoStream(stream, aes.CreateDecryptor(), CryptoStreamMode.Read))
-                {
-                    using (StreamReader encryptReader = new StreamReader(cryptoStream))
-                    {
-                        string line;
+            // Close innermost.
+            streamReader.Close();
 
-                        while ((line = encryptReader.ReadLine()) != null)
-                        {
-                            Debug.Log(line);
-                        }
-                    }
-                }
-            }
-        }*/
+            // Close crytostream
+            cryptoStream.Close();
+
+            // Close FileStream.
+            stream.Close();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error, could not load save file. Exception: " + e);
+        }
     }
 
     public void DeleteGame(string fileName = "GameSaveData.xml")
