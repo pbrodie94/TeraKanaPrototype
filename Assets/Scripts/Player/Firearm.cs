@@ -69,6 +69,11 @@ public class Firearm : Weapon
 
         RaycastHit hit;
 
+        if (!cam)
+        {
+            cam = Camera.main.transform;
+        }
+
         if (Physics.Raycast(muzzle.position, cam.forward, out hit))
         {
 
@@ -154,7 +159,7 @@ public class Firearm : Weapon
 
         if (active)
         {
-            hud.UpdateWeaponPanel(mag, ammo);
+            HUDManager.instance.UpdateWeaponPanel(mag, ammo);
         }
     }
 

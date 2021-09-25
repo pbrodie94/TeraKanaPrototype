@@ -42,7 +42,10 @@ public class Weapon : InventoryItem
         base.GetPlayerReference();
 
         wManager = player.GetComponent<WeaponManager>();
-        inventory = player.GetComponent<Inventory>();
+        if (!inventory)
+        {
+            inventory = player.GetComponent<Inventory>();
+        }
     }
 
     protected override void Interact()
@@ -57,6 +60,18 @@ public class Weapon : InventoryItem
                 audioSource.PlayOneShot(interactSound);
 
             hud.UpdateAimReticle(aimReticle, reticleDimensions);
+        }
+    }
+
+    public void PickupWeapon(GameObject player)
+    {
+        //Pickup weapon
+        inventory = player.GetComponent<Inventory>();
+        if (!itemCreds)
+            itemCreds = GetComponent<InventoryItem>();
+        if (inventory.PickupItem(itemCreds))
+        {
+            HUDManager.instance.UpdateAimReticle(aimReticle, reticleDimensions);
         }
     }
 
@@ -76,12 +91,20 @@ public class Weapon : InventoryItem
             isHeld = true;
 
             if (hudIcon)
-                hud.UpdateWeaponPanel(hudIcon, itemCreds.itemName);
+                HUDManager.instance.UpdateWeaponPanel(hudIcon, itemCreds.itemName);
 
-            hud.UpdateWeaponPanel(true);
+            HUDManager.instance.UpdateWeaponPanel(true);
         }
 
+        if (!col)
+        {
+            col = GetComponent<Collider>();
+        }
         col.enabled = false;
+        if (!body)
+        {
+            body = GetComponent<Rigidbody>();
+        }
         body.useGravity = false;
         body.isKinematic = true;
     }

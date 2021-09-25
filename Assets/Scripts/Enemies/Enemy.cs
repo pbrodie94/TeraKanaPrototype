@@ -69,6 +69,19 @@ public class Enemy : MonoBehaviour
         LevelController.PlayerSpawned -= GetPlayerReference;
     }
 
+    public void InitializeWaveSpawn(GameObject player)
+    {
+        target = player.transform;
+        if (!aiState)
+        {
+            aiState = GetComponent<EnemyAIStateManager>();
+        }
+
+        aiState.state = EnemyAIStateManager.EnemyState.Engaging;
+        
+        LevelController.PlayerSpawned -= GetPlayerReference;
+    }
+
     protected virtual void LateUpdate()
     {
         if (stats.died)

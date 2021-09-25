@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class ObjectHoldManager : MonoBehaviour
     //[SerializeField] protected Animator weaponAnim;
     //[SerializeField] private RuntimeAnimatorController defaultController;
 
-    protected virtual void Start()
+    protected void Awake()
     {
         if (!cam)
             cam = Camera.main.transform;
@@ -45,7 +46,10 @@ public class ObjectHoldManager : MonoBehaviour
             inventory = GetComponent<Inventory>();
 
         anim = GetComponent<Animator>();
+    }
 
+    protected virtual void Start()
+    {
         holdPosition = hipPosition;
     }
 

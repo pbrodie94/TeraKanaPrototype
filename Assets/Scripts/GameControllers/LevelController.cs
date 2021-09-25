@@ -181,4 +181,9 @@ public class LevelController : MonoBehaviour
 
         itemSpawner.SpawnKeys(lockedDoors);
     }
+
+    public EnemySpawner GetEnemySpawner()
+    {
+        return enemySpawner;
+    }
 }

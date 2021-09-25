@@ -16,7 +16,7 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == gameObject || other.CompareTag("EnemyTarget") || other.CompareTag("SpawnArea") || other.gameObject.CompareTag("Gas") || other.CompareTag("RockSlide"))
+        if (other.gameObject == gameObject || other.CompareTag("EnemyTarget") || other.CompareTag("SpawnArea") || other.gameObject.CompareTag("Gas") || other.CompareTag("RockSlide") || other.gameObject.layer == 2)
         {
             return;
         }

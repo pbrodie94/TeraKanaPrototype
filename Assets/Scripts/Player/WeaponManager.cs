@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponManager : ObjectHoldManager
-{ 
+{
+    [SerializeField] private GameObject[] startingWeapons = new GameObject[2];
+    
     public float aimRecoilDecrease = 0.5f;
     private bool holstered = false;
     public float deployShootDelay = 1;
@@ -22,8 +24,22 @@ public class WeaponManager : ObjectHoldManager
 
     public delegate void ShotFired(Transform pos);
     public static event ShotFired OnShotFired;
-    
-    
+
+    protected override void Start()
+    {
+        base.Start();
+
+        if (startingWeapons[0] != null)
+        {
+            GameObject primary = Instantiate(startingWeapons[0], transform.position, transform.rotation);
+            primary.GetComponent<Weapon>().PickupWeapon(gameObject);
+        }
+        if (startingWeapons[1] != null)
+        {
+            GameObject secondary = Instantiate(startingWeapons[1], transform.position, transform.rotation);
+            secondary.GetComponent<Weapon>().PickupWeapon(gameObject);
+        }
+    }
 
     void Update()
     {

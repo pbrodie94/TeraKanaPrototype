@@ -42,6 +42,9 @@ public class EnemyFloatingUI : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!enemyFloatingUI || !player)
+            return;
+        
         //Check for distance to show floating ui, and also if the enemy is alerted
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance <= showDistance || aiStateManager.GetCurrentState() != EnemyAIStateManager.EnemyState.Sleep &&

@@ -8,11 +8,11 @@ public class Door : MonoBehaviour
     [SerializeField] protected float interactRange = 3;
 
     protected string message;
-    private bool messageShown = false;
-    private bool opened = false;
+    protected bool messageShown = false;
+    protected bool opened = false;
     protected bool canClose = true;
 
-    [SerializeField] private bool locked = false;
+    [SerializeField] protected bool locked = false;
     private InteractionItem requiredKey = null;
     public bool isLocked
     {
@@ -30,11 +30,14 @@ public class Door : MonoBehaviour
     
     protected Animation doorAnimation;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         doorAnimation = GetComponentInChildren<Animation>();
-
-        message = locked ? message :  "Press 'E' to open door.";
+    }
+    
+    protected virtual void Start()
+    {
+        SetInteractionMessage();
         messageShown = false;
 
         LevelController.PlayerSpawned += GetPlayerReference;
@@ -49,11 +52,12 @@ public class Door : MonoBehaviour
         if (locked && requiredKey == null)
         {
             locked = false;
-            message = "Press 'E' to open door.";
         }
+
+        SetInteractionMessage();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!player || !cam)
             return;
@@ -117,11 +121,11 @@ public class Door : MonoBehaviour
     {
         if (locked)
         {
-            HUDManager.instance.AddNotification("Door locked, go find" + requiredKey.itemName, Color.red);
+            HUDManager.instance.AddNotification("Door locked. Find " + requiredKey.itemName, Color.red);
 
             return;
         }
-        
+
         //Open door
         if (!opened)
         {
@@ -148,7 +152,7 @@ public class Door : MonoBehaviour
         locked = false;
         HUDManager.instance.AddNotification("Unlocked door", Color.cyan);
 
-        message = "Press 'E' to open door.";
+        SetInteractionMessage();
 
         return true;
     }
@@ -158,7 +162,20 @@ public class Door : MonoBehaviour
         requiredKey = key;
 
         message = "Door locked, go find " + key.itemName + ".";
-        
-        Debug.Log(message);
+    }
+
+    protected virtual void SetInteractionMessage()
+    {
+        if (locked)
+        {
+            if (requiredKey)
+            {
+                message = "Door locked, go find " + requiredKey.itemName + ".";
+            }
+        } 
+        else
+        {
+            message = "Press 'E' to open door.";
+        }
     }
 }

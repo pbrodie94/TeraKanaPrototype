@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -20,7 +22,14 @@ public class EnemySpawner : MonoBehaviour
     private int minEnemies = 10;
     private int maxEnemies = 20;
 
-    private void Start()
+    [Header("Alarm Sequence")] 
+    [SerializeField] private float timeBetweenAlarmWaves = 60;
+    [SerializeField] private Vector2 alarmWaveSpawnRange = new Vector2(10, 15);
+    [SerializeField] private SpawnArea[] testAlarmSpawnAreas;
+    private float timeLastSpawnedWave;
+    private bool alarmSequenceActivated = false;
+
+    private void Awake()
     {
         GameObject[] go = GameObject.FindGameObjectsWithTag("SpawnArea");
 
@@ -35,6 +44,24 @@ public class EnemySpawner : MonoBehaviour
                     areas.AddBack(sa);
                 }
             }
+        }
+    }
+
+    private void Start()
+    {
+        if (alarmWaveSpawnRange.x <= 0)
+        {
+            alarmWaveSpawnRange.x = 10;
+        }
+
+        if (alarmWaveSpawnRange.y <= 0)
+        {
+            alarmWaveSpawnRange.y = 15;
+        }
+
+        if (alarmWaveSpawnRange.y < alarmWaveSpawnRange.x)
+        {
+            alarmWaveSpawnRange.y = alarmWaveSpawnRange.x;
         }
 
         //SpawnEnemies();
@@ -132,5 +159,63 @@ public class EnemySpawner : MonoBehaviour
     {
         minEnemies = min;
         maxEnemies = max;
+    }
+
+    public void BeginAlarmSequence()
+    {
+        alarmSequenceActivated = true;
+        SpawnEnemyWave();
+    }
+
+    public void EndAlarmSequence()
+    {
+        alarmSequenceActivated = false;
+    }
+
+    private void Update()
+    {
+        if (alarmSequenceActivated)
+        {
+            if (Time.time >= timeLastSpawnedWave)
+            {
+                SpawnEnemyWave();
+            }
+            
+            Debug.Log("Time to next wave: " + (timeLastSpawnedWave - Time.time));
+        }
+    }
+
+    private void SpawnEnemyWave()
+    {
+        if (testAlarmSpawnAreas.Length <= 0)
+        {
+            alarmSequenceActivated = false;
+            return;
+        }
+        
+        HUDManager.instance.AddNotification("ENEMY WAVE SPAWNING!", Color.red);
+        
+        int enemiesToSpawn = Random.Range((int)alarmWaveSpawnRange.x, (int)alarmWaveSpawnRange.y);
+        for (int i = 0; i < enemiesToSpawn; ++i)
+        {
+            SpawnArea area = testAlarmSpawnAreas[0];
+            if (testAlarmSpawnAreas.Length > 1)
+            {
+                int index = Random.Range(0, testAlarmSpawnAreas.Length - 1);
+                area = testAlarmSpawnAreas[index];
+            }
+
+            GameObject monster = GetMonsterToSpawn();
+            Vector3 position = area.GetRandomPoint();
+            float rot = Random.Range(0, 360);
+            Quaternion rotation = Quaternion.Euler(0, rot, 0);
+
+            GameObject monsterInstance = Instantiate(monster, position, rotation);
+            Enemy enemy = monsterInstance.GetComponent<Enemy>();
+            GameObject player = GameObject.FindWithTag("Player");
+            enemy.InitializeWaveSpawn(player);
+        }
+        
+        timeLastSpawnedWave = Time.time + timeBetweenAlarmWaves;
     }
 }

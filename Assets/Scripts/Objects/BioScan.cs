@@ -47,7 +47,6 @@ public class BioScan : MonoBehaviour
             } else
             {
                 progress = 100;
-                _scanComplete = true;
 
                 //Handle audio
                 if (scanCompleteAudio)
@@ -55,15 +54,16 @@ public class BioScan : MonoBehaviour
                     audioSource.PlayOneShot(scanCompleteAudio);
                 }
 
-                StartCoroutine(OnScanComplete());
+                ScanComplete();
             }
 
             HUDManager.instance.UpdateProgressBar(scanMessage, progress);
         }
     }
 
-    protected virtual IEnumerator OnScanComplete()
+    protected virtual void ScanComplete()
     {
-        yield return null;
+
+        _scanComplete = true;
     }
 }

@@ -166,6 +166,9 @@ MonoBehaviour:
   maxAimSwayAmount: 0.02
   swaySmoothing: 5
   weaponParent: {fileID: 8529813680425199356}
+  startingWeapons:
+  - {fileID: 332023160310881551, guid: e6c369c3f502b5340aadc3ea1e7dc4d5, type: 3}
+  - {fileID: 1186261067115417575, guid: bd1f9d005b0a8464384c8836f680926e, type: 3}
   aimRecoilDecrease: 0.5
   deployShootDelay: 0.5
 --- !u!114 &2460965768868640018

@@ -11,16 +11,19 @@ public class ExtractionPoint : BioScan
         scanMessage = "Stand by for Extraction: ";
     }
 
-    protected override IEnumerator OnScanComplete()
+    protected override void ScanComplete()
+    {
+        //Show the drop complete screen
+        if (!_scanComplete)
+        {
+            StartCoroutine(OnScanComplete());
+        }
+    }
+
+    protected IEnumerator OnScanComplete()
     {
         yield return new WaitForSeconds(1);
 
-        ScanComplete();
-    }
-
-    protected virtual void ScanComplete()
-    {
-        //Show the drop complete screen
         HUDManager.instance.GameOver(true);
     }
 }

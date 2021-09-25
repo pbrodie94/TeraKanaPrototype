@@ -33,6 +33,10 @@ public class Inventory : MonoBehaviour
 
                 Weapon w = item.gameObject.GetComponent<Weapon>();
 
+                if (!wManager)
+                {
+                    wManager = GetComponent<WeaponManager>();
+                }
                 if (!wManager.EquipWeapon(w, false))
                 {
                     //Have an empty weapon slot, equip it to either primary or secondary
