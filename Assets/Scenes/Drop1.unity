@@ -15783,11 +15783,12 @@ MonoBehaviour:
   controlBox:
   - {fileID: 1145191821}
   - {fileID: 457014401}
-  alarmClass: 2
+  alarmClass: 4
   scanZone: {fileID: 1610453214}
   smallBioScan: {fileID: 8546058655338388813, guid: bec223ed59ea6b24390620b5ea383f9d, type: 3}
   largeBioScan: {fileID: 2603767922892473913, guid: 8698e5321874b6749ba68f0e240cdf49, type: 3}
   startScanLocation: {fileID: 527740471}
+  lineRendererObject: {fileID: 3495196898145495297, guid: 24e7295036092224f9319da7743409bf, type: 3}
 --- !u!1001 &1340987161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28076,7 +28077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1045439433114665300, guid: 4561e8989aad25d498a9406d0ffbf64a, type: 3}
       propertyPath: timeBetweenAlarmWaves
-      value: 60
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1045439433114665300, guid: 4561e8989aad25d498a9406d0ffbf64a, type: 3}
       propertyPath: testAlarmSpawnAreas.Array.size

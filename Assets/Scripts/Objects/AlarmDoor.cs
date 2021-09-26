@@ -18,6 +18,9 @@ public class AlarmDoor : Door
     [SerializeField] private GameObject smallBioScan;
     [SerializeField] private GameObject largeBioScan;
     [SerializeField] private GameObject startScanLocation;
+    [SerializeField] private GameObject lineRendererObject;
+    private List<ScanLineRenderer> scanLines = new List<ScanLineRenderer>();
+    private Vector3 lineOrigin = Vector3.zero;
 
     protected override void Start()
     {
@@ -94,6 +97,8 @@ public class AlarmDoor : Door
 
         scansCompleted = 0;
         spawnedScans = 1;
+
+        lineOrigin = scanObject.transform.position;
     }
 
     private void OnScanCompleted(AlarmScan alarmBioScan)
@@ -110,6 +115,13 @@ public class AlarmDoor : Door
         
         ++scanClassCompleted;
         
+        //Delete old scan lines
+        for (int i = scanLines.Count - 1; i > -1; --i)
+        {
+            Destroy(scanLines[i].gameObject);
+        }
+        scanLines.Clear();
+        
         //Check if all scans have been completed
         if (scanClassCompleted >= alarmClass)
         {
@@ -124,7 +136,7 @@ public class AlarmDoor : Door
             
             return;
         }
-        
+
         //Spawn another set of scans
         SpawnScans();
     }
@@ -152,12 +164,28 @@ public class AlarmDoor : Door
             //Subscribe scan completed to OnScanCompleted
             AlarmScan scan = scanObject.GetComponent<AlarmScan>();
             scan.OnScanCompleted += OnScanCompleted;
+
+            ScanLineRenderer scanLine = Instantiate(lineRendererObject, lineOrigin, Quaternion.identity)
+                .GetComponent<ScanLineRenderer>();
+            
+            scanLine.SetupLine(lineOrigin, scanObject);
+            scanLines.Add(scanLine);
+            
+            scanObject.SetActive(false);
+        }
+
+        //Select new starting point
+        int existingPointIndex = Random.Range(0, existingPositions.Count - 1);
+        lineOrigin = existingPositions[existingPointIndex];
+
+        //Line renderers begin moving
+        foreach (ScanLineRenderer line in scanLines)
+        {
+            line.MoveToDestination();
         }
 
         scansCompleted = 0;
         spawnedScans = 4;
-
-        //Spawn line renderers to trace their way there
     }
     
     protected override void SetInteractionMessage()
