@@ -19,6 +19,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Transform spawnPoint;
 
+    private UndirectedGraph<GeneratedRoom> roomGraph;
+
     private ItemSpawner itemSpawner;
     private EnemySpawner enemySpawner;
     private LevelMission mission;
@@ -185,5 +187,10 @@ public class LevelController : MonoBehaviour
     public EnemySpawner GetEnemySpawner()
     {
         return enemySpawner;
+    }
+
+    public UndirectedGraph<GeneratedRoom> GetRoomsGraph()
+    {
+        return roomGraph;
     }
 }

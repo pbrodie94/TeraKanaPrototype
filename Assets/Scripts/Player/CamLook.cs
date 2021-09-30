@@ -27,7 +27,7 @@ public class CamLook : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.IsPaused())
+        if (GameManager.instance && GameManager.instance.IsPaused())
             return;
 
         targetDirection.x = -Input.GetAxisRaw(InputManager.MouseY) * lookSensitivityX;
