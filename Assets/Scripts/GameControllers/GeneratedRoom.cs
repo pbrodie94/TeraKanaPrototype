@@ -9,7 +9,7 @@ public class GeneratedRoom : MonoBehaviour
     [SerializeField] private GameObject[] portals;
     private List<GameObject> availablePortals;
 
-    public Collider roomCollisions;
+    public BoxCollider roomCollisions;
 
     private bool isColliding = false;
 
@@ -29,11 +29,19 @@ public class GeneratedRoom : MonoBehaviour
         {
             Destroy(portals[i]);
         }
+
+        roomCollisions.enabled = false;
     }
-    
-    private void OnCollisionEnter(Collision other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+        Debug.Log("Trigger entered with " + other.gameObject.name);
+        isColliding = true;
+    }
+
+    public void ResetCollision()
+    {
+        isColliding = false;
     }
 
     public GameObject[] GetAllPortals()
@@ -58,7 +66,14 @@ public class GeneratedRoom : MonoBehaviour
 
     public bool GetIsColliding()
     {
+
         return isColliding;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(roomCollisions.center + transform.position, roomCollisions.size);
     }
 }
 
@@ -67,3 +82,4 @@ public enum RoomType
     Hall,
     Room
 }
+

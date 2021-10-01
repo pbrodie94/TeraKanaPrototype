@@ -49,8 +49,8 @@ public class ProceduralGenerator : MonoBehaviour
         
         GenerationPath currentPath = pathsToGenerate.Pop();
 
-        /*while (levelSize < roomsGenerated)
-        {*/
+        while (roomsGenerated < levelSize)
+        {
             List<GameObject> triedPieces = new List<GameObject>();
             
             //Get the next piece to be added to the level, then instantiate
@@ -63,28 +63,26 @@ public class ProceduralGenerator : MonoBehaviour
             GameObject nextPortal = roomPortals[0];
             if (roomPortals.Count > 1)
             {
-                int index = Random.Range(0, roomPortals.Count - 1);
+                int index = Random.Range(0, roomPortals.Count);
                 nextPortal = roomPortals[index];
             }
             
             //Align the connecting portals
             SetPortalTransform(currentPath.portal.transform, newRoom.transform, nextPortal.transform);
 
+            yield return new WaitForFixedUpdate();
+
             //Check if there are collisions
             if (currentRoom.GetIsColliding())
             {
-                //iterate trying another portal on the new room if others are available
+                Debug.Log("Collision Detected");
                 
-                //Try another room
-                
-                //If other paths exist, add a dead end and move on
-                
-                //Otherwise, scrap the generation and restart
-                
+                //RestartLevelGeneration();
             }
 
             //Portals have been successfully connected, remove the portal from available portals
             roomPortals.Remove(nextPortal);
+            currentPath.room.GetComponent<GeneratedRoom>().GetAvailablePortals().Remove(currentPath.portal);
             
             //Add the remaining portals to the paths to generate
             if (roomPortals.Count > 0)
@@ -112,21 +110,43 @@ public class ProceduralGenerator : MonoBehaviour
             {
                 currentPath = pathsToGenerate.Pop();
             }
+            else
+            {
+                break;
+            }
             
             yield return null;
-        //}
+        }
         
         yield return null;
 
+        //If not all paths were completed before the end, add a dead end, then destroy all portals
+        List<GameObject> availablePortals = new List<GameObject>();
         if (generatedRooms.Count > 0)
         {
             foreach (GameObject room in generatedRooms)
             {
                 GeneratedRoom roomScript = room.GetComponent<GeneratedRoom>();
+                availablePortals = roomScript.GetAvailablePortals();
+                if (availablePortals.Count > 0)
+                {
+                    foreach (GameObject port in availablePortals)
+                    {
+                        Instantiate(deadEnd, port.transform.position, port.transform.rotation);
+                    }
+                }
                 roomScript.RemovePortals();
             }
         }
 
+        availablePortals = startingRoom.GetAvailablePortals();
+        if (availablePortals.Count > 0)
+        {
+            foreach (GameObject port in availablePortals)
+            {
+                Instantiate(deadEnd, port.transform.position, port.transform.rotation);
+            }
+        }
         startingRoom.RemovePortals();
 
         yield return null;
@@ -152,9 +172,55 @@ public class ProceduralGenerator : MonoBehaviour
      */
     private GameObject GetNextGeneratedPiece(GenerationPath currentPiece, List<GameObject> triedPieces)
     {
-        
+        GameObject levelPiece = hallPieces[0];
+        GeneratedRoom currentRoom = currentPiece.room.GetComponent<GeneratedRoom>();
+        int rand = Random.Range(0, 100);
+        if (currentRoom.roomType == RoomType.Hall)
+        {
+            if (rand <= 30)
+            {
+                levelPiece = roomPieces[0];
+            }
+            else
+            {
+                rand = Random.Range(0, 100);
+                if (rand <= 15)
+                {
+                    levelPiece = hallPieces[2];
+                } else if (rand < 40)
+                {
+                    levelPiece = hallPieces[1];
+                }
+                else
+                {
+                    levelPiece = hallPieces[0];
+                }
+            }
+        }
+        else
+        {
+            if (rand <= 50)
+            {
+                levelPiece = roomPieces[0];
+            }
+            else
+            {
+                rand = Random.Range(0, 100);
+                if (rand <= 15)
+                {
+                    levelPiece = hallPieces[2];
+                } else if (rand < 40)
+                {
+                    levelPiece = hallPieces[1];
+                }
+                else
+                {
+                    levelPiece = hallPieces[0];
+                }
+            }
+        }
 
-        return hallPieces[0];
+        return levelPiece;
     }
 
     /**
@@ -218,6 +284,14 @@ public class ProceduralGenerator : MonoBehaviour
             generatedRooms.Clear();
         }
 
+        GameObject[] portals = startingRoom.GetAllPortals();
+        List<GameObject> availablePortals = startingRoom.GetAvailablePortals();
+        availablePortals.Clear();
+        foreach (GameObject portal in portals)
+        {
+            availablePortals.Add(portal);
+        }
+        
         //Restart level generation
         StartCoroutine(GenerateLevel());
     }
