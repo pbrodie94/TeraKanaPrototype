@@ -164,7 +164,7 @@ MonoBehaviour:
   smoothing: 8
   maxHipSwayAmount: 0.15
   maxAimSwayAmount: 0.02
-  swaySmoothing: 5
+  swaySmoothing: 1
   weaponParent: {fileID: 8529813680425199356}
   startingWeapons:
   - {fileID: 332023160310881551, guid: e6c369c3f502b5340aadc3ea1e7dc4d5, type: 3}
@@ -218,7 +218,7 @@ MonoBehaviour:
   smoothing: 10
   maxHipSwayAmount: 0.15
   maxAimSwayAmount: 0.02
-  swaySmoothing: 5
+  swaySmoothing: 1
   weaponParent: {fileID: 8529813680425199356}
   laserTarget: {fileID: 3180002369223265618, guid: 1b4de4254900c9a479f9d9536500388b, type: 3}
 --- !u!95 &4510700778722455847
@@ -620,9 +620,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f0888cf3b25114eba36364fb87e842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSensitivityX: 5
-  lookSensitivityY: 5
-  lookSmoothing: 1
+  lookSensitivityX: 3
+  lookSensitivityY: 3
+  lookSmoothing: 5
   maxY: 90
   minY: -90
 --- !u!114 &5084806037280787426

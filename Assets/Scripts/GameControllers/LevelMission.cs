@@ -231,13 +231,15 @@ public class LevelMission : MonoBehaviour
         currentObjective = objectivesList.Dequeue().ToString();
 
         //Update the hud
-        if (_numObjectives > 1)
+        /*if (_numObjectives > 1)
         {
             HUDManager.instance.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
         } else
         {
             HUDManager.instance.UpdateObjective(currentObjective);
-        }
+        }*/
+        
+        HUDManager.instance.UpdateObjective(currentObjective, _completedObjectives, _numObjectives);
 
         //Display in the middle of the screen
 

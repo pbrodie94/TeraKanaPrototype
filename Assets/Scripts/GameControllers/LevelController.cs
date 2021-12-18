@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    public delegate void LevelLoaded();
+    public event LevelLoaded OnLevelLoaded;
+    
     public static LevelController instance;
     [HideInInspector] public float progress;
     private int numberOfTasks;
@@ -112,7 +115,6 @@ public class LevelController : MonoBehaviour
         yield return null;
 
         //Spawn Enemies
-
         if (levelEnemyCountRange != Vector2.zero)
         {
             enemySpawner.spawnComplete = false;
@@ -152,6 +154,11 @@ public class LevelController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         isLoaded = true;
+
+        if (OnLevelLoaded != null)
+        {
+            OnLevelLoaded();
+        }
     }
 
     private int GetNumLockedDoors()

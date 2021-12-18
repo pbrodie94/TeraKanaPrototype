@@ -22,6 +22,8 @@ public class ExtractionPoint : BioScan
 
     protected IEnumerator OnScanComplete()
     {
+        _scanComplete = true;
+        
         yield return new WaitForSeconds(1);
 
         HUDManager.instance.GameOver(true);

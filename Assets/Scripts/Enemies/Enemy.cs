@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     public float attackDelay = 1.5f;
     protected bool attacking = false;
 
+    private bool isAlarmEnemy = false;
+
     public Collider[] meleeColliders;
     [Tooltip ("Set frames to wait before tuning the melee colliders on, and off.")]
     public Vector2[] onOffFrames;
@@ -60,6 +62,11 @@ public class Enemy : MonoBehaviour
             agent.stoppingDistance = meleeAttackDist;
 
         LevelController.PlayerSpawned += GetPlayerReference;
+
+        if (isAlarmEnemy)
+        {
+            aiState.Aggro();
+        }
     }
 
     public void GetPlayerReference()
@@ -71,14 +78,14 @@ public class Enemy : MonoBehaviour
 
     public void InitializeWaveSpawn(GameObject player)
     {
-        target = player.transform;
         if (!aiState)
         {
             aiState = GetComponent<EnemyAIStateManager>();
         }
 
-        aiState.state = EnemyAIStateManager.EnemyState.Engaging;
-        
+        isAlarmEnemy = true;
+        target = player.transform;
+
         LevelController.PlayerSpawned -= GetPlayerReference;
     }
 

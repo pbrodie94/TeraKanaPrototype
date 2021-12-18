@@ -27,6 +27,8 @@ public class EnemyAIStateManager : MonoBehaviour
 
     protected CombatManager cm;
 
+    private bool alarmEnemy = false;
+
     protected void Start()
     {
         /*if (!target)
@@ -53,6 +55,11 @@ public class EnemyAIStateManager : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (alarmEnemy)
+        {
+            return;
+        }
+        
         if (targetDetection.DetectTarget(target))
         {
             //Target seen
@@ -121,6 +128,10 @@ public class EnemyAIStateManager : MonoBehaviour
                 //if target initially detected, add to combat manager's list
                 if (state == EnemyState.Idle || state == EnemyState.Sleep)
                 {
+                    if (!cm)
+                    {
+                        cm = GameObject.FindGameObjectWithTag("GameController").GetComponent<CombatManager>();
+                    }
                     cm.AddEnemy(enemy);
                 }
 
@@ -135,6 +146,12 @@ public class EnemyAIStateManager : MonoBehaviour
         //Alert other enemies in the area
         UpdateState(EnemyState.Alert);
         timeLastDetected = Time.time;
+    }
+
+    public void Aggro()
+    {
+        UpdateState(EnemyState.Engaging);
+        alarmEnemy = true;
     }
 
     public void Die()

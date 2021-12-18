@@ -180,8 +180,6 @@ public class EnemySpawner : MonoBehaviour
             {
                 SpawnEnemyWave();
             }
-            
-            Debug.Log("Time to next wave: " + (timeLastSpawnedWave - Time.time));
         }
     }
 

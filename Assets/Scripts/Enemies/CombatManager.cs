@@ -156,17 +156,17 @@ public class CombatManager : MonoBehaviour
 
 public class EnemyObject
 {
-    public EnemyObject(Enemy e, CombatManager c)
-    {
-        en = e;
-        cm = c;
-    }
-
     public Enemy en;
     public CombatManager cm;
     public bool attacking = false;
     public float timeStartAttack;
     public float timeLastAttacked;
+
+    public EnemyObject(Enemy e, CombatManager c)
+    {
+        en = e;
+        cm = c;
+    }
 
     public void StartAttack()
     {

@@ -102,6 +102,8 @@ public class HUDManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        //LevelController.instance.OnLevelLoaded += ShowHud;
     }
 
     private void Start()
@@ -151,6 +153,24 @@ public class HUDManager : MonoBehaviour
         gameOverScreen.SetActive(false);
 
         audioSource = GetComponent<AudioSource>();
+        
+        //HideHud();
+    }
+
+    private void ShowHud()
+    {
+        healthSlider.gameObject.SetActive(true);
+        objectivePanel.SetActive(true);
+        weaponPanel.SetActive(true);
+        aimReticle.gameObject.SetActive(true);
+    }
+
+    private void HideHud()
+    {
+        healthSlider.gameObject.SetActive(false);
+        objectivePanel.SetActive(false);
+        weaponPanel.SetActive(false);
+        aimReticle.gameObject.SetActive(false);
     }
 
     public void ShowMessage(string msg, bool show)
@@ -193,12 +213,22 @@ public class HUDManager : MonoBehaviour
             dimensions = new Vector2(20, 20);
         }
 
+        if (!aimReticle)
+        {
+            return;
+        }
+
         aimReticle.texture = newReticle;
         aimRect.sizeDelta = dimensions;
     }
 
     public void SetDefaultAimReticle()
     {
+        if (!aimReticle)
+        {
+            return;
+        }
+        
         aimReticle.texture = defaultAimReticle;
         aimRect.sizeDelta = new Vector2(20, 20);
     }
